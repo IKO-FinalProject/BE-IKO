@@ -1,10 +1,9 @@
 package com.iko.iko.security.jwt;
 
-import com.iko.iko.service.CustomUserDetailService;
+import com.iko.iko.service.CustomUserDetailsService;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,7 +23,7 @@ public class JwtTokenProvider {
 
     // 토큰 유효시간 7일(168시간)
     private long tokenValidTime = 1440 * 60 * 7 ^ 1000L;
-    private final CustomUserDetailService customUserDetailService;
+    private final CustomUserDetailsService customUserDetailsService;
 
     // Base64로 Encoding
     @PostConstruct
@@ -44,6 +43,29 @@ public class JwtTokenProvider {
                 .signWith(SignatureAlgorithm.HS256, secretKey) // 사용할 암호화 알고리즘
                 .compact();
     }
+    // JWT 토큰에서 인증 정보 조회
+    public Authentication getAuthentication(String token) {
+        UserDetails userDetails = customUserDetailsService.loadUserByUsername(this.getUserEmail(token));
+        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+    }
 
+    // 토큰에서 회원 정보 추출
+    public String getUserEmail(String token) {
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+    }
 
+    // Request 의 Header 에서 token 값을 가져옵니다. "X-AUTH-TOKEN" : "TOKEN값'
+    public String resolveToken(HttpServletRequest request) {
+        return request.getHeader("X-AUTH-TOKEN");
+    }
+
+    // 토큰의 유효성 + 만료일자 확인
+    public boolean validateToken(String jwtToken) {
+        try {
+            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
+            return !claims.getBody().getExpiration().before(new Date());
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

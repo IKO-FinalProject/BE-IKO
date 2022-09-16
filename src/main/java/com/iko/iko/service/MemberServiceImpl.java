@@ -2,6 +2,7 @@ package com.iko.iko.service;
 
 import com.iko.iko.domain.entity.Member;
 import com.iko.iko.domain.repository.member.MemberRepository;
+import com.iko.iko.presentation.dto.request.MemberSignInRequestDto;
 import com.iko.iko.presentation.dto.request.MemberSignUpRequestDto;
 import com.iko.iko.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 
 @RequiredArgsConstructor
 @Transactional
@@ -36,5 +38,15 @@ public class MemberServiceImpl implements MemberService {
         member.encodePassword(passwordEncoder);
         member.addUserAuthority();
         return member.getMemberId();
+    }
+
+    @Transactional
+    @Override
+    public String login(MemberSignInRequestDto requestDto) {
+        Member member = memberRepository.findByEmail(requestDto.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("가입된 이메일이 아닙니다."));
+
+        String role = member.getRole().name();
+        return jwtTokenProvider.createToken(member.getUsername(), role);
     }
 }

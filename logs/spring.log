@@ -1,41 +1,39 @@
-2022-09-07 23:11:09.780  INFO 113572 --- [main] com.iko.iko.IkoApplication               : Starting IkoApplication using Java 11.0.15 on DESKTOP-LQUQU3Q with PID 113572 (C:\Users\TaeHyeon\Desktop\iko\build\classes\java\main started by TaeHyeon in C:\Users\TaeHyeon\Desktop\iko)
-2022-09-07 23:11:09.783  INFO 113572 --- [main] com.iko.iko.IkoApplication               : No active profile set, falling back to 1 default profile: "default"
-2022-09-07 23:11:10.464  INFO 113572 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-09-07 23:11:10.475  INFO 113572 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
-2022-09-07 23:11:11.316  INFO 113572 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-09-07 23:11:11.325  INFO 113572 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-09-07 23:11:11.325  INFO 113572 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-09-07 23:11:11.446  INFO 113572 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-09-07 23:11:11.446  INFO 113572 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1619 ms
-2022-09-07 23:11:11.593  INFO 113572 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-09-07 23:11:11.652  INFO 113572 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
-2022-09-07 23:11:11.807  INFO 113572 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-09-07 23:11:11.907  INFO 113572 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-09-07 23:11:12.145  INFO 113572 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-09-07 23:11:12.158  INFO 113572 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
-2022-09-07 23:11:12.369  INFO 113572 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-09-07 23:11:12.378  INFO 113572 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-09-07 23:11:12.558  WARN 113572 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-09-07 23:11:13.035  INFO 113572 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-09-07 23:11:13.039  WARN 113572 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
-2022-09-07 23:11:13.043  INFO 113572 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-09-07 23:11:13.046  INFO 113572 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-09-07 23:11:13.056  INFO 113572 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-09-07 23:11:13.348  INFO 113572 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2022-09-07 23:11:13.358  INFO 113572 --- [main] ConditionEvaluationReportLoggingListener : 
+2022-09-17 05:27:46.790  INFO 31276 --- [main] com.iko.iko.IkoApplication               : Starting IkoApplication using Java 11.0.15 on DESKTOP-LQUQU3Q with PID 31276 (C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\build\classes\java\main started by TaeHyeon in C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api)
+2022-09-17 05:27:46.800  INFO 31276 --- [main] com.iko.iko.IkoApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-17 05:27:47.557  INFO 31276 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-17 05:27:47.618  INFO 31276 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 1 JPA repository interfaces.
+2022-09-17 05:27:48.536  INFO 31276 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-17 05:27:48.546  INFO 31276 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-17 05:27:48.546  INFO 31276 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-17 05:27:48.677  INFO 31276 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-17 05:27:48.677  INFO 31276 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1831 ms
+2022-09-17 05:27:48.844  INFO 31276 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-17 05:27:48.915  INFO 31276 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-09-17 05:27:49.078  INFO 31276 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-17 05:27:49.192  INFO 31276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-17 05:27:49.419  INFO 31276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-17 05:27:49.435  INFO 31276 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-09-17 05:27:50.010 ERROR 31276 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [updated_at] in table [tb_member]; found [datetime (Types#TIMESTAMP)], but expecting [timestamp (Types#DATE)]
+2022-09-17 05:27:50.010  WARN 31276 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [updated_at] in table [tb_member]; found [datetime (Types#TIMESTAMP)], but expecting [timestamp (Types#DATE)]
+2022-09-17 05:27:50.011  INFO 31276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-09-17 05:27:50.018  INFO 31276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-09-17 05:27:50.019  INFO 31276 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-09-17 05:27:50.027  INFO 31276 --- [main] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2022-09-07 23:11:13.377 ERROR 113572 --- [main] o.s.boot.SpringApplication               : Application run failed
+2022-09-17 05:27:50.047 ERROR 31276 --- [main] o.s.boot.SpringApplication               : Application run failed
 
-org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
-	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:181) ~[spring-context-5.3.22.jar:5.3.22]
-	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54) ~[spring-context-5.3.22.jar:5.3.22]
-	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:356) ~[spring-context-5.3.22.jar:5.3.22]
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
-	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:155) ~[spring-context-5.3.22.jar:5.3.22]
-	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:123) ~[spring-context-5.3.22.jar:5.3.22]
-	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:935) ~[spring-context-5.3.22.jar:5.3.22]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.22.jar:5.3.22]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [updated_at] in table [tb_member]; found [datetime (Types#TIMESTAMP)], but expecting [timestamp (Types#DATE)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.22.jar:5.3.22]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.22.jar:5.3.22]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.22.jar:5.3.22]
 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.3.jar:2.7.3]
 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-2.7.3.jar:2.7.3]
 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.3.jar:2.7.3]
@@ -43,37 +41,252 @@ org.springframework.context.ApplicationContextException: Failed to start bean 'd
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-2.7.3.jar:2.7.3]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-2.7.3.jar:2.7.3]
 	at com.iko.iko.IkoApplication.main(IkoApplication.java:10) ~[main/:na]
-Caused by: java.lang.NullPointerException: null
-	at springfox.documentation.spring.web.WebMvcPatternsRequestConditionWrapper.getPatterns(WebMvcPatternsRequestConditionWrapper.java:56) ~[springfox-spring-webmvc-3.0.0.jar:3.0.0]
-	at springfox.documentation.RequestHandler.sortedPaths(RequestHandler.java:113) ~[springfox-core-3.0.0.jar:3.0.0]
-	at springfox.documentation.spi.service.contexts.Orderings.lambda$byPatternsCondition$3(Orderings.java:89) ~[springfox-spi-3.0.0.jar:3.0.0]
-	at java.base/java.util.Comparator.lambda$comparing$77a9974f$1(Comparator.java:469) ~[na:na]
-	at java.base/java.util.TimSort.countRunAndMakeAscending(TimSort.java:355) ~[na:na]
-	at java.base/java.util.TimSort.sort(TimSort.java:220) ~[na:na]
-	at java.base/java.util.Arrays.sort(Arrays.java:1515) ~[na:na]
-	at java.base/java.util.ArrayList.sort(ArrayList.java:1750) ~[na:na]
-	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:392) ~[na:na]
-	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258) ~[na:na]
-	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258) ~[na:na]
-	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258) ~[na:na]
-	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258) ~[na:na]
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:485) ~[na:na]
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474) ~[na:na]
-	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:913) ~[na:na]
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
-	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:578) ~[na:na]
-	at springfox.documentation.spring.web.plugins.WebMvcRequestHandlerProvider.requestHandlers(WebMvcRequestHandlerProvider.java:81) ~[springfox-spring-webmvc-3.0.0.jar:3.0.0]
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195) ~[na:na]
-	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1655) ~[na:na]
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474) ~[na:na]
-	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:913) ~[na:na]
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
-	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:578) ~[na:na]
-	at springfox.documentation.spring.web.plugins.AbstractDocumentationPluginsBootstrapper.withDefaults(AbstractDocumentationPluginsBootstrapper.java:107) ~[springfox-spring-web-3.0.0.jar:3.0.0]
-	at springfox.documentation.spring.web.plugins.AbstractDocumentationPluginsBootstrapper.buildContext(AbstractDocumentationPluginsBootstrapper.java:91) ~[springfox-spring-web-3.0.0.jar:3.0.0]
-	at springfox.documentation.spring.web.plugins.AbstractDocumentationPluginsBootstrapper.bootstrapDocumentationPlugins(AbstractDocumentationPluginsBootstrapper.java:82) ~[springfox-spring-web-3.0.0.jar:3.0.0]
-	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.start(DocumentationPluginsBootstrapper.java:100) ~[springfox-spring-web-3.0.0.jar:3.0.0]
-	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:178) ~[spring-context-5.3.22.jar:5.3.22]
-	... 14 common frames omitted
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [updated_at] in table [tb_member]; found [datetime (Types#TIMESTAMP)], but expecting [timestamp (Types#DATE)]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-5.3.22.jar:5.3.22]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.22.jar:5.3.22]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.22.jar:5.3.22]
+	... 16 common frames omitted
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [updated_at] in table [tb_member]; found [datetime (Types#TIMESTAMP)], but expecting [timestamp (Types#DATE)]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateColumnType(AbstractSchemaValidator.java:167) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:151) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:42) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:97) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:76) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:204) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.22.jar:5.3.22]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.22.jar:5.3.22]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.22.jar:5.3.22]
+	... 20 common frames omitted
+
+2022-09-17 05:29:29.057  INFO 16328 --- [main] com.iko.iko.IkoApplication               : Starting IkoApplication using Java 11.0.15 on DESKTOP-LQUQU3Q with PID 16328 (C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\build\classes\java\main started by TaeHyeon in C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api)
+2022-09-17 05:29:29.059  INFO 16328 --- [main] com.iko.iko.IkoApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-17 05:29:29.771  INFO 16328 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-17 05:29:29.825  INFO 16328 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interfaces.
+2022-09-17 05:29:30.678  INFO 16328 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-17 05:29:30.687  INFO 16328 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-17 05:29:30.688  INFO 16328 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-17 05:29:30.808  INFO 16328 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-17 05:29:30.809  INFO 16328 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1709 ms
+2022-09-17 05:29:30.968  INFO 16328 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-17 05:29:31.042  INFO 16328 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-09-17 05:29:31.230  INFO 16328 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-17 05:29:31.347  INFO 16328 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-17 05:29:31.579  INFO 16328 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-17 05:29:31.592  INFO 16328 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-09-17 05:29:32.173 ERROR 16328 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [created_at] in table [tb_member]; found [datetime (Types#TIMESTAMP)], but expecting [timestamp (Types#DATE)]
+2022-09-17 05:29:32.174  WARN 16328 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [created_at] in table [tb_member]; found [datetime (Types#TIMESTAMP)], but expecting [timestamp (Types#DATE)]
+2022-09-17 05:29:32.174  INFO 16328 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-09-17 05:29:32.208  INFO 16328 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-09-17 05:29:32.209  INFO 16328 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-09-17 05:29:32.217  INFO 16328 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-09-17 05:29:32.235 ERROR 16328 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [created_at] in table [tb_member]; found [datetime (Types#TIMESTAMP)], but expecting [timestamp (Types#DATE)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.22.jar:5.3.22]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.22.jar:5.3.22]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.22.jar:5.3.22]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-2.7.3.jar:2.7.3]
+	at com.iko.iko.IkoApplication.main(IkoApplication.java:10) ~[main/:na]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [created_at] in table [tb_member]; found [datetime (Types#TIMESTAMP)], but expecting [timestamp (Types#DATE)]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-5.3.22.jar:5.3.22]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.22.jar:5.3.22]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.22.jar:5.3.22]
+	... 16 common frames omitted
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [created_at] in table [tb_member]; found [datetime (Types#TIMESTAMP)], but expecting [timestamp (Types#DATE)]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateColumnType(AbstractSchemaValidator.java:167) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:151) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:42) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:97) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:76) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:204) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498) ~[hibernate-core-5.6.10.Final.jar:5.6.10.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.22.jar:5.3.22]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.22.jar:5.3.22]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.22.jar:5.3.22]
+	... 20 common frames omitted
+
+2022-09-17 05:30:22.109  INFO 25020 --- [main] com.iko.iko.IkoApplication               : Starting IkoApplication using Java 11.0.15 on DESKTOP-LQUQU3Q with PID 25020 (C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\build\classes\java\main started by TaeHyeon in C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api)
+2022-09-17 05:30:22.111  INFO 25020 --- [main] com.iko.iko.IkoApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-17 05:30:22.876  INFO 25020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-17 05:30:22.932  INFO 25020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 1 JPA repository interfaces.
+2022-09-17 05:30:23.804  INFO 25020 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-17 05:30:23.816  INFO 25020 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-17 05:30:23.816  INFO 25020 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-17 05:30:23.937  INFO 25020 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-17 05:30:23.937  INFO 25020 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1781 ms
+2022-09-17 05:30:24.081  INFO 25020 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-17 05:30:24.135  INFO 25020 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-09-17 05:30:24.312  INFO 25020 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-17 05:30:24.429  INFO 25020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-17 05:30:24.651  INFO 25020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-17 05:30:24.666  INFO 25020 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-09-17 05:30:25.274  INFO 25020 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-17 05:30:25.283  INFO 25020 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 05:30:25.593  WARN 25020 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'memberController' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\build\classes\java\main\com\iko\iko\controller\MemberController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'memberServiceImpl' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\build\classes\java\main\com\iko\iko\service\MemberServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\build\classes\java\main\com\iko\iko\security\config\SecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtTokenProvider' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\build\classes\java\main\com\iko\iko\security\jwt\JwtTokenProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.iko.iko.service.CustomUserDetailsService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2022-09-17 05:30:25.593  INFO 25020 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 05:30:25.595  INFO 25020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-09-17 05:30:25.604  INFO 25020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-09-17 05:30:25.605  INFO 25020 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-09-17 05:30:25.615  INFO 25020 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-09-17 05:30:25.636 ERROR 25020 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.iko.iko.security.jwt.JwtTokenProvider required a bean of type 'com.iko.iko.service.CustomUserDetailsService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.iko.iko.service.CustomUserDetailsService' in your configuration.
+
+2022-09-17 05:31:20.352  INFO 8752 --- [main] com.iko.iko.IkoApplication               : Starting IkoApplication using Java 11.0.15 on DESKTOP-LQUQU3Q with PID 8752 (C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes started by TaeHyeon in C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api)
+2022-09-17 05:31:20.355  INFO 8752 --- [main] com.iko.iko.IkoApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-17 05:31:21.113  INFO 8752 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-17 05:31:21.173  INFO 8752 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 1 JPA repository interfaces.
+2022-09-17 05:31:22.015  INFO 8752 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-17 05:31:22.025  INFO 8752 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-17 05:31:22.025  INFO 8752 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-17 05:31:22.140  INFO 8752 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-17 05:31:22.140  INFO 8752 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1738 ms
+2022-09-17 05:31:22.279  INFO 8752 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-17 05:31:22.331  INFO 8752 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-09-17 05:31:22.483  INFO 8752 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-17 05:31:22.583  INFO 8752 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-17 05:31:22.801  INFO 8752 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-17 05:31:22.814  INFO 8752 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-09-17 05:31:23.389  INFO 8752 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-17 05:31:23.397  INFO 8752 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 05:31:23.725  WARN 8752 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'memberController' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\controller\MemberController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'memberServiceImpl' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\service\MemberServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\security\config\SecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtTokenProvider' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\security\jwt\JwtTokenProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.iko.iko.service.CustomUserDetailsService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2022-09-17 05:31:23.725  INFO 8752 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 05:31:23.728  INFO 8752 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-09-17 05:31:23.738  INFO 8752 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-09-17 05:31:23.740  INFO 8752 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-09-17 05:31:23.748  INFO 8752 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-09-17 05:31:23.771 ERROR 8752 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.iko.iko.security.jwt.JwtTokenProvider required a bean of type 'com.iko.iko.service.CustomUserDetailsService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.iko.iko.service.CustomUserDetailsService' in your configuration.
+
+2022-09-17 05:31:34.842  INFO 28236 --- [main] com.iko.iko.IkoApplication               : Starting IkoApplication using Java 11.0.15 on DESKTOP-LQUQU3Q with PID 28236 (C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes started by TaeHyeon in C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api)
+2022-09-17 05:31:34.845  INFO 28236 --- [main] com.iko.iko.IkoApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-17 05:31:35.607  INFO 28236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-17 05:31:35.665  INFO 28236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interfaces.
+2022-09-17 05:31:36.524  INFO 28236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-17 05:31:36.534  INFO 28236 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-17 05:31:36.535  INFO 28236 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-17 05:31:36.657  INFO 28236 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-17 05:31:36.658  INFO 28236 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1771 ms
+2022-09-17 05:31:36.812  INFO 28236 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-17 05:31:36.865  INFO 28236 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-09-17 05:31:37.042  INFO 28236 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-17 05:31:37.150  INFO 28236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-17 05:31:37.370  INFO 28236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-17 05:31:37.384  INFO 28236 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-09-17 05:31:37.945  INFO 28236 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-17 05:31:37.953  INFO 28236 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 05:31:38.268  WARN 28236 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'memberController' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\controller\MemberController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'memberServiceImpl' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\service\MemberServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\security\config\SecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtTokenProvider' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\security\jwt\JwtTokenProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.iko.iko.service.CustomUserDetailsService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2022-09-17 05:31:38.269  INFO 28236 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 05:31:38.271  INFO 28236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-09-17 05:31:38.279  INFO 28236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-09-17 05:31:38.280  INFO 28236 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-09-17 05:31:38.289  INFO 28236 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-09-17 05:31:38.308 ERROR 28236 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.iko.iko.security.jwt.JwtTokenProvider required a bean of type 'com.iko.iko.service.CustomUserDetailsService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.iko.iko.service.CustomUserDetailsService' in your configuration.
+
+2022-09-17 05:32:12.207  INFO 13788 --- [main] com.iko.iko.IkoApplication               : Starting IkoApplication using Java 11.0.15 on DESKTOP-LQUQU3Q with PID 13788 (C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes started by TaeHyeon in C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api)
+2022-09-17 05:32:12.210  INFO 13788 --- [main] com.iko.iko.IkoApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-17 05:32:12.942  INFO 13788 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-17 05:32:12.996  INFO 13788 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interfaces.
+2022-09-17 05:32:13.848  INFO 13788 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-17 05:32:13.858  INFO 13788 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-17 05:32:13.859  INFO 13788 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-17 05:32:13.975  INFO 13788 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-17 05:32:13.975  INFO 13788 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1720 ms
+2022-09-17 05:32:14.114  INFO 13788 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-17 05:32:14.167  INFO 13788 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-09-17 05:32:14.323  INFO 13788 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-17 05:32:14.422  INFO 13788 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-17 05:32:14.636  INFO 13788 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-17 05:32:14.648  INFO 13788 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-09-17 05:32:15.202  INFO 13788 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-17 05:32:15.210  INFO 13788 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 05:32:15.533  WARN 13788 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'memberController' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\controller\MemberController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'memberServiceImpl' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\service\MemberServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\security\config\SecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtTokenProvider' defined in file [C:\Users\TaeHyeon\AppData\Roaming\SPB_Data\iko\iko_v1_api\out\production\classes\com\iko\iko\security\jwt\JwtTokenProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.iko.iko.service.CustomUserDetailsService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2022-09-17 05:32:15.534  INFO 13788 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-17 05:32:15.536  INFO 13788 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-09-17 05:32:15.544  INFO 13788 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-09-17 05:32:15.545  INFO 13788 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-09-17 05:32:15.553  INFO 13788 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-09-17 05:32:15.573 ERROR 13788 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.iko.iko.security.jwt.JwtTokenProvider required a bean of type 'com.iko.iko.service.CustomUserDetailsService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.iko.iko.service.CustomUserDetailsService' in your configuration.
 
