@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
@@ -46,5 +47,9 @@ public class Member extends BaseEntity{
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    public void encodePassword(PasswordEncoder passwordEncoder){
+        this.password = passwordEncoder.encode(password);
+    }
 
 }
