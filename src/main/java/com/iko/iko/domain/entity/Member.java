@@ -57,7 +57,7 @@ public class Member extends BaseEntity implements UserDetails {
     private Role role;
 
     public void addUserAuthority(){
-        this.role = Role.USER;
+        this.role = Role.ROLE_USER;
     }
 
     public void encodePassword(PasswordEncoder passwordEncoder){

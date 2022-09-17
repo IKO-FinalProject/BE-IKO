@@ -21,8 +21,8 @@ public class JwtTokenProvider {
     private String secretKey =
             "c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK";
 
-    // 토큰 유효시간 7일(168시간)
-    private long tokenValidTime = 1440 * 60 * 7 ^ 1000L;
+    // 토큰 유효시간 1일(24시간)
+    private long tokenValidTime = 1440 * 60 * 1 ^ 1000L;
     private final CustomUserDetailsService customUserDetailsService;
 
     // Base64로 Encoding

@@ -45,8 +45,15 @@ public class MemberServiceImpl implements MemberService {
     public String login(MemberSignInRequestDto requestDto) {
         Member member = memberRepository.findByEmail(requestDto.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("가입된 이메일이 아닙니다."));
+        validateMatchedPassword(requestDto.getPassword(), member.getPassword());
 
         String role = member.getRole().name();
         return jwtTokenProvider.createToken(member.getUsername(), role);
+    }
+
+    private void validateMatchedPassword(String validPassword, String memberPassword) {
+        if(!passwordEncoder.matches(validPassword,memberPassword)){
+            throw new IllegalArgumentException("잘못된 비밀번호입니다,");
+        }
     }
 }
