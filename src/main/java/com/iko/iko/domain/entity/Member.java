@@ -1,5 +1,6 @@
 package com.iko.iko.domain.entity;
 
+import com.iko.iko.common.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,6 +31,8 @@ public class Member extends BaseEntity{
 
     private Integer postCode;
 
+    private String address;
+
     private String phone;
 
     @Column(unique = true)
@@ -41,6 +44,7 @@ public class Member extends BaseEntity{
 
     private Integer point;
 
-    private String auth;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 }
