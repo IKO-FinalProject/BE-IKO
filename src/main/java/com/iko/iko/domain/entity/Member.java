@@ -41,6 +41,6 @@ public class Member extends BaseEntity{
 
     private Integer point;
 
-    private Integer auth;
+    private String auth;
 
 }
