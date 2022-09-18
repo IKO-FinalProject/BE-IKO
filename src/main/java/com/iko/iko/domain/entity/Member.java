@@ -53,6 +53,9 @@ public class Member extends BaseEntity implements UserDetails {
 
     private Integer point;
 
+    private String refreshToken;
+
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -94,6 +97,10 @@ public class Member extends BaseEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public void updateRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 }
 

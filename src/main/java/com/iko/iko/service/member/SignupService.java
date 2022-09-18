@@ -1,29 +1,22 @@
-package com.iko.iko.service;
+package com.iko.iko.service.member;
 
+import com.iko.iko.controller.member.dto.request.MemberSignUpRequestDto;
 import com.iko.iko.domain.entity.Member;
 import com.iko.iko.domain.repository.member.MemberRepository;
-import com.iko.iko.presentation.dto.request.MemberSignInRequestDto;
-import com.iko.iko.presentation.dto.request.MemberSignUpRequestDto;
 import com.iko.iko.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-@RequiredArgsConstructor
-@Transactional
-@Slf4j
 @Service
-public class MemberServiceImpl implements MemberService {
+@RequiredArgsConstructor
+public class SignupService {
 
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
-    @Override
     public Integer signUp(MemberSignUpRequestDto requestDto)  {
 
         if (memberRepository.findByEmail(requestDto.getEmail()).isPresent()){
@@ -38,22 +31,5 @@ public class MemberServiceImpl implements MemberService {
         member.encodePassword(passwordEncoder);
         member.addUserAuthority();
         return member.getMemberId();
-    }
-
-    @Transactional
-    @Override
-    public String login(MemberSignInRequestDto requestDto) {
-        Member member = memberRepository.findByEmail(requestDto.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException("가입된 이메일이 아닙니다."));
-        validateMatchedPassword(requestDto.getPassword(), member.getPassword());
-
-        String role = member.getRole().name();
-        return jwtTokenProvider.createToken(member.getUsername(), role);
-    }
-
-    private void validateMatchedPassword(String validPassword, String memberPassword) {
-        if(!passwordEncoder.matches(validPassword,memberPassword)){
-            throw new IllegalArgumentException("잘못된 비밀번호입니다,");
-        }
     }
 }

@@ -1,4 +1,4 @@
-package com.iko.iko.presentation.dto.request;
+package com.iko.iko.controller.member.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
