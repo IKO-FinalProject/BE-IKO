@@ -53,8 +53,8 @@ public class Member extends BaseEntity implements UserDetails {
 
     private Integer point;
 
-    private String refreshToken;
 
+    private String refreshToken;
 
     @Enumerated(EnumType.STRING)
     private Role role;
