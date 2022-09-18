@@ -6,6 +6,8 @@ import com.iko.iko.domain.entity.Product;
 
 @Service
 public class ProductService {
-    List<Product> selectAllProducts();
+    List<Product> selectAllProducts() {
+        return null;
+    }
 
 }
