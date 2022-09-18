@@ -19,10 +19,8 @@ public class Product extends BaseEntity {
     @Column(name ="product_id_pk",unique = true,nullable = false)
     private Integer product_id;
 
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn(name = "image_id_fk")
-    })
+    @Column(name = "image_id_fk")
+    @NotEmpty
     private Image image_id;
 
     @Column(name ="product_name", nullable = false)
@@ -53,6 +51,14 @@ public class Product extends BaseEntity {
     @Column(name="product_stock",nullable = false)
     @NotEmpty
     private Integer stock;
+
+    @Column(name="price")
+    @NotEmpty
+    private Integer price;
+
+    @Column(name="graphic_diameter")
+    @NotEmpty
+    private float graphic_diameter;
 
 
 }
