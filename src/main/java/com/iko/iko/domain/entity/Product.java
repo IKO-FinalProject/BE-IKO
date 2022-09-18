@@ -54,7 +54,7 @@ public class Product extends BaseEntity {
 
     @Column(name="discount",nullable = true)
     @NotEmpty
-    private float discount;
+    private Integer discount;
 
     @Column(name="product_stock",nullable = false)
     @NotEmpty
