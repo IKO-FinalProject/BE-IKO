@@ -15,7 +15,6 @@ public class ProductResponse {
     @Getter
     @Builder
     @AllArgsConstructor
-    @NoArgsConstructor
     public static  class ProductMainResponse{
         private  Integer productId;
         private  String name;

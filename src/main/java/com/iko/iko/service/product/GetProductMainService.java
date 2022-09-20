@@ -16,17 +16,9 @@ public class GetProductMainService {
 
     private final ProductRepository productRepository;
     @Transactional(readOnly = true)
-    public void getMainProduct(ProductResponse.ProductMainResponse productMainResponse){
-        Product product = Product.builder()
-                .name(productMainResponse.getName())
-                .price(productMainResponse.getPrice())
-                .discount(productMainResponse.getPrice())
-                .series(productMainResponse.getSeries())
-                .feature(productMainResponse.getFeature())
-                .graphicDiameter(productMainResponse.getGraphicDiameter())
-                .manufacturer(productMainResponse.getManufacturer())
-                .build();
 
+    public  List<ProductResponse.ProductMainResponse> getMainProduct(Pageable pageable){
+        return productRepository.getMainProduct(pageable);
     }
 
 }

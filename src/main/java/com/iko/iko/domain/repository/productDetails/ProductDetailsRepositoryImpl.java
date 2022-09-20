@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class ProductDetailsRepositoryImpl {
+
     private final JPAQueryFactory jpaQueryFactory;
 
 
