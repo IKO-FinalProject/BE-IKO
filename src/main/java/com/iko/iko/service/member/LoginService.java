@@ -35,7 +35,7 @@ public class LoginService {
         return TokenResponseDto.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
-                .accessTokenValidTime(18000L)
+                .accessTokenValidTime(1800L)
                 .refreshTokenValidTime(604800L)
                 .build();
     }
