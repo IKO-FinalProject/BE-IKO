@@ -13,9 +13,13 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
+
+
 @RequiredArgsConstructor
 @Component
 public class JwtTokenProvider {
+
+
 
     @Value("spring.jwt.secret")
     private String secretKey;
@@ -93,8 +97,8 @@ public class JwtTokenProvider {
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
             return !claims.getBody().getExpiration().before(new Date());
-        } catch (ExpiredJwtException e) {
-            return true;
+//        } catch (ExpiredJwtException e) {
+//            return true;
         } catch (Exception e) {
             return false;
         }
@@ -111,5 +115,10 @@ public class JwtTokenProvider {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public Date getExpiredDate(String token){
+        Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+        return claims.getBody().getExpiration();
     }
 }

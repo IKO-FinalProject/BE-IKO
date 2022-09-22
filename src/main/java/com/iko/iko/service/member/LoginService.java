@@ -11,9 +11,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Service
 @RequiredArgsConstructor
 public class LoginService {
+
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
@@ -32,11 +36,16 @@ public class LoginService {
         member.updateRefreshToken(refreshToken);
         memberRepository.save(member);
 
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+        Date date = jwtTokenProvider.getExpiredDate(accessToken);
+        Date dateTwo = jwtTokenProvider.getExpiredDate(refreshToken);
+
+
         return TokenResponseDto.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
-                .accessTokenValidTime(1800000L)
-                .refreshTokenValidTime(604800000L)
+                .accessTokenExpiredDate(format.format(date))
+                .refreshTokenExpiredDate(format.format(dateTwo))
                 .build();
     }
 
