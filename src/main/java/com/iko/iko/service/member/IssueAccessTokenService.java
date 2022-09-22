@@ -37,12 +37,12 @@ public class IssueAccessTokenService {
             else throw new IllegalArgumentException("리프레시 토크이 유효하지 않습니다.");
         }
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
-        Date date = jwtTokenProvider.getExpiredDate(token);
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+//        Date date = jwtTokenProvider.getExpiredDate(token);
 
         return ReissueResponseDto.builder()
                 .accessToken(token)
-                .accessTokenExpiredDate(format.format(date))
+                .accessTokenExpiredDate(jwtTokenProvider.getACCESS_TOKEN_VALID_TIME())
                 .build();
     }
 }

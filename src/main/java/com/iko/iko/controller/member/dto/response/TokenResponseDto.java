@@ -16,8 +16,8 @@ public class TokenResponseDto {
 
     private String refreshToken;
 
-    private String accessTokenExpiredDate;
+    private long accessTokenExpiredDate;
 
-    private String refreshTokenExpiredDate;
+    private long refreshTokenExpiredDate;
 
 }

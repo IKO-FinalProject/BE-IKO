@@ -2,6 +2,7 @@ package com.iko.iko.security.jwt;
 
 import com.iko.iko.service.member.CustomUserDetailsService;
 import io.jsonwebtoken.*;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,6 +18,7 @@ import java.util.Date;
 
 @RequiredArgsConstructor
 @Component
+@Getter
 public class JwtTokenProvider {
 
 
@@ -117,6 +119,7 @@ public class JwtTokenProvider {
         }
     }
 
+    // 토큰의 만료 시점을 반환 하는 메소드
     public Date getExpiredDate(String token){
         Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
         return claims.getBody().getExpiration();

@@ -30,22 +30,22 @@ public class LoginService {
 
         //TODO : Access Token 과 Refresh Token 을 생성합니다.
         String accessToken = jwtTokenProvider.createAccessToken(member.getUsername(), member.getRole().name());
-//        String refreshToken = jwtTokenProvider.createRefreshToken(member.getUsername(), member.getRole().name());
         String refreshToken = jwtTokenProvider.createRefreshToken(member.getUsername());
         //TODO : Refresh Token 을 DB에 저장합니다.
         member.updateRefreshToken(refreshToken);
         memberRepository.save(member);
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
-        Date date = jwtTokenProvider.getExpiredDate(accessToken);
-        Date dateTwo = jwtTokenProvider.getExpiredDate(refreshToken);
+        // 밀리세컨드를 나타내기 위한 format
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+//        Date date = jwtTokenProvider.getExpiredDate(accessToken);
+//        Date dateTwo = jwtTokenProvider.getExpiredDate(refreshToken);
 
 
         return TokenResponseDto.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
-                .accessTokenExpiredDate(format.format(date))
-                .refreshTokenExpiredDate(format.format(dateTwo))
+                .accessTokenExpiredDate(jwtTokenProvider.getACCESS_TOKEN_VALID_TIME())
+                .refreshTokenExpiredDate(jwtTokenProvider.getREFRESH_TOKEN_VALID_TIME())
                 .build();
     }
 
