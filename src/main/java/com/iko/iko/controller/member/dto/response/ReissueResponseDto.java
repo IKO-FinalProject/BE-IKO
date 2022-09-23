@@ -15,6 +15,11 @@ public class ReissueResponseDto {
 
     private String accessToken;
 
+    private String refreshToken;
+
     private long accessTokenExpiredDate;
+
+    private long refreshTokenExpiredDate;
+
 
 }

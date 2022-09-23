@@ -1,6 +1,8 @@
 package com.iko.iko.service.member;
 
 
+import com.iko.iko.common.exception.BaseException;
+import com.iko.iko.common.response.ErrorCode;
 import com.iko.iko.controller.member.dto.request.MemberSignInRequestDto;
 import com.iko.iko.controller.member.dto.response.TokenResponseDto;
 import com.iko.iko.domain.entity.Member;
@@ -25,7 +27,7 @@ public class LoginService {
     @Transactional
     public TokenResponseDto login(MemberSignInRequestDto requestDto) {
         Member member = memberRepository.findByEmail(requestDto.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException("가입된 이메일이 아닙니다."));
+                .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
         validateMatchedPassword(requestDto.getPassword(), member.getPassword());
 
         //TODO : Access Token 과 Refresh Token 을 생성합니다.
