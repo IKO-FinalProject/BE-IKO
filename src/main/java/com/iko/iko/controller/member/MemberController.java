@@ -78,8 +78,8 @@ public class MemberController {
     // 마이페이지 주문 내역
     @ApiOperation(value = "유저 주문내역", notes = "현재 더미 데이터상 member_id_pk 23번만 사용가능")
     @GetMapping("/myOrderList")
-    public List<MyOrderListResponseDto> MyOrderList(@RequestParam(value = "memberId") Integer memberId){
-        return memberFacade.MyOrderList(memberId);
+    public List<MyOrderListResponseDto> MyOrderList(){
+        return memberFacade.MyOrderList();
     }
 
     // 로그아웃

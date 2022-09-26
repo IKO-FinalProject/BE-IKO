@@ -61,8 +61,8 @@ public class MemberFacade {
     }
 
     @Transactional(readOnly = true)
-    public List<MyOrderListResponseDto> MyOrderList(Integer memberId){
-        return myOrderListService.MyOrderList(memberId);
+    public List<MyOrderListResponseDto> MyOrderList(){
+        return myOrderListService.MyOrderList();
     }
 
 }
