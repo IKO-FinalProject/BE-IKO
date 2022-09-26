@@ -14,6 +14,8 @@ import static com.iko.iko.domain.entity.QProduct.product;
 import static com.iko.iko.domain.entity.QProductDetails.productDetails;
 import static com.iko.iko.domain.entity.QOrder.order;
 import static com.iko.iko.domain.entity.QBaseEntity.baseEntity;
+import static com.iko.iko.domain.entity.QMember.member;
+
 
 @Repository
 @RequiredArgsConstructor
@@ -35,6 +37,7 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
                 .execute();
     }
 
+
 //    @Override
 //    public List<MyOrderListResponseDto> MyOrderList(
 //            Integer memberId
@@ -55,7 +58,5 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
 //                .join(productDetails).on(order.detailsIdList.eq(productDetails.productDetailsId)).fetchJoin()
 //
 //    }
-
-
 
 }
