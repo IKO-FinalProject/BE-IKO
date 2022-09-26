@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface MemberRepositoryCustom {
    Long updateInfo(UpdateInfoRequestDto requestDto);
-   
-//   List<MyOrderListResponseDto> myOrderList(Integer memberId);
 
+   List<MyOrderListResponseDto> MyOrderList(Integer memberId);
 }
