@@ -39,7 +39,7 @@ public class ProductDetailsController {
         );
     }
 
-    @GetMapping("/productOption")
+    @PostMapping("/productOption")
     public ResponseEntity<Response<List<ProductDetailsResponse.ProductMainByOption>>>
     getProductByOption(
             @RequestBody ProductDetailsRequest.ProductOptionForRequest productOption
