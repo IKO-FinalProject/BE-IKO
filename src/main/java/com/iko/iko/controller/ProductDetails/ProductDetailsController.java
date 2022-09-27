@@ -40,7 +40,7 @@ public class ProductDetailsController {
     }
 
     @PostMapping("/productOption")
-    public ResponseEntity<Response<List<ProductDetailsResponse.ProductMainByOption>>>
+    public ResponseEntity<Response<List<ProductDetailsResponse.ProductMainByOptionResponse>>>
     getProductByOption(
             @RequestBody ProductDetailsRequest.ProductOptionForRequest productOption
     ){
