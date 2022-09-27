@@ -45,7 +45,6 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .distinct()
                 .fetch();
 
-
                 /*
                 .select(Projections.constructor(ProductDetailsResponse.ProductDetailsForResponse.class,
                         productDetails.productDetailsId,
@@ -59,6 +58,7 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .limit(pageable.getPageSize())
                 .fetch();
                 */
+
     }
     @Override
     public List<ProductDetailsResponse.ProductMainByOption> getProductByOption(
@@ -80,6 +80,7 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                         .or(product.feature.eq(productByOption.getFeature())))
                 .distinct()
                 .fetch();
+
     }
 
 }

@@ -26,6 +26,7 @@ public class ProductDetailsResponse {
         private Integer discount;
         private String imageUrl;
         private Integer duration;
+
     }
 
     @Setter
@@ -40,5 +41,6 @@ public class ProductDetailsResponse {
         private float graphicDiameter;
         private String colorCode;
         private Integer imageUrl;
+
     }
 }

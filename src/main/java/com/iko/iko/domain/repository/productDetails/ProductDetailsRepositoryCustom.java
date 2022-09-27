@@ -12,4 +12,5 @@ public interface ProductDetailsRepositoryCustom {
 
     List<ProductDetailsResponse.ProductMainByOption> getProductByOption
             (ProductDetailsRequest.ProductOptionForRequest productByOption);
+
 }
