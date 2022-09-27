@@ -27,4 +27,18 @@ public class ProductDetailsResponse {
         private String imageUrl;
         private Integer duration;
     }
+
+    @Setter
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class ProductMainByOption{
+        private Integer productId;
+        private String series;
+        private Integer price;
+        private Integer discount;
+        private float graphicDiameter;
+        private String colorCode;
+        private Integer imageUrl;
+    }
 }
