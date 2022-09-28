@@ -15,6 +15,7 @@ public class GetMainProductService {
 
     private final ProductDetailsRepository productDetailsRepository;
 
+
     public List<ProductDetailsResponse.MainProduct> GetMainProduct(Pageable pageable) {
         /*List<ProductDetailsResponse.MainProduct> mainProductList=productDetailsRepository.getMainProduct(pageable);
         List<String> colorCodeList = new ArrayList<>();
