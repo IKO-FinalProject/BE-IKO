@@ -107,5 +107,4 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
         return execute;
     }
 
-
 }

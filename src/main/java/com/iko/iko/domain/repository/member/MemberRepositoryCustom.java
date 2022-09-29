@@ -15,4 +15,5 @@ public interface MemberRepositoryCustom {
    Long logout(Member member);
 
    Long orderCancel(Member member, Integer orderId);
+
 }

@@ -32,6 +32,7 @@ public class MemberFacade {
     private final LogoutService logoutService;
     private final OrderCancelService orderCancelService;
 
+
     @Transactional
     public Integer signUp(MemberSignUpRequestDto requestDto){
          return signupService.signUp(requestDto);
