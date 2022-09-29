@@ -93,18 +93,19 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
     public Long orderCancel(
             Member member, Integer orderId
     ){
-        long excute =  jpaQueryFactory
+        long execute =  jpaQueryFactory
                 .delete(linkOrderDetails)
                 .where(linkOrderDetails.orderId.eq(orderId))
                 .execute();
 
-        excute = excute + jpaQueryFactory
+        execute = execute + jpaQueryFactory
                 .delete(order)
                 .where(order.orderId.eq(orderId)
                         .and(order.memberId.eq(member.getMemberId())))
                 .execute();
 
-        return excute;
+
+        return execute;
     }
 
 
