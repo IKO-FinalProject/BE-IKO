@@ -13,4 +13,6 @@ public interface MemberRepositoryCustom {
    List<MyOrderListResponseDto> MyOrderList(Member member);
 
    Long logout(Member member);
+
+  // Long orderCancel(Integer orderId);
 }

@@ -50,6 +50,7 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
     ){
         return jpaQueryFactory
                 .select(Projections.constructor(MyOrderListResponseDto.class,
+                        order.createdAt,
                         order.orderId,
                         order.status,
                         product.name,
@@ -84,5 +85,7 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
                 .where(QMember.member.memberId.eq(member.getMemberId()))
                 .execute();
     }
+
+
 
 }
