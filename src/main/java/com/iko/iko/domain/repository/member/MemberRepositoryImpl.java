@@ -41,6 +41,8 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
                 .set(member.readname, requestDto.getReadname())
                 .where(member.memberId.eq(requestDto.getMemberId()))
                 .execute();
+
+
     }
 
 
@@ -86,6 +88,24 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
                 .execute();
     }
 
+
+    @Override
+    public Long orderCancel(
+            Member member, Integer orderId
+    ){
+        long excute =  jpaQueryFactory
+                .delete(linkOrderDetails)
+                .where(linkOrderDetails.orderId.eq(orderId))
+                .execute();
+
+        excute = excute + jpaQueryFactory
+                .delete(order)
+                .where(order.orderId.eq(orderId)
+                        .and(order.memberId.eq(member.getMemberId())))
+                .execute();
+
+        return excute;
+    }
 
 
 }
