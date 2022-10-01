@@ -1,15 +1,14 @@
 package com.iko.iko.controller.cart;
 
 import com.iko.iko.controller.cart.dto.request.AddCartRequestDto;
+import com.iko.iko.controller.cart.dto.response.CartListResponseDto;
 import com.iko.iko.service.cart.facade.CartFacade;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequestMapping("/cart")
 @RestController
@@ -26,6 +25,12 @@ public class CartController {
     public ResponseEntity addCart (@RequestBody @Valid AddCartRequestDto requestDto){
         cartFacade.addCart(requestDto);
         return new ResponseEntity<>("장바구니 추가 완료", HttpStatus.OK);
+    }
+
+    // 장바구니 조회
+    @GetMapping("list")
+    public List<CartListResponseDto> cartList() {
+        return cartFacade.cartList();
     }
 
 }
