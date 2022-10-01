@@ -6,8 +6,11 @@ import com.iko.iko.service.favor.facade.FavorFacade;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @RequestMapping("/favor")
 @RestController
@@ -21,7 +24,7 @@ public class FavorController {
 
     //  즐겨찾기 추가
     @PostMapping("/add")
-    public ResponseEntity addFavor(AddFavorRequestDto requestDto){
+    public ResponseEntity addFavor(@RequestBody @Valid AddFavorRequestDto requestDto){
         favorFacade.addFavor(requestDto);
         return new ResponseEntity<>("즐겨찾기 추가 완료", HttpStatus.OK);
     }
