@@ -7,4 +7,6 @@ import java.util.List;
 public interface CartRepositoryCustom {
 
     List<CartListResponseDto> cartList(Integer memberId);
+
+    Long deleteCart(Integer productDetailsId, Integer memberId);
 }

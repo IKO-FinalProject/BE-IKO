@@ -44,4 +44,15 @@ public class CartRepositoryImpl implements CartRepositoryCustom{
                         .and(image.imageType.eq(1))).fetchJoin()
                 .fetch();
     }
+
+    @Override
+    public Long deleteCart(
+            Integer productDetailsId, Integer memberId
+    ){
+        return jpaQueryFactory
+                .delete(cart)
+                .where(cart.memberId.eq(memberId)
+                        .and(cart.productDetailsId.eq(productDetailsId)))
+                .execute();
+    }
 }
