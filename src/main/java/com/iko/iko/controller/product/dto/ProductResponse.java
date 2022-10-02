@@ -1,9 +1,9 @@
 package com.iko.iko.controller.product.dto;
 
-import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
-import lombok.*;
-
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 public class ProductResponse {
 
     @Getter
