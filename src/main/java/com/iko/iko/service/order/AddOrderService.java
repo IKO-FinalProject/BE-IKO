@@ -32,6 +32,9 @@ public class AddOrderService {
             LinkOrderDetails linkOrderDetails = addOrderDetailsRequest.toEntity();
             linkOrderDetails.setOrderId(order.getOrderId());
             LinkOrderDetails newLinkOrderDetails = linkOrderDetailsRepository.save(linkOrderDetails);
+            if(newLinkOrderDetails.getLinkOrderDetailsId() == null){
+                throw new BaseException(ErrorCode.COMMON_BAD_REQUEST);
+            }
         }
 
         return "Ok";
