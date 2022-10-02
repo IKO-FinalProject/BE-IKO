@@ -1,5 +1,7 @@
 package com.iko.iko.service.order;
 
+import com.iko.iko.common.exception.BaseException;
+import com.iko.iko.common.response.ErrorCode;
 import com.iko.iko.controller.order.dto.request.AddOrderRequestDto;
 import com.iko.iko.domain.entity.LinkOrderDetails;
 import com.iko.iko.domain.entity.Order;
@@ -13,12 +15,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AddOrderService {
 
-    private final OrderRepository orderRepository;
-    private final LinkOrderDetailsRepository linkOrderDetailsRepository;
-
+//    private final OrderRepository orderRepository;
+//    private final LinkOrderDetailsRepository linkOrderDetailsRepository;
+//
 //    @Transactional
-//    public Long addOrder(AddOrderRequestDto requestDto){
-//        Order order = orderRepository.save(requestDto.toEntity());
-//        LinkOrderDetails linkOrderDetails = linkOrderDetailsRepository.save(requestDto.product)
+//    public String addOrder(AddOrderRequestDto addOrderRequestDto){
+//        Order order = orderRepository.save(addOrderRequestDto.toEntity());
+//        if(order.getOrderId() == null){
+//            throw new BaseException(ErrorCode.COMMON_BAD_REQUEST);
+//        }
+//
+//        int idx = 0;
 //    }
 }
