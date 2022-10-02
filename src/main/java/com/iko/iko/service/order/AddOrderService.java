@@ -2,7 +2,10 @@ package com.iko.iko.service.order;
 
 import com.iko.iko.common.exception.BaseException;
 import com.iko.iko.common.response.ErrorCode;
+
+
 import com.iko.iko.controller.order.dto.request.AddOrderRequestDto;
+import com.iko.iko.controller.order.dto.request.AddOrderRequestDto.AddOrderDetailsRequest;
 import com.iko.iko.domain.entity.LinkOrderDetails;
 import com.iko.iko.domain.entity.Order;
 import com.iko.iko.domain.repository.linkOrderDetails.LinkOrderDetailsRepository;
@@ -15,16 +18,22 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AddOrderService {
 
-//    private final OrderRepository orderRepository;
-//    private final LinkOrderDetailsRepository linkOrderDetailsRepository;
-//
-//    @Transactional
-//    public String addOrder(AddOrderRequestDto addOrderRequestDto){
-//        Order order = orderRepository.save(addOrderRequestDto.toEntity());
-//        if(order.getOrderId() == null){
-//            throw new BaseException(ErrorCode.COMMON_BAD_REQUEST);
-//        }
-//
-//        int idx = 0;
-//    }
+    private final OrderRepository orderRepository;
+    private final LinkOrderDetailsRepository linkOrderDetailsRepository;
+
+    @Transactional
+    public String addOrder(AddOrderRequestDto addOrderRequestDto){
+        Order order = orderRepository.save(addOrderRequestDto.toEntity());
+        if(order.getOrderId() == null){
+            throw new BaseException(ErrorCode.COMMON_BAD_REQUEST);
+        }
+
+        for(AddOrderDetailsRequest addOrderDetailsRequest : addOrderRequestDto.getProductDetailsSetRequestList()){
+            LinkOrderDetails linkOrderDetails = addOrderDetailsRequest.toEntity();
+            linkOrderDetails.setOrderId(order.getOrderId());
+            LinkOrderDetails newLinkOrderDetails = linkOrderDetailsRepository.save(linkOrderDetails);
+        }
+
+        return "Ok";
+    }
 }

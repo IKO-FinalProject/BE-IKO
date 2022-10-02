@@ -24,7 +24,7 @@ public class AddOrderRequestDto {
     private String detailAddress;
     private String receiverPhone;
     private String shippingMessage;
-    private List<ProductDetailsSetRequest> ProductDetailsSetRequestList;
+    private List<AddOrderDetailsRequest> ProductDetailsSetRequestList;
     private Integer couponId;
     private String method;
     private Integer totalPrice;
@@ -34,7 +34,7 @@ public class AddOrderRequestDto {
     @Setter
     @Builder
     @AllArgsConstructor
-    public static class ProductDetailsSetRequest {
+    public static class AddOrderDetailsRequest {
 
         private Integer productDetailsId;
         private Integer set;
