@@ -1,6 +1,9 @@
 package com.iko.iko.domain.repository.product;
 
+import com.iko.iko.controller.product.dto.InsertProductInfoDto;
 import com.iko.iko.controller.product.dto.ProductResponse;
+import com.iko.iko.domain.entity.Product;
+import com.iko.iko.domain.entity.QProduct;
 import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPAExpressions;
@@ -65,4 +68,20 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .limit(pageable.getPageSize())
                 .fetch();
     }*/
+
+    @Override
+    public Long insertProductInfo(InsertProductInfoDto requestDto, Product product) {
+        return jpaQueryFactory
+                .insert(QProduct.product)
+                .set(QProduct.product.name, requestDto.getProductName())
+                .set(QProduct.product.price, requestDto.getPrice())
+                .set(QProduct.product.discount, requestDto.getDiscount())
+                .set(QProduct.product.diameter, requestDto.getDiameter())
+                .set(QProduct.product.manufacturer, requestDto.getManufacturer())
+                .set(QProduct.product.series, requestDto.getSeries())
+                .set(QProduct.product.feature, String.join(",",requestDto.getFeature()))
+                .set(QProduct.product.recommend, (requestDto.getRecommend()) ? 1 : 0)
+                .set(QProduct.product.exposure, (requestDto.getExposure()) ? 1 : 0)
+                .execute();
+    }
 }

@@ -1,5 +1,6 @@
 package com.iko.iko.domain.repository.product;
 
+import com.iko.iko.controller.product.dto.InsertProductInfoDto;
 import com.iko.iko.controller.product.dto.ProductResponse;
 import com.iko.iko.domain.entity.Product;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -20,4 +21,5 @@ public interface ProductRepositoryCustom{
 
    List<ProductResponse.AllProduct> getProduct(Pageable pageable);
 */
+    Long insertProductInfo(InsertProductInfoDto requestDto, Product product);
 }
