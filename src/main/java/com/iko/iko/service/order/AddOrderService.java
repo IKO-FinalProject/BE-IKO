@@ -4,8 +4,8 @@ import com.iko.iko.common.exception.BaseException;
 import com.iko.iko.common.response.ErrorCode;
 
 
-import com.iko.iko.controller.order.dto.request.AddOrderRequestDto;
-import com.iko.iko.controller.order.dto.request.AddOrderRequestDto.AddOrderDetailsRequest;
+import com.iko.iko.controller.order.dto.request.OrderRequestDto.AddOrderRequest;
+import com.iko.iko.controller.order.dto.request.OrderRequestDto.AddOrderRequest.AddOrderDetailsRequest;
 import com.iko.iko.domain.entity.LinkOrderDetails;
 import com.iko.iko.domain.entity.Order;
 import com.iko.iko.domain.repository.linkOrderDetails.LinkOrderDetailsRepository;
@@ -22,13 +22,13 @@ public class AddOrderService {
     private final LinkOrderDetailsRepository linkOrderDetailsRepository;
 
     @Transactional
-    public String addOrder(AddOrderRequestDto addOrderRequestDto){
-        Order order = orderRepository.save(addOrderRequestDto.toEntity());
+    public String addOrder(AddOrderRequest addOrderRequest){
+        Order order = orderRepository.save(addOrderRequest.toEntity());
         if(order.getOrderId() == null){
             throw new BaseException(ErrorCode.COMMON_BAD_REQUEST);
         }
 
-        for(AddOrderDetailsRequest addOrderDetailsRequest : addOrderRequestDto.getProductDetailsSetRequestList()){
+        for(AddOrderDetailsRequest addOrderDetailsRequest : addOrderRequest.getAddOrderDetailsRequestList()){
             LinkOrderDetails linkOrderDetails = addOrderDetailsRequest.toEntity();
             linkOrderDetails.setOrderId(order.getOrderId());
             LinkOrderDetails newLinkOrderDetails = linkOrderDetailsRepository.save(linkOrderDetails);

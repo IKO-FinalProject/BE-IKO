@@ -1,7 +1,7 @@
 package com.iko.iko.controller.order;
 
 import com.iko.iko.common.response.Response;
-import com.iko.iko.controller.order.dto.request.AddOrderRequestDto;
+import com.iko.iko.controller.order.dto.request.OrderRequestDto.AddOrderRequest;
 import com.iko.iko.service.order.facade.OrderFacade;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,10 +23,10 @@ public class OrderController {
 
     @PostMapping("/add")
     public ResponseEntity<Response<String>> addOrder(
-            @RequestBody @Valid AddOrderRequestDto addOrderRequestDto
+            @RequestBody @Valid AddOrderRequest addOrderRequest
     ){
         return ResponseEntity.ok(
-                Response.of(orderFacade.addOrder(addOrderRequestDto),
+                Response.of(orderFacade.addOrder(addOrderRequest),
                         "주문 완료"
                 )
         );
