@@ -1,4 +1,4 @@
-package com.iko.iko.controller.order.dto;
+package com.iko.iko.controller.order;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
