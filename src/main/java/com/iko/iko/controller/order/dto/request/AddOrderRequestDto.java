@@ -15,14 +15,15 @@ import java.util.List;
 @AllArgsConstructor
 public class AddOrderRequestDto {
 
-    private String name;
-    private String phone;
-    private String email;
-    private String receiverName;
+    private Integer memberId;
+    private String orderer;
+    private String ordererPhone;
+    private String ordererEmail;
+    private String receiver;
     private String address;
     private String detailAddress;
     private String receiverPhone;
-    private String message;
+    private String shippingMessage;
     private List<ProductDetailsSetRequest> ProductDetailsSetRequestList;
     private Integer couponId;
     private String method;
@@ -50,14 +51,15 @@ public class AddOrderRequestDto {
     @Builder
     public Order toEntity(){
         return Order.builder()
-                .name(name)
-                .phone(phone)
-                .email(email)
-                .receiverName(receiverName)
+                .memberId(memberId)
+                .name(orderer)
+                .phone(ordererPhone)
+                .email(ordererEmail)
+                .receiverName(receiver)
                 .destination(address)
                 .detailDestination(detailAddress)
                 .receiverPhone(receiverPhone)
-                .message(message)
+                .message(shippingMessage)
                 .couponId(couponId)
                 .method(method)
                 .totalPrice(totalPrice)
