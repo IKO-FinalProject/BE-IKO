@@ -12,14 +12,24 @@ public class ProductDetailsResponse {
     @Getter
     @AllArgsConstructor
     @Builder
-    public static  class MainProduct{
-        private Integer productId;
-        private String series;
+    public static class GetGraphicDiameter{
         private Float graphicDiameter;
-        private Integer price;
-        private Integer discount;
+    }
+    @Setter
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class GetColorCodeAndImageUrl{
         private String colorCode;
         private String imageUrl;
+    }
+
+    @Setter
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static  class MainProduct{
+        private Integer productDetailsId;
     }
     @Setter
     @Getter
@@ -31,8 +41,7 @@ public class ProductDetailsResponse {
         private List<Float> graphicDiameter;
         private Integer price;
         private Integer discount;
-        private List<String> colorCode;
-        private List<String> imageUrl;
+        private List<GetColorCodeAndImageUrl> colorAndImage;
     }
 
     @Getter

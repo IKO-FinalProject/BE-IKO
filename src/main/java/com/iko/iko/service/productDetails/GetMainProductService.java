@@ -1,12 +1,15 @@
 package com.iko.iko.service.productDetails;
 
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
+import com.iko.iko.controller.product.dto.ProductResponse;
+import com.iko.iko.domain.repository.product.ProductRepository;
 import com.iko.iko.domain.repository.productDetails.ProductDetailsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -14,17 +17,42 @@ import java.util.List;
 public class GetMainProductService {
 
     private final ProductDetailsRepository productDetailsRepository;
+    private final ProductRepository productRepository;
 
-
-    public List<ProductDetailsResponse.MainProduct> GetMainProduct(Pageable pageable) {
-        /*List<ProductDetailsResponse.MainProduct> mainProductList=productDetailsRepository.getMainProduct(pageable);
-        List<String> colorCodeList = new ArrayList<>();
-        List<String> imageUrlList = new ArrayList<>();
-        List<Float> graphicDiameterList = new ArrayList<>();
-        
+    public List<ProductDetailsResponse.MainProductForResponse> GetMainProduct(Pageable pageable) {
         List<ProductDetailsResponse.MainProductForResponse> result = new ArrayList<>();
-        return result;*/
-        return productDetailsRepository.getMainProduct(pageable);
+        List<ProductDetailsResponse.MainProduct> mainProductList
+                =productDetailsRepository.getMainProduct(pageable);
+        List<ProductResponse.GetAllProductDistinct> mainProduct
+                =productRepository.getAllProduct();
+        for(ProductResponse.GetAllProductDistinct tmp : mainProduct){
+            List<ProductDetailsResponse.GetGraphicDiameter> graphicList
+                    =productDetailsRepository.getGraphic(tmp.getProductId());
+            List<Float> gList=new ArrayList<>();
+            List<ProductDetailsResponse.GetColorCodeAndImageUrl> iList=new ArrayList<>();
+
+            for(ProductDetailsResponse.MainProduct ttp : mainProductList){
+               List<ProductDetailsResponse.GetColorCodeAndImageUrl> k =
+                        productDetailsRepository.getColorAndImage(ttp.getProductDetailsId());
+                for(ProductDetailsResponse.GetColorCodeAndImageUrl ttpp: k){
+                    iList.add(ttpp);
+                }
+            }
+            for(ProductDetailsResponse.GetGraphicDiameter tp : graphicList){
+                gList.add(tp.getGraphicDiameter());
+            }
+            ProductDetailsResponse.MainProductForResponse checkData
+                    =new ProductDetailsResponse.MainProductForResponse(
+                    tmp.getProductId(),
+                    tmp.getSeries(),
+                    gList,
+                    tmp.getPrice(),
+                    tmp.getDiscount(),
+                    iList);
+
+            result.add(checkData);
+        }
+        return result;
     }
 
 }

@@ -29,24 +29,44 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
 
     private final JPAQueryFactory jpaQueryFactory;
 
+
+    @Override
+    public List<ProductDetailsResponse.GetColorCodeAndImageUrl> getColorAndImage(Integer selectedProductDetailsId){
+        return jpaQueryFactory
+                .select(Projections.constructor(ProductDetailsResponse.GetColorCodeAndImageUrl.class,
+                        productDetails.colorCode,
+                        image.imageUrl
+                ))
+                .from(productDetails)
+                .join(linkProductDetailsImage).on(productDetails.productDetailsId.eq(linkProductDetailsImage.productDetailsId)).fetchJoin()
+                .join(image).on(image.imageId.eq(linkProductDetailsImage.imageId)).fetchJoin()
+                .where(productDetails.productDetailsId.eq(selectedProductDetailsId))
+                .distinct()//.where(image.imageType.eq(1))
+                .fetch();
+    }
+    @Override
+    public List<ProductDetailsResponse.GetGraphicDiameter> getGraphic(Integer selectedProductId){
+        return jpaQueryFactory
+                .select(Projections.constructor(ProductDetailsResponse.GetGraphicDiameter.class,
+                        productDetails.graphicDiameter))
+                .from(productDetails)
+                .where(productDetails.productIdFk.eq(selectedProductId))
+                .distinct()
+                .fetch();
+
+    }
     @Override
     public List<ProductDetailsResponse.MainProduct> getMainProduct(Pageable pageable) {
 
         return jpaQueryFactory
                 .select(Projections.constructor(ProductDetailsResponse.MainProduct.class,
-                        product.productId,
-                        product.series,
-                        productDetails.graphicDiameter,
-                        product.price,
-                        product.discount,
-                        productDetails.colorCode,
-                        image.imageUrl))
+                        productDetails.productDetailsId
+                        ))
                 .from(productDetails)
                 .join(product).on(productDetails.productIdFk.eq(product.productId)).fetchJoin()
-                .join(linkProductDetailsImage).on(productDetails.productDetailsId.eq(linkProductDetailsImage.productDetailsId)).fetchJoin()
-                .join(image).on(image.imageId.eq(linkProductDetailsImage.imageId)).fetchJoin()
-                .where(product.productId.eq(productDetails.productIdFk))
+                .where(productDetails.productIdFk.eq(product.productId))
                 .distinct()
+                //.where(image.imageType.eq(1)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
