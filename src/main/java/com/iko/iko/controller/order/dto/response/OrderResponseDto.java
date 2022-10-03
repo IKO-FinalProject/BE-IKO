@@ -15,8 +15,8 @@ public class OrderResponseDto {
     @AllArgsConstructor
     @Builder
     public static class GetOrderResponse{
-        private GetOrderInfoResponse getOrderInfoResponse;
-        private List<GetProductForOrderResponse> getProductForOrderResponseList;
+        private GetOrderInfoResponse OrderInfo;
+        private List<GetProductForOrderResponse> ProductInfo;
     }
 
     @Getter

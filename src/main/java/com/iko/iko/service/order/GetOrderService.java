@@ -62,11 +62,9 @@ public class GetOrderService {
 
     }
 
-
     public Member validateLoginStatus() {
         return memberRepository.findByEmail(SecurityUtil.getLoginUserEmail())
                 .orElseThrow(() -> new BaseException(ErrorCode.NEED_LOGIN));
     }
-
 
 }
