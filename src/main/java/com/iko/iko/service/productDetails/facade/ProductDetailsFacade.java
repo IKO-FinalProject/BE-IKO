@@ -1,10 +1,10 @@
 package com.iko.iko.service.productDetails.facade;
 
 
-import com.iko.iko.controller.productDetails.dto.ProductDetailsRequest;
+import com.iko.iko.controller.ProductDetails.dto.ProductDetailsRequest;
 import com.iko.iko.service.productDetails.GetMainProductService;
 import com.iko.iko.service.productDetails.GetProductByOptionService;
-import com.iko.iko.controller.productDetails.dto.ProductDetailsResponse;
+import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
 import com.iko.iko.service.productDetails.GetMainProductDetailsService;
 
 import lombok.RequiredArgsConstructor;
