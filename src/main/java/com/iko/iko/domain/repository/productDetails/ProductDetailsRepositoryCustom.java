@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface ProductDetailsRepositoryCustom {
 
+    List<ProductDetailsResponse.GetColorCodeAndImageUrl> getColorAndImage(Integer selectedProductDetailsId,Integer selectedProductId);
+    List<ProductDetailsResponse.GetGraphicDiameter> getGraphic(Integer selectedProductId);
     List<ProductDetailsResponse.MainProduct> getMainProduct(Pageable pageable);
 
     List<ProductDetailsResponse.ProductMainByOption> getProductByOption

@@ -9,10 +9,9 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table(name = "tb_event")
+@Table(name = "tb_member_coupon")
 @DynamicInsert
 @DynamicUpdate
 @Getter
@@ -20,22 +19,20 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Slf4j
-public class Event extends BaseEntity{
+public class LinkMemberCoupon extends BaseEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "event_id_pk", unique = true, nullable = false)
-    private Integer eventId;
+    @Column(name="member_coupon_id_pk",unique = true, nullable = false)
+    private Integer memberCouponId;
 
-    @Column(name = "event_title")
-    private String eventTitle;
+    @Column(name="coupon_id_fk",nullable = false)
+    private Integer couponId;
 
-    @Column(name = "event_description")
-    private String eventDescription;
+    @Column(name="member_id_fk",nullable = false)
+    private Integer memberId;
 
-    @Column(name = "event_start_time")
-    private Date eventStartTime;
-
-    @Column(name = "event_end_time")
-    private Date eventEndTime;
+    @Column(name="status", nullable = false)
+    private Integer status;
 
 }
