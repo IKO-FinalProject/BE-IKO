@@ -41,7 +41,7 @@ public class GetOrderService {
 
             } else throw new BaseException(ErrorCode.COMMON_BAD_REQUEST);
 
-            //비회원 인 경우
+            //비회원인 경우
         } else {
             List<GetOrderResponse> result = new ArrayList<>();
             List<GetOrderInfoResponse> GetOrderInfoResponseList
