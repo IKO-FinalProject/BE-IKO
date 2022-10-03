@@ -19,40 +19,6 @@ public class GetMainProductService {
     private final ProductDetailsRepository productDetailsRepository;
     private final ProductRepository productRepository;
 
-    public List<ProductDetailsResponse.MainProductForResponse> GetMainProduct(Pageable pageable) {
-        List<ProductDetailsResponse.MainProductForResponse> result = new ArrayList<>();
-        List<ProductDetailsResponse.MainProduct> mainProductList
-                =productDetailsRepository.getMainProduct(pageable);
-        List<ProductResponse.GetAllProductDistinct> mainProduct
-                =productRepository.getAllProduct();
-        for(ProductResponse.GetAllProductDistinct tmp : mainProduct){
-            List<ProductDetailsResponse.GetGraphicDiameter> graphicList
-                    =productDetailsRepository.getGraphic(tmp.getProductId());
-            List<Float> gList=new ArrayList<>();
-            List<ProductDetailsResponse.GetColorCodeAndImageUrl> iList=new ArrayList<>();
 
-            for(ProductDetailsResponse.MainProduct ttp : mainProductList){
-               List<ProductDetailsResponse.GetColorCodeAndImageUrl> k =
-                        productDetailsRepository.getColorAndImage(ttp.getProductDetailsId());
-                for(ProductDetailsResponse.GetColorCodeAndImageUrl ttpp: k){
-                    iList.add(ttpp);
-                }
-            }
-            for(ProductDetailsResponse.GetGraphicDiameter tp : graphicList){
-                gList.add(tp.getGraphicDiameter());
-            }
-            ProductDetailsResponse.MainProductForResponse checkData
-                    =new ProductDetailsResponse.MainProductForResponse(
-                    tmp.getProductId(),
-                    tmp.getSeries(),
-                    gList,
-                    tmp.getPrice(),
-                    tmp.getDiscount(),
-                    iList);
-
-            result.add(checkData);
-        }
-        return result;
-    }
 
 }

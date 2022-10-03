@@ -31,7 +31,7 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
 
 
     @Override
-    public List<ProductDetailsResponse.GetColorCodeAndImageUrl> getColorAndImage(Integer selectedProductDetailsId){
+    public List<ProductDetailsResponse.GetColorCodeAndImageUrl> getColorAndImage(Integer selectedProductDetailsId,Integer selectedProductId){
         return jpaQueryFactory
                 .select(Projections.constructor(ProductDetailsResponse.GetColorCodeAndImageUrl.class,
                         productDetails.colorCode,
@@ -40,8 +40,10 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .from(productDetails)
                 .join(linkProductDetailsImage).on(productDetails.productDetailsId.eq(linkProductDetailsImage.productDetailsId)).fetchJoin()
                 .join(image).on(image.imageId.eq(linkProductDetailsImage.imageId)).fetchJoin()
+                .where(productDetails.productIdFk.eq(selectedProductId))
                 .where(productDetails.productDetailsId.eq(selectedProductDetailsId))
-                .distinct()//.where(image.imageType.eq(1))
+                .where(image.imageType.eq(1))
+                .distinct()
                 .fetch();
     }
     @Override
@@ -51,6 +53,7 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                         productDetails.graphicDiameter))
                 .from(productDetails)
                 .where(productDetails.productIdFk.eq(selectedProductId))
+                .orderBy(productDetails.graphicDiameter.asc())
                 .distinct()
                 .fetch();
 
@@ -66,7 +69,6 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .join(product).on(productDetails.productIdFk.eq(product.productId)).fetchJoin()
                 .where(productDetails.productIdFk.eq(product.productId))
                 .distinct()
-                //.where(image.imageType.eq(1)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
