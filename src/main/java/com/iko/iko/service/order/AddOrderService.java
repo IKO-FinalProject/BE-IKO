@@ -43,9 +43,9 @@ public class AddOrderService {
         }
 
         // 비회원인 경우
-        if(addOrderRequest.getMemberId() != 0){
+        if(!addOrderRequest.getMemberId().equals(0)){
             memberRepository.addPoint(addOrderRequest.getMemberId(), addOrderRequest.getPoint());
-            if(addOrderRequest.getCouponId() != 0){
+            if(!addOrderRequest.getCouponId().equals(0)){
                 linkMemberCouponRepository.setStatusUsed(addOrderRequest.getMemberId(), addOrderRequest.getCouponId());
             }
         }

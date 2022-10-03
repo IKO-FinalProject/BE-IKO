@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
 
 
 @Getter
@@ -23,10 +22,11 @@ public class MyOrderListResponseDto {
     private String colorCode;
     private Float graphicDiameter;
     private Float degree;
-    private Integer set;
+    private Integer pcs;
     private Integer price;
     private Integer period;
     private String imageUrl;
+    private Integer method;
 
 
 }

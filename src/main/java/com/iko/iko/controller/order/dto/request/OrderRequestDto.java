@@ -26,7 +26,7 @@ public class OrderRequestDto {
         private String shippingMessage;
         private List<AddOrderDetailsRequest> addOrderDetailsRequestList;
         private Integer couponId;
-        private String method;
+        private Integer method;
         private Integer totalPrice;
         private Integer point;
 
