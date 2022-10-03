@@ -9,6 +9,7 @@ import com.iko.iko.domain.repository.member.MemberRepository;
 import com.iko.iko.domain.repository.product.ProductRepository;
 import com.iko.iko.domain.repository.productDetails.ProductDetailsRepository;
 import com.iko.iko.security.jwt.SecurityUtil;
+import com.sun.jdi.LongValue;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,14 @@ public class GetAllProductService {
         List<ProductResponse.GetAllProductDistinct> mainProduct = productRepository.getAllProduct();
 
         for(ProductResponse.GetAllProductDistinct tmp : mainProduct){
-            Long isFavorite = productRepository.getMemberIsFavorite(member.getMemberId(), tmp.getProductId());
+            Long isFavorite;
+            if(member.getMemberId()!=0) {
+                isFavorite = productRepository.getMemberIsFavorite(member.getMemberId(), tmp.getProductId());
+            }
+            else{
+                isFavorite = Long.valueOf(0);
+            }
+
             List<ProductDetailsResponse.GetGraphicDiameter> graphicList = productDetailsRepository.getGraphic(tmp.getProductId());
             List<Float> gList = new ArrayList<>();
             List<ProductDetailsResponse.GetColorCodeAndImageUrl> iList = new ArrayList<>();
