@@ -1,4 +1,4 @@
-package com.iko.iko.controller.productDetails.dto;
+package com.iko.iko.controller.ProductDetails.dto;
 import lombok.*;
 
 import java.util.List;

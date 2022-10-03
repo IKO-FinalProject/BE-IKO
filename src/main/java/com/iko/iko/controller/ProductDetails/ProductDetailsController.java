@@ -1,8 +1,8 @@
-package com.iko.iko.controller.productDetails;
+package com.iko.iko.controller.ProductDetails;
 
 import com.iko.iko.common.response.Response;
-import com.iko.iko.controller.productDetails.dto.ProductDetailsResponse;
-import com.iko.iko.controller.productDetails.dto.ProductDetailsRequest;
+import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
+import com.iko.iko.controller.ProductDetails.dto.ProductDetailsRequest;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
