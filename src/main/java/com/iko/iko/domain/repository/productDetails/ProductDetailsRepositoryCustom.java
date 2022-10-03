@@ -10,7 +10,7 @@ public interface ProductDetailsRepositoryCustom {
 
     List<ProductDetailsResponse.GetColorCodeAndImageUrl> getColorAndImage(Integer selectedProductDetailsId,Integer selectedProductId);
     List<ProductDetailsResponse.GetGraphicDiameter> getGraphic(Integer selectedProductId);
-    List<ProductDetailsResponse.MainProduct> getMainProduct(Pageable pageable);
+    List<ProductDetailsResponse.MainProduct> getMainProduct(Pageable pageable, Integer productId);
 
     List<ProductDetailsResponse.ProductMainByOption> getProductByOption
             (ProductDetailsRequest.ProductOptionForRequest productByOption);

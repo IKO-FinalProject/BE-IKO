@@ -3,16 +3,11 @@ package com.iko.iko.domain.repository.productDetails;
 
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsRequest;
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
-import com.iko.iko.domain.entity.LinkProductDetailsImage;
 
-import com.iko.iko.controller.product.dto.ProductResponse;
-import com.iko.iko.domain.entity.Product;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
@@ -59,7 +54,7 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
 
     }
     @Override
-    public List<ProductDetailsResponse.MainProduct> getMainProduct(Pageable pageable) {
+    public List<ProductDetailsResponse.MainProduct> getMainProduct(Pageable pageable, Integer productId) {
 
         return jpaQueryFactory
                 .select(Projections.constructor(ProductDetailsResponse.MainProduct.class,
@@ -67,7 +62,7 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                         ))
                 .from(productDetails)
                 .join(product).on(productDetails.productIdFk.eq(product.productId)).fetchJoin()
-                .where(productDetails.productIdFk.eq(product.productId))
+                .where(productDetails.productIdFk.eq(productId))
                 .distinct()
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

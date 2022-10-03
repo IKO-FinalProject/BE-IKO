@@ -2,7 +2,6 @@ package com.iko.iko.service.product;
 
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
 import com.iko.iko.controller.product.dto.ProductResponse;
-import com.iko.iko.domain.entity.Product;
 import com.iko.iko.domain.repository.product.ProductRepository;
 import com.iko.iko.domain.repository.productDetails.ProductDetailsRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,20 +19,17 @@ public class GetAllProductService {
     public List<ProductDetailsResponse.MainProductForResponse> GetMainProduct(Pageable pageable) {
         List<ProductDetailsResponse.MainProductForResponse> result = new ArrayList<>();
 
-        List<ProductResponse.GetAllProductDistinct> mainProduct
-                =productRepository.getAllProduct();
-        for(ProductResponse.GetAllProductDistinct tmp : mainProduct){
-            List<ProductDetailsResponse.GetGraphicDiameter> graphicList
-                    =productDetailsRepository.getGraphic(tmp.getProductId());
-            List<Float> gList=new ArrayList<>();
-            List<ProductDetailsResponse.GetColorCodeAndImageUrl> iList=new ArrayList<>();
+        List<ProductResponse.GetAllProductDistinct> mainProduct = productRepository.getAllProduct();
 
-            List<ProductDetailsResponse.MainProduct> mainProductList
-                    =productDetailsRepository.getMainProduct(pageable);
+        for(ProductResponse.GetAllProductDistinct tmp : mainProduct){
+            List<ProductDetailsResponse.GetGraphicDiameter> graphicList = productDetailsRepository.getGraphic(tmp.getProductId());
+            List<Float> gList = new ArrayList<>();
+            List<ProductDetailsResponse.GetColorCodeAndImageUrl> iList = new ArrayList<>();
+            List<ProductDetailsResponse.MainProduct> mainProductList = productDetailsRepository.getMainProduct(pageable, tmp.getProductId());
 
             for(ProductDetailsResponse.MainProduct ttp : mainProductList){
-                List<ProductDetailsResponse.GetColorCodeAndImageUrl> k =
-                        productDetailsRepository.getColorAndImage(ttp.getProductDetailsId(),tmp.getProductId());
+                List<ProductDetailsResponse.GetColorCodeAndImageUrl> k
+                        = productDetailsRepository.getColorAndImage(ttp.getProductDetailsId(),tmp.getProductId());
                 for(ProductDetailsResponse.GetColorCodeAndImageUrl ttpp: k){
                     iList.add(ttpp);
                 }
