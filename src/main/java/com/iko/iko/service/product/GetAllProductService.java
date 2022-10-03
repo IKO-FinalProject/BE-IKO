@@ -38,6 +38,7 @@ public class GetAllProductService {
                     iList.add(ttpp);
                 }
             }
+            //
             for(ProductDetailsResponse.GetGraphicDiameter tp : graphicList){
                 gList.add(tp.getGraphicDiameter());
             }
