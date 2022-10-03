@@ -7,12 +7,10 @@ import com.iko.iko.controller.product.dto.ProductResponse;
 import com.iko.iko.domain.entity.Product;
 import com.iko.iko.service.product.facade.ProductFacade;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
 import com.iko.iko.common.response.Response;
 
@@ -26,9 +24,9 @@ public class ProductController {
     @GetMapping("/product")
     public ResponseEntity<Response<List<ProductDetailsResponse.MainProductForResponse>>>
     getMainProduct(
-            @RequestParam(value="page") Integer page,
-            @PageableDefault(size=9,page = 0) Pageable pageable
+            @PageableDefault(size=9) Pageable pageable
     ){
+        //PageRequest pageRequest=PageRequest.of(page,size-1);
         return ResponseEntity.ok(
                 Response.of(
                         productFacade.getMainProduct(pageable),

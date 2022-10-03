@@ -1,6 +1,7 @@
 package com.iko.iko.domain.repository.productDetails;
 
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsRequest;
 
