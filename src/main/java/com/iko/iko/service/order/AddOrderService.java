@@ -25,7 +25,6 @@ public class AddOrderService {
     private final OrderRepository orderRepository;
     private final LinkOrderDetailsRepository linkOrderDetailsRepository;
     private final MemberRepository memberRepository;
-
     private final LinkMemberCouponRepository linkMemberCouponRepository;
 
     @Transactional
