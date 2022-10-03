@@ -1,8 +1,5 @@
-package com.iko.iko.controller.ProductDetails.dto;
+package com.iko.iko.controller.productDetails.dto;
 
-import com.iko.iko.controller.image.dto.ImageResponse;
-import com.iko.iko.controller.product.dto.ProductResponse;
-import com.iko.iko.domain.entity.*;
 import lombok.*;
 
 import java.util.List;
