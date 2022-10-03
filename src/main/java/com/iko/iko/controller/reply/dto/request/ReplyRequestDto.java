@@ -12,6 +12,7 @@ public class ReplyRequestDto {
     public static class AddReply{
 
         private Integer memberId;
-        private Integer
+        private Integer orderId;
+        private Integer productDetailsId;
     }
 }
