@@ -39,10 +39,10 @@ public class ProductDetailsController {
     }
 
     @PostMapping("/productDetails")
-    @ApiOperation(value="제품 상세정보",notes="id= ? , productId")
+    @ApiOperation(value="제품 상세정보",notes="productId= ? , productId")
     public ResponseEntity<Response<List<ProductDetailsResponse.ProductDetailsForResponse>>>
     getProductDetails(
-            @RequestParam(value ="id") Integer selectedProductId
+            @RequestParam(value ="productId") Integer selectedProductId
     ){
         return ResponseEntity.ok(
                 Response.of(
