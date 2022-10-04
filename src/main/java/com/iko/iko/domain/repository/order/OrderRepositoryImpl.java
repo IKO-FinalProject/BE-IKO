@@ -49,9 +49,10 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                         order.phone,
                         order.email,
                         order.receiverName,
-                        order.receiverPhone,
+                        order.postCode,
                         order.destination,
                         order.detailDestination,
+                        order.receiverPhone,
                         order.message,
                         order.point,
                         order.couponId
@@ -78,9 +79,10 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                         order.phone,
                         order.email,
                         order.receiverName,
-                        order.receiverPhone,
+                        order.postCode,
                         order.destination,
                         order.detailDestination,
+                        order.receiverPhone,
                         order.message,
                         order.point,
                         order.couponId
