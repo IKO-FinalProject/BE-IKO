@@ -33,7 +33,7 @@ public class ProductDetailsResponse {
     @AllArgsConstructor
     @Builder
     public static  class MainProductForResponse{
-        private Long isFavorite;
+        private Integer isFavorite;
         private Integer productId;
         private String series;
         private List<Float> graphicDiameter;
@@ -125,6 +125,7 @@ public class ProductDetailsResponse {
     @AllArgsConstructor
     @Builder
     public static class ProductDetailsForResponse {
+        private Integer isFavorite;
         private Integer productId;
         private String name;
         private String series;
@@ -145,6 +146,13 @@ public class ProductDetailsResponse {
         private String colorCode;
         private Float graphicDiameter;
         private Float degree;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class ProductDetailsOptionForResponse{
+
     }
 
 }
