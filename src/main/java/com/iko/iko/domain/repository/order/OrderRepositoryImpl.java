@@ -128,5 +128,28 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                 .fetch();
     }
 
+    @Override
+    public Long minusStockForOrder(
+            Integer productDetailsId, Integer pcs
+    ){
+        return jpaQueryFactory
+                .update(productDetails)
+                .set(productDetails.productDetailsStock, productDetails.productDetailsStock.add(-pcs))
+                .where(productDetails.productDetailsId.eq(productDetailsId))
+                .execute();
+    }
+
+    @Override
+    public Long plusStockForOrder(
+            Integer productDetailsId, Integer pcs
+    ){
+        return jpaQueryFactory
+                .update(productDetails)
+                .set(productDetails.productDetailsStock, productDetails.productDetailsStock.add(pcs))
+                .where(productDetails.productDetailsId.eq(productDetailsId))
+                .execute();
+
+    }
+
 
 }
