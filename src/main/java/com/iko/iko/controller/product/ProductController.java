@@ -25,14 +25,14 @@ public class ProductController {
     @GetMapping("/product")
     public ResponseEntity<Response<List<ProductDetailsResponse.MainProductForResponse>>>
     getMainProduct(
-            // @RequestParam Integer page, @RequestParam Integer size,
-            @RequestParam  Integer memberId,
-            @PageableDefault(size=2) Pageable pageable
+            @RequestParam Integer page, @RequestParam Integer size,
+            @RequestParam  Integer memberId
+
     ){
-        // Pageable pr =PageRequest.of(page,size-1);
+         Pageable pr =PageRequest.of(page-1,size);
         return ResponseEntity.ok(
                 Response.of(
-                        productFacade.getMainProduct(pageable,memberId),
+                        productFacade.getMainProduct(pr,memberId),
                         "모든상품 불러오기 완료"
                 )
         );
@@ -40,15 +40,15 @@ public class ProductController {
     @PostMapping("/productByOption")
     public ResponseEntity<Response<List<ProductDetailsResponse.MainProductForResponse>>>
     getMainProductByOption(
+            @RequestParam Integer page, @RequestParam Integer size,
             @RequestParam Integer memberId,
-            @RequestBody ProductDetailsRequest.ProductOptionForRequest productOption,
-            @PageableDefault(size=2) Pageable pageable
+            @RequestBody ProductDetailsRequest.ProductOptionForRequest productOption
 
     ){
-        // Pageable pr =PageRequest.of(page,size-1);
+        Pageable pr =PageRequest.of(page-1,size);
         return ResponseEntity.ok(
                 Response.of(
-                        productFacade.getMainProductByOption(productOption,pageable,memberId),
+                        productFacade.getMainProductByOption(productOption,pr,memberId),
                         "모든상품 불러오기 완료"
                 )
         );

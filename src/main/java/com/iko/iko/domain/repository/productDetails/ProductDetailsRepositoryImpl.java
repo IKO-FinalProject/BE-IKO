@@ -187,25 +187,4 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .distinct()
                 .fetch();
     }
-    private BooleanBuilder convertIntegerWhere(List<Integer> integerList){
-        BooleanBuilder builder = new BooleanBuilder();
-        for(Integer tmp: integerList){
-            builder.or(productDetails.period.eq(tmp));
-        }
-        return builder;
-    }
-    private BooleanBuilder convertStringWhere(List<String> stringList,String columnType){
-        BooleanBuilder builder = new BooleanBuilder();
-        for(String tmp: stringList){
-            builder.or(columnType.equals("Color")?productDetails.colorCode.eq(tmp):(columnType.equals("Series")?product.series.eq(tmp):product.feature.eq(tmp)));
-        }
-        return builder;
-    }
-    private BooleanBuilder convertFloatWhere(List<Float> floatList){
-        BooleanBuilder builder = new BooleanBuilder();
-        for(Float tmp: floatList){
-            builder.or(productDetails.graphicDiameter.eq(tmp));
-        }
-        return builder;
-    }
 }
