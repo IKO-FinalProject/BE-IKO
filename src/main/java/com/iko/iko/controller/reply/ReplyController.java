@@ -2,12 +2,14 @@ package com.iko.iko.controller.reply;
 
 import com.iko.iko.common.response.Response;
 import com.iko.iko.controller.reply.dto.request.ReplyRequestDto.*;
+import com.iko.iko.controller.reply.dto.response.ReplyResponseDtO.*;
 import com.iko.iko.service.reply.facade.ReplyFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -45,4 +47,11 @@ public class ReplyController {
         );
     }
 
+    @GetMapping("/myReply")
+    public ResponseEntity<Response<List<MyReplyInfoResponse>>> myReplyList(){
+        return ResponseEntity.ok(
+                Response.of(replyFacade.myReplyList(),
+                        "나의 리뷰 정보 조회 완료")
+        );
+    }
 }
