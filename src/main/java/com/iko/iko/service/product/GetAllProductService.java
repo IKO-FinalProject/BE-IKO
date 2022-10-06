@@ -34,6 +34,9 @@ public class GetAllProductService {
         Integer totalCount=totalProductId.size();
 
 
+        Page<ProductResponse.GetAllProductDistinct> mainProduct = productRepository.getAllProduct(pageable);
+
+
         for(ProductResponse.GetAllProductDistinct tmp : mainProduct){
             if(!memberId.equals(0)) {
                 Member member = validateLoginStatus();

@@ -26,4 +26,5 @@ public interface ProductDetailsRepositoryCustom {
     List<ProductDetailsResponse.typeAndImage> getTypeAndImageByProductId(Integer selectedProductId);
 
     List<ProductDetailsResponse.ProductDetailsFilterList> getDetailsFilterInfo();
+
 }

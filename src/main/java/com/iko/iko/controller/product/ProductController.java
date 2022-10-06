@@ -28,7 +28,6 @@ public class ProductController {
     getMainProduct(
             @RequestParam Integer page, @RequestParam Integer size,
             @RequestParam  Integer memberId
-
     ){
          Pageable pr =PageRequest.of(page-1,size);
         return ResponseEntity.ok(
@@ -38,6 +37,7 @@ public class ProductController {
                 )
         );
     }
+   
     @PostMapping("/byOption")
     public ResponseEntity<Response<List<ProductDetailsResponse.MainProductForResponse>>>
     getMainProductByOption(

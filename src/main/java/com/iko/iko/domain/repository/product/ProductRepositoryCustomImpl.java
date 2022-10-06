@@ -30,6 +30,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 
     private final JPAQueryFactory jpaQueryFactory;
 
+
     @Override
     public List<ProductResponse.productFilterList> getFilterInfo(){
         return jpaQueryFactory
@@ -97,7 +98,6 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .fetchResults();
         return new PageImpl<>(queryResults.getResults(),pageable, queryResults.getTotal());
     }
-
 
     //유저의 찜정보를 가져옵니다
     @Override

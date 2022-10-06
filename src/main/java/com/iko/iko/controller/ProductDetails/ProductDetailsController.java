@@ -38,8 +38,10 @@ public class ProductDetailsController {
         );
     }
 
+
     @PostMapping("/main")
     public ResponseEntity<Response<ProductDetailsResponse.ProductDetailsForResponse>>
+
     getProductDetails(
             @RequestParam(value = "productId") Integer selectedProductId,
             @RequestParam(value = "memberId") Integer memberId

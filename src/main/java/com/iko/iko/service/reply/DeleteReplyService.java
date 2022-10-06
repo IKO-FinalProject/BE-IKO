@@ -1,40 +1,33 @@
-package com.iko.iko.service.cart;
+package com.iko.iko.service.reply;
 
 import com.iko.iko.common.exception.BaseException;
 import com.iko.iko.common.response.ErrorCode;
-import com.iko.iko.controller.cart.dto.request.AddCartRequestDto;
-import com.iko.iko.domain.entity.Cart;
 import com.iko.iko.domain.entity.Member;
-import com.iko.iko.domain.repository.cart.CartRepository;
+import com.iko.iko.domain.entity.Reply;
 import com.iko.iko.domain.repository.member.MemberRepository;
+import com.iko.iko.domain.repository.reply.ReplyRepository;
 import com.iko.iko.security.jwt.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.iko.iko.controller.reply.dto.request.ReplyRequestDto.*;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 
-@Service
 @RequiredArgsConstructor
-public class AddCartService {
+@Service
+public class DeleteReplyService {
 
-    private final CartRepository cartRepository;
     private final MemberRepository memberRepository;
+    private final ReplyRepository replyRepository;
 
     @Transactional
-    public String addCart(AddCartRequestDto requestDto) {
+    public String deleteReply(DeleteReplyRequest deleteReplyRequest) {
         Member member = validateLoginStatus();
-        List<Cart> cartList =  cartRepository.getCartList(member.getMemberId(), requestDto.getProductDetailsId());
-        if(cartList.size() != 0){
-         cartRepository.addPcs(cartList.get(0));
-        }
-        else{
-            Cart cart = requestDto.toEntity();
-            cart.setMemberId(member.getMemberId());
-            cart.setPcs(1);
-            cartRepository.save(cart);
-        }
-
+        Optional<Reply> reply = replyRepository.findById(deleteReplyRequest.getReplyId());
+        if (reply.isPresent() && member.getMemberId().equals(reply.get().getMemberId())) {
+            replyRepository.deleteReply(deleteReplyRequest.getReplyId());
+        } else throw new BaseException(ErrorCode.COMMON_BAD_REQUEST);
         return "Ok";
     }
 

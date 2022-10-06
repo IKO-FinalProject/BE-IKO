@@ -26,7 +26,6 @@ public class GetMainProductDetailsService {
     public ProductDetailsResponse.ProductDetailsForResponse GetProductDetails(Integer selectedProductId,Integer memberId) {
         Integer isFavorite=0;
 
-
         List<Integer> productDetailsIdList = productRepository.getAllProductDetailsIdByProductId(selectedProductId);
 
         HashSet<Integer> periodSet=new HashSet<>();
@@ -37,6 +36,7 @@ public class GetMainProductDetailsService {
             Member member = validateLoginStatus();
             isFavorite = (int)(long)productRepository.getMemberIsFavorite(member.getMemberId(), selectedProductId);
         }
+
             List<ProductDetailsResponse.ProductDetails> productDetailsData
                     =productDetailsRepository.getProductDetails(selectedProductId);
             for(ProductDetailsResponse.ProductDetails detailsData : productDetailsData) {

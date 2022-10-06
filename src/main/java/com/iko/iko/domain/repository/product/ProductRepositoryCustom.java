@@ -20,7 +20,6 @@ public interface ProductRepositoryCustom{
 
     List<ProductResponse.GetAllProductDistinct> getAllProductByProductId(Integer productId);
 
-
     List<Integer> getAllProductDetailsIdByProductId(Integer productId);
 
     List<Integer> getAllProductId();
@@ -28,6 +27,5 @@ public interface ProductRepositoryCustom{
     Product getProductDistinctByProductId(Integer productId);
 
     List<ProductResponse.productFilterList> getFilterInfo();
-
 
 }

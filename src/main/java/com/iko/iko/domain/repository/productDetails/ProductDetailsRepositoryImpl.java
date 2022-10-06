@@ -198,6 +198,7 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .distinct()
                 .fetch();
     }
+
     @Override
     public List<ProductDetailsResponse.typeAndImage> getTypeAndImageByProductId(Integer selectedProductId){
         return jpaQueryFactory

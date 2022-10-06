@@ -22,6 +22,7 @@ public class ProductFacade {
     private final GetAllProductByOptionService getAllProductByOptionService;
 
     private final GetFilterListService getFilterListService;
+
     @Transactional(readOnly = true)
     public List<ProductDetailsResponse.MainProductForResponse>
     getMainProduct(Pageable pageable,Integer memberId){
