@@ -2,6 +2,7 @@ package com.iko.iko.domain.repository.reply;
 
 import com.iko.iko.controller.reply.dto.response.ReplyResponseDtO.*;
 import com.iko.iko.controller.reply.dto.request.ReplyRequestDto.UpdateReplyRequest;
+import com.iko.iko.domain.entity.Reply;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -87,6 +88,17 @@ public class ReplyRepositoryImpl implements ReplyRepositoryCustom {
                         .and(image.imageType.eq(1))).fetchJoin()
                 .distinct()
                 .where(productDetails.productDetailsId.eq(productDetailsId))
+                .fetch();
+    }
+
+    @Override
+    public List<Reply> getReplyList(
+            Integer orderId, Integer productDetailsId
+    ){
+        return jpaQueryFactory
+                .selectFrom(reply)
+                .where(reply.orderId.eq(orderId)
+                        .and(reply.productDetailsId.eq(productDetailsId)))
                 .fetch();
     }
 
