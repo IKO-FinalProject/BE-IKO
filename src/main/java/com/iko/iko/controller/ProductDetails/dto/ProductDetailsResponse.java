@@ -75,16 +75,7 @@ public class ProductDetailsResponse {
     @AllArgsConstructor
     @Builder
     public static class ProductDetails {
-        private Integer productId;
-        private Integer productDetailsId;
-        private String name;
-        private String series;
-        private Float diameter;
         private String colorCode;
-        private Integer detailsPrice;
-        private Integer productPrice;
-        private Integer discount;
-        private String imageUrl;
         private Float degree;
         private Float graphicDiameter;
         private Integer period;
@@ -129,15 +120,15 @@ public class ProductDetailsResponse {
         private Integer productId;
         private String name;
         private String series;
-        private Integer detailsPrice;
+        private Integer Price;
         private Integer discount;
+        private String mainImageUrl;
+        private List<String> subMainImageUrlList;
         private List<Integer> periodList;
         private List<String> colorCodeList;
         private List<Float> graphicDiameterList;
-        private List<Float> degreeList;
-        private ProductDetailsForImageList imageUrl;
-
     }
+
     @Getter
     @AllArgsConstructor
     @Builder

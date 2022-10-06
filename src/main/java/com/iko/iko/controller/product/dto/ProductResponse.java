@@ -12,6 +12,7 @@ public class ProductResponse {
         private String series;
         private Integer price;
         private Integer discount;
+        private String name;
     }
     @Getter
     @Builder
@@ -51,22 +52,24 @@ public class ProductResponse {
 
     }
 
-    public class ProductMainResponse {
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class productInfoForProductDetailsMain {
+        private String name;
+        private String series;
+        private Integer price;
+        private Integer discount;
+        private String mainImageUrl;
     }
 
-        /*
-        private ProductResponse product;
-        private List<imageResponse.ImageUrlByImageId> imageUrl;
-
-        private List<ProductDetailsResponse.colorCodeMainProduct> colorCode;
-
-        public ProductMainResponse(Product product, List<imageResponse.ImageUrlByImageId> imageUrl,
-                                   List<ProductDetailsResponse.colorCodeMainProduct> colorCode){
-            this.product =INSTANCE.ofProduct(product);
-            this.imageUrl=imageUrl;
-            this.colorCode=colorCode;
-        }*/
-
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public  static class typeAndImage{
+        private Integer imageType;
+        private String imageUrl;
+    }
 
 
 }

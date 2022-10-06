@@ -7,6 +7,7 @@ import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.sun.jdi.FloatValue;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
@@ -122,25 +123,13 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
     public List<ProductDetailsResponse.ProductDetails> getProductDetails(Integer selectedProductId){
         return jpaQueryFactory
                 .select(Projections.constructor(ProductDetailsResponse.ProductDetails.class,
-                        product.productId,
-                        productDetails.productDetailsId,
-                        product.name,
-                        product.series,
-                        product.diameter,
                         productDetails.colorCode,
-                        productDetails.detailsPrice,
-                        product.price,
-                        product.discount,
-                        image.imageUrl,
                         productDetails.degree,
                         productDetails.graphicDiameter,
                         productDetails.period))
                 .from(productDetails)
-                .join(product).on(productDetails.productIdFk.eq(product.productId)).fetchJoin()
-                .join(linkProductDetailsImage).on(productDetails.productDetailsId.eq(linkProductDetailsImage.productDetailsId)).fetchJoin()
-                .join(image).on(image.imageId.eq(linkProductDetailsImage.imageId)).fetchJoin()
-                .where(productDetails.productIdFk.eq(selectedProductId))
                 .distinct()
+                .where(productDetails.productIdFk.eq(selectedProductId))
                 .fetch();
     }
 
@@ -192,6 +181,29 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                         .or(convertIntegerWhere(productByOption.getPeriod()))
                         .or(convertStringWhere(productByOption.getSeries(), "Series"))
                         .or(convertStringWhere(productByOption.getFeature(), "Feature")))
+                .distinct()
+                .fetch();
+    }
+    @Override
+    public List<ProductDetailsResponse.typeAndImage> getTypeAndImageByProductId(Integer selectedProductId){
+        return jpaQueryFactory
+                .select(Projections.constructor(
+                        ProductDetailsResponse.typeAndImage.class,
+                        image.imageType,
+                        image.imageUrl
+                ))
+                .from(productDetails)
+                .join(linkProductDetailsImage).on(linkProductDetailsImage.productDetailsId.eq(productDetails.productDetailsId)).fetchJoin()
+                .join(image).on(image.imageId.eq(linkProductDetailsImage.imageId)).fetchJoin()
+                .where(productDetails.productIdFk.eq(selectedProductId))
+                .distinct()
+                .fetch();
+    }
+    @Override
+    public List<Float> getDegreeList(){
+        return jpaQueryFactory
+                .select(productDetails.degree)
+                .from(productDetails)
                 .distinct()
                 .fetch();
     }

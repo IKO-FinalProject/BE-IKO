@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.domain.Pageable;
 
+import java.util.HashSet;
 import java.util.List;
 
 import static com.iko.iko.domain.entity.QProduct.product;
@@ -30,6 +31,14 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
+    public Product getProductDistinctByProductId(Integer productId){
+        return jpaQueryFactory
+                .select(product)
+                .from(product)
+                .where(product.productId.eq(productId))
+                .fetchOne();
+    }
+    @Override
     public List<ProductResponse.GetAllProductDistinct> getAllProductByProductId(Integer productId){
         return jpaQueryFactory
                 .select(Projections.constructor(
@@ -37,11 +46,22 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                         product.productId,
                         product.series,
                         product.price,
-                        product.discount
+                        product.discount,
+                        product.name
                 ))
                 .distinct()
                 .from(product)
                 .where(product.productId.eq(productId))
+                .fetch();
+    }
+
+    @Override
+    public List<Integer> getAllProductDetailsIdByProductId(Integer productId){
+        return jpaQueryFactory
+                .select(productDetails.productDetailsId)
+                .from(productDetails)
+                .distinct()
+                .where(productDetails.productIdFk.eq(productId))
                 .fetch();
     }
 
@@ -73,6 +93,14 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .where(favor.memberId.eq(memberId))
                 .where(favor.productId.eq(selectedProductId))
                 .fetchOne();
+    }
+
+    @Override
+    public List<Integer> getAllProductId(){
+        return  jpaQueryFactory
+                .select(product.productId)
+                .from(product)
+                .fetch();
     }
 
 }
