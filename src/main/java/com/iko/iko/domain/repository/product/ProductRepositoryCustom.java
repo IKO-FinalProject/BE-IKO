@@ -27,4 +27,7 @@ public interface ProductRepositoryCustom{
 
     Product getProductDistinctByProductId(Integer productId);
 
+    List<ProductResponse.productFilterList> getFilterInfo();
+
+
 }

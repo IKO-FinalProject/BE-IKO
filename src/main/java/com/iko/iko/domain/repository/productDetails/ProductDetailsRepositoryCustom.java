@@ -25,5 +25,5 @@ public interface ProductDetailsRepositoryCustom {
 
     List<ProductDetailsResponse.typeAndImage> getTypeAndImageByProductId(Integer selectedProductId);
 
-    List<Float> getDegreeList();
+    List<ProductDetailsResponse.ProductDetailsFilterList> getDetailsFilterInfo();
 }

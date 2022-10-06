@@ -33,6 +33,7 @@ public class ProductDetailsResponse {
     @AllArgsConstructor
     @Builder
     public static  class MainProductForResponse{
+        private Integer totalCount;
         private Integer isFavorite;
         private Integer productId;
         private String series;
@@ -142,7 +143,10 @@ public class ProductDetailsResponse {
     @Getter
     @AllArgsConstructor
     @Builder
-    public static class ProductDetailsOptionForResponse{
+    public static class ProductDetailsFilterList{
+        private Integer period;
+        private Float graphicDiameter;
+        private String colorCode;
 
     }
 

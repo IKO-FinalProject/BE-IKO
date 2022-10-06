@@ -2,6 +2,7 @@ package com.iko.iko.controller.product.dto;
 
 import lombok.*;
 
+import java.util.List;
 public class ProductResponse {
 
     @Getter
@@ -71,5 +72,24 @@ public class ProductResponse {
         private String imageUrl;
     }
 
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class productFilterList{
+        private String series;
+        private String feature;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class productFilter{
+        private List<String> series;
+        private List<String> feature;
+        private List<Integer> period;
+        private List<Float> graphicDiameter;
+        private List<String> colorCode;
+
+    }
 
 }

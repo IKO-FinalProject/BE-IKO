@@ -34,6 +34,7 @@ public class GetAllProductByOptionService {
         List<ProductDetailsResponse.MainProductForResponse> result = new ArrayList<>();
         List<Integer> SelectedProductIdList=productDetailsRepository.getProductByProductOption(productOption);
         SelectedProductIdList.stream().distinct();
+        Integer totalCount=SelectedProductIdList.size();
 
 
         for(Integer productIdList : SelectedProductIdList){
@@ -64,6 +65,7 @@ public class GetAllProductByOptionService {
                 }
                 ProductDetailsResponse.MainProductForResponse checkData
                         =new ProductDetailsResponse.MainProductForResponse(
+                                totalCount,
                         isFavorite,
                         tmp.getProductId(),
                         tmp.getSeries(),

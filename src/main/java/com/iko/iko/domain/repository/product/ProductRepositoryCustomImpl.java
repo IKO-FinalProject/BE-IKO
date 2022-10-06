@@ -31,6 +31,19 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
+    public List<ProductResponse.productFilterList> getFilterInfo(){
+        return jpaQueryFactory
+                .select(Projections.constructor(
+                        ProductResponse.productFilterList.class,
+                        product.series,
+                        product.feature
+                ))
+                .distinct()
+                .from(product)
+                .fetch();
+    }
+
+    @Override
     public Product getProductDistinctByProductId(Integer productId){
         return jpaQueryFactory
                 .select(product)
@@ -74,7 +87,8 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                         product.productId,
                         product.series,
                         product.price,
-                        product.discount
+                        product.discount,
+                        product.name
                 ))
                 .distinct()
                 .from(product)
@@ -83,6 +97,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .fetchResults();
         return new PageImpl<>(queryResults.getResults(),pageable, queryResults.getTotal());
     }
+
 
     //유저의 찜정보를 가져옵니다
     @Override
@@ -102,5 +117,6 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .from(product)
                 .fetch();
     }
+
 
 }

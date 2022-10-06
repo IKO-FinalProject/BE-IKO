@@ -30,6 +30,7 @@ public class GetProductForRandomService {
     ){
         Integer isFavorite=0;
 
+        Integer totalCount=4;
         List<ProductDetailsResponse.MainProductForResponse> result = new ArrayList<>();
 
         List<Integer> productIdList=productRepository.getAllProductId();
@@ -71,6 +72,7 @@ public class GetProductForRandomService {
             }
             ProductDetailsResponse.MainProductForResponse checkData
                     =new ProductDetailsResponse.MainProductForResponse(
+                            totalCount,
                     isFavorite,
                     productId,
                     mainProduct.getSeries(),

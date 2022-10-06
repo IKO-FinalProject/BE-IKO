@@ -28,8 +28,11 @@ public class GetAllProductService {
         Integer isFavorite=0;
 
         List<ProductDetailsResponse.MainProductForResponse> result = new ArrayList<>();
-
         Page<ProductResponse.GetAllProductDistinct> mainProduct = productRepository.getAllProduct(pageable);
+
+        List<Integer> totalProductId=productRepository.getAllProductId();
+        Integer totalCount=totalProductId.size();
+
 
         for(ProductResponse.GetAllProductDistinct tmp : mainProduct){
             if(!memberId.equals(0)) {
@@ -55,6 +58,7 @@ public class GetAllProductService {
             }
             ProductDetailsResponse.MainProductForResponse checkData
                     =new ProductDetailsResponse.MainProductForResponse(
+                            totalCount,
                     isFavorite,
                     tmp.getProductId(),
                     tmp.getSeries(),

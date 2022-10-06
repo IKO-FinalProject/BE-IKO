@@ -20,12 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/main")
+@RequestMapping("/productDetails")
 public class ProductDetailsController {
     private final ProductDetailsFacade productDetailsFacade;
 
 
-    @PostMapping("/productOption")
+    @PostMapping("/byOption")
     public ResponseEntity<Response<List<ProductDetailsResponse.ProductMainByOptionResponse>>>
     getProductByOption(
             @RequestBody ProductDetailsRequest.ProductOptionForRequest productOption
@@ -38,7 +38,7 @@ public class ProductDetailsController {
         );
     }
 
-    @PostMapping("/productDetails")
+    @PostMapping("/main")
     public ResponseEntity<Response<ProductDetailsResponse.ProductDetailsForResponse>>
     getProductDetails(
             @RequestParam(value = "productId") Integer selectedProductId,
@@ -52,7 +52,7 @@ public class ProductDetailsController {
         );
     }
 
-    @GetMapping("/productDetailsRandom")
+    @GetMapping("/forRandom")
     public ResponseEntity<Response<List<ProductDetailsResponse.MainProductForResponse>>>
     getProductForRandom(
             @RequestParam(value="productId")Integer selectedProductId,
@@ -65,5 +65,6 @@ public class ProductDetailsController {
                 )
         );
     }
+
 }
 

@@ -27,6 +27,20 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
 
 
     @Override
+    public List<ProductDetailsResponse.ProductDetailsFilterList> getDetailsFilterInfo(){
+        return jpaQueryFactory
+                .select(Projections.constructor(
+                        ProductDetailsResponse.ProductDetailsFilterList.class,
+                        productDetails.period,
+                        productDetails.graphicDiameter,
+                        productDetails.colorCode
+                ))
+                .from(productDetails)
+                .distinct()
+                .where(productDetails.degree.eq(Float.valueOf(0)))
+                .fetch();
+    }
+    @Override
     public List<ProductDetailsResponse.GetColorCodeAndImageUrl> getColorAndImage(Integer selectedProductId){
         return jpaQueryFactory
                 .select(Projections.constructor(ProductDetailsResponse.GetColorCodeAndImageUrl.class,
@@ -196,14 +210,6 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .join(linkProductDetailsImage).on(linkProductDetailsImage.productDetailsId.eq(productDetails.productDetailsId)).fetchJoin()
                 .join(image).on(image.imageId.eq(linkProductDetailsImage.imageId)).fetchJoin()
                 .where(productDetails.productIdFk.eq(selectedProductId))
-                .distinct()
-                .fetch();
-    }
-    @Override
-    public List<Float> getDegreeList(){
-        return jpaQueryFactory
-                .select(productDetails.degree)
-                .from(productDetails)
                 .distinct()
                 .fetch();
     }
