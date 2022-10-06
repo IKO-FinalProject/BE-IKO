@@ -68,5 +68,17 @@ public class ProductDetailsController {
         );
     }
 
+    @GetMapping("/explainImage")
+    public ResponseEntity<Response<List<String>>> getExplainImage(
+            @RequestParam(value="productId") Integer productId
+    ){
+        return ResponseEntity.ok(
+                Response.of(
+                        productDetailsFacade.getProductExplainImage(productId),
+                        "상품설명 이미지 리스트 불러오기 완료"
+                )
+        );
+    }
+
 }
 
