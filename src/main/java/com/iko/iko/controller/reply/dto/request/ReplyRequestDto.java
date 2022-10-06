@@ -4,12 +4,14 @@ import com.iko.iko.domain.entity.Reply;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 public class ReplyRequestDto {
 
     @Getter
-    @Builder
     @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
     public static class AddReplyRequest {
 
         private Integer memberId;
@@ -30,6 +32,14 @@ public class ReplyRequestDto {
                     .imageUrl(replyImageUrl)
                     .build();
         }
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class DeleteReplyRequest{
+        private Integer replyId;
     }
 
 }

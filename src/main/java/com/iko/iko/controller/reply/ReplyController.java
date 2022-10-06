@@ -1,7 +1,7 @@
 package com.iko.iko.controller.reply;
 
 import com.iko.iko.common.response.Response;
-import com.iko.iko.controller.reply.dto.request.ReplyRequestDto.AddReplyRequest;
+import com.iko.iko.controller.reply.dto.request.ReplyRequestDto.*;
 import com.iko.iko.service.reply.facade.ReplyFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +22,16 @@ public class ReplyController {
         return ResponseEntity.ok(
                 Response.of(replyFacade.addReply(addReplyRequest),
                         "리뷰 작성 완료")
+        );
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity<Response<String>> deleteReply(
+            @RequestBody @Valid DeleteReplyRequest deleteReplyRequest
+    ){
+        return ResponseEntity.ok(
+                Response.of(replyFacade.deleteReply(deleteReplyRequest),
+                        "리뷰 삭제 완료")
         );
     }
 
