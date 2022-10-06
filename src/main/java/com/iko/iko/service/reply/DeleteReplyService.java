@@ -22,12 +22,12 @@ public class DeleteReplyService {
     private final ReplyRepository replyRepository;
 
     @Transactional
-    public String deleteReply(DeleteReplyRequest deleteReplyRequest){
+    public String deleteReply(DeleteReplyRequest deleteReplyRequest) {
         Member member = validateLoginStatus();
         Optional<Reply> reply = replyRepository.findById(deleteReplyRequest.getReplyId());
-        if(reply.isPresent() && member.getMemberId().equals(reply.get().getReplyId())){
+        if (reply.isPresent() && member.getMemberId().equals(reply.get().getMemberId())) {
             replyRepository.deleteReply(deleteReplyRequest.getReplyId());
-        }
+        } else throw new BaseException(ErrorCode.COMMON_BAD_REQUEST);
         return "Ok";
     }
 

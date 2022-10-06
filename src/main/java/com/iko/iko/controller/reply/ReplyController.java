@@ -35,4 +35,14 @@ public class ReplyController {
         );
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<Response<String>> updateReply(
+            @RequestBody @Valid UpdateReplyRequest updateReplyRequest
+    ){
+        return ResponseEntity.ok(
+                Response.of(replyFacade.updateReply(updateReplyRequest),
+                        "리뷰 수정 완료")
+        );
+    }
+
 }

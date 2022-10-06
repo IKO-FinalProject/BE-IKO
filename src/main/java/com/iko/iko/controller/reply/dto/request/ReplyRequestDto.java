@@ -22,7 +22,7 @@ public class ReplyRequestDto {
         private String replyImageUrl;
 
         @Builder
-        public Reply toEntity(){
+        public Reply toEntity() {
             return Reply.builder()
                     .memberId(memberId)
                     .orderId(orderId)
@@ -38,8 +38,19 @@ public class ReplyRequestDto {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    public static class DeleteReplyRequest{
+    public static class DeleteReplyRequest {
         private Integer replyId;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class UpdateReplyRequest {
+        private Integer replyId;
+        private Float rating;
+        private String content;
+        private String imageUrl;
     }
 
 }
