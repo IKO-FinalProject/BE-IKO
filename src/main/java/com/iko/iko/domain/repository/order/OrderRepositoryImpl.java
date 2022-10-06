@@ -113,7 +113,8 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                         linkOrderDetails.pcs,
                         productDetails.detailsPrice,
                         productDetails.period,
-                        image.imageUrl
+                        image.imageUrl,
+                        product.discount
                 ))
                 .from(order)
                 .join(linkOrderDetails).on(order.orderId.eq(linkOrderDetails.orderId)).fetchJoin()

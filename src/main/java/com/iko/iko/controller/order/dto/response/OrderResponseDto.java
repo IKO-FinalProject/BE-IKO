@@ -58,6 +58,7 @@ public class OrderResponseDto {
         private Integer price;
         private Integer period;
         private String imageUrl;
+        private Integer discount;
 
     }
 
