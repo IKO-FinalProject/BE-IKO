@@ -1,5 +1,7 @@
 package com.iko.iko.domain.repository.product;
 
+import com.iko.iko.controller.admin.dto.AdminRequest;
+import com.iko.iko.controller.admin.dto.AdminResponse;
 import com.iko.iko.controller.product.dto.ProductResponse;
 import com.iko.iko.domain.entity.Product;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -18,5 +20,11 @@ public interface ProductRepositoryCustom{
     Long getMemberIsFavorite(Integer memberId, Integer selectedProductId);
 
     List<ProductResponse.GetAllProductDistinct> getAllProductByProductId(Integer productId);
+
+    List<AdminResponse.ProductIdAndNameResponse> findProductIdAndName(Pageable pageable);
+
+    Long updateProductDetails(AdminRequest.ProductDetailsUpdateRequest productDetailsUpdateRequest);
+
+    List<AdminResponse.AllProductInfoResponse> findAllProductInfo(Pageable pageable);
 
 }

@@ -1,5 +1,7 @@
 package com.iko.iko.domain.repository.product;
 
+import com.iko.iko.controller.admin.dto.AdminRequest;
+import com.iko.iko.controller.admin.dto.AdminResponse;
 import com.iko.iko.controller.product.dto.ProductResponse;
 import com.iko.iko.domain.entity.Member;
 import com.iko.iko.domain.entity.Product;
@@ -73,6 +75,48 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .where(favor.memberId.eq(memberId))
                 .where(favor.productId.eq(selectedProductId))
                 .fetchOne();
+    }
+
+    @Override
+    public List<AdminResponse.ProductIdAndNameResponse> findProductIdAndName(Pageable pageable) {
+        return jpaQueryFactory
+                .select(Projections.constructor(
+                        AdminResponse.ProductIdAndNameResponse.class,
+                        product.productId,
+                        product.name
+                ))
+                .from(product)
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+    }
+
+    @Override
+    public Long updateProductDetails(AdminRequest.ProductDetailsUpdateRequest productDetailsUpdateRequest) {
+        return jpaQueryFactory
+                .update(productDetails)
+                .set(productDetails.productDetailsStock, productDetailsUpdateRequest.getProductDetailsStock())
+                .set(productDetails.soldOut, productDetailsUpdateRequest.getSoldOut())
+                .where(productDetails.productDetailsId.eq(productDetailsUpdateRequest.getProductDetailsId()))
+                .execute();
+    }
+
+    @Override
+    public List<AdminResponse.AllProductInfoResponse> findAllProductInfo(Pageable pageable) {
+        return jpaQueryFactory
+                .select(Projections.constructor(
+                        AdminResponse.AllProductInfoResponse.class,
+                        product.productId,
+                        product.name,
+                        product.price,
+                        product.discount,
+                        product.diameter,
+                        product.manufacturer
+                ))
+                .from(product)
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
     }
 
 }
