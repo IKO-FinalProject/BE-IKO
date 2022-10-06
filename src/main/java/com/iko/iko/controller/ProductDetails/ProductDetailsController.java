@@ -39,7 +39,6 @@ public class ProductDetailsController {
     }
 
     @PostMapping("/productDetails")
-    @ApiOperation(value = "제품 상세정보", notes = "id= ? , productId")
     public ResponseEntity<Response<List<ProductDetailsResponse.ProductDetailsForResponse>>>
     getProductDetails(
             @RequestParam(value = "productId") Integer selectedProductId,

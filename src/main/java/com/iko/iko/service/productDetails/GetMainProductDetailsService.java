@@ -25,6 +25,7 @@ public class GetMainProductDetailsService {
 
     public List<ProductDetailsResponse.ProductDetailsForResponse> GetProductDetails(Integer selectedProductId,Integer memberId) {
         Integer isFavorite=0;
+
         List<ProductDetailsResponse.ProductDetailsForResponse> result=new ArrayList<>();
 
         List<ProductDetailsResponse.ProductDetails> productDetailsData
@@ -68,12 +69,17 @@ public class GetMainProductDetailsService {
             imageLists.setTypeTwoImage(typeTwo);
             List<ProductDetailsResponse.ListInfoForProductDetails> listInfoForProductDetailsList
                     =productDetailsRepository.getListInfoForDetails(detailsList.getProductDetailsId());
+
             for(ProductDetailsResponse.ListInfoForProductDetails detailsInfoList : listInfoForProductDetailsList){
                 periodList.add(detailsInfoList.getPeriod());
                 colorCodeList.add(detailsInfoList.getColorCode());
                 graphicDiameterList.add(detailsInfoList.getDegree());
                 degreeList.add(detailsInfoList.getDegree());
             }
+            periodList.stream().distinct();
+            colorCodeList.stream().distinct();
+            graphicDiameterList.stream().distinct();
+            degreeList.stream().distinct();
             ProductDetailsResponse.ProductDetailsForResponse checkData
                     =new ProductDetailsResponse.ProductDetailsForResponse(
                     isFavorite,

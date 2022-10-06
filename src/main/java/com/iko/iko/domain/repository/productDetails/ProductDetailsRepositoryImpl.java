@@ -150,10 +150,17 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .select(Projections.constructor(ProductDetailsResponse.typeAndImage.class,
                         image.imageType,
                         image.imageUrl))
-                .from(image)
-                .join(productDetails).on(productDetails.productDetailsId.eq(selectedProductDetailsId)).fetchJoin()
-                .join(linkProductDetailsImage).on(productDetails.productDetailsId.eq(linkProductDetailsImage.productDetailsId)).fetchJoin()
+                .from(productDetails)
+                .join(linkProductDetailsImage).on(linkProductDetailsImage.productDetailsId.eq(selectedProductDetailsId)).fetchJoin()
                 .join(image).on(image.imageId.eq(linkProductDetailsImage.imageId)).fetchJoin()
+                .where(productDetails.productDetailsId.eq(selectedProductDetailsId))
+                /*
+                .join(image).on(image.imageId.eq(linkProductDetailsImage.imageId)).fetchJoin()
+                .where(productDetails.productIdFk.eq(selectedProductId))
+                .where(image.imageType.eq(1))
+                .where(productDetails.period.eq(30))
+                */
+                .distinct()
                 .fetch();
     }
     @Override
@@ -166,6 +173,7 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                         productDetails.degree))
                 .from(productDetails)
                 .where(productDetails.productDetailsId.eq(selectedProductDetailsId))
+                .distinct()
                 .fetch();
 
     }
