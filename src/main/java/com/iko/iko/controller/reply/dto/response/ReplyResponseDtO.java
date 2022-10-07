@@ -53,6 +53,20 @@ public class ReplyResponseDtO {
     @Builder
     public static class ReplyData{
         private Float rating;
+        private Integer memberId;
+        private String color;
+        private Float graphicDiameter;
+        private Integer period;
+        private String content;
+        private String imageUrl;
+        private java.sql.Date createdAt;
+    }
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class ReplyDataResponse{
+        private Float rating;
         private String email;
         private String color;
         private Float graphicDiameter;
@@ -67,6 +81,6 @@ public class ReplyResponseDtO {
     @Builder
     public static class ReplyInfoForResponse{
         private Integer totalCount;
-        private List<ReplyData> replyData;
+        private List<ReplyDataResponse> replyDataResponse;
     }
 }

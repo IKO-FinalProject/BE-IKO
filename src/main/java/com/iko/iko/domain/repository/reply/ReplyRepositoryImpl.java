@@ -17,6 +17,7 @@ import static com.iko.iko.domain.entity.QProductDetails.productDetails;
 import static com.iko.iko.domain.entity.QReply.reply;
 import static com.iko.iko.domain.entity.QLinkOrderDetails.linkOrderDetails;
 import static com.iko.iko.domain.entity.QLinkProductDetailsImage.linkProductDetailsImage;
+import static com.iko.iko.domain.entity.QOrder.order;
 @Repository
 @RequiredArgsConstructor
 public class ReplyRepositoryImpl implements ReplyRepositoryCustom {
@@ -97,7 +98,7 @@ public class ReplyRepositoryImpl implements ReplyRepositoryCustom {
         return jpaQueryFactory
                 .select(Projections.constructor(ReplyData.class,
                         reply.rating,
-                        member.email,
+                        reply.memberId,
                         productDetails.color,
                         productDetails.graphicDiameter,
                         productDetails.period,
@@ -105,7 +106,6 @@ public class ReplyRepositoryImpl implements ReplyRepositoryCustom {
                         reply.imageUrl,
                         reply.createdAt))
                 .from(reply)
-                .join(member).on(member.memberId.eq(reply.memberId)).fetchJoin()
                 .join(productDetails).on(productDetails.productDetailsId.eq(reply.productDetailsId)).fetchJoin()
                 .distinct()
                 .where(productDetails.productIdFk.eq(productId))
