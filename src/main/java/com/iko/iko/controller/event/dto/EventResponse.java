@@ -1,4 +1,4 @@
-package com.iko.iko.controller.event.dto.response;
+package com.iko.iko.controller.event.dto;
 
 import lombok.*;
 

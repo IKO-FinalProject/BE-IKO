@@ -1,10 +1,9 @@
 package com.iko.iko.domain.repository.event;
 
-import com.iko.iko.controller.event.dto.response.EventResponse;
+import com.iko.iko.controller.event.dto.EventResponse;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import static com.iko.iko.domain.entity.QEvent.event;
 import static com.iko.iko.domain.entity.QImage.image;
