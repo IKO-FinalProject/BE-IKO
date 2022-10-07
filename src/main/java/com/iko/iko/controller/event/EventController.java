@@ -21,14 +21,11 @@ public class EventController {
     private final EventFacade eventFacade;
 
     @GetMapping("/main")
-    public ResponseEntity<Response<List<EventResponse.EventMain>>>
-    getEventMain(
-            @RequestParam(value="page") Integer page,
-            @PageableDefault(size=10, page=0)Pageable pageable
-            ){
+    public ResponseEntity<Response<EventResponse.EventMainResponse>>
+    getEventMain(){
         return ResponseEntity.ok(
                 Response.of(
-                        eventFacade.getEventMain(pageable),
+                        eventFacade.getEventMain(),
                         "이벤트 목록 불러오기 완료"
                 )
         );

@@ -17,9 +17,9 @@ public class EventFacade {
 
     private final GetEventDetailsService getEventDetailsService;
     @Transactional(readOnly = true)
-    public List<EventResponse.EventMain>
-    getEventMain(Pageable pageable){
-        return getEventMainService.GetEventMain(pageable);
+    public EventResponse.EventMainResponse
+    getEventMain(){
+        return getEventMainService.GetEventMain();
     }
 
     @Transactional(readOnly = true)

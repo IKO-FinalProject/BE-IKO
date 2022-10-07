@@ -18,7 +18,7 @@ public class EventRepositoryImpl implements EventRepositoryCustom{
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public List<EventResponse.EventMain> getEventMain(Pageable pageable){
+    public List<EventResponse.EventMain> getEventMain(){
         return jpaQueryFactory
                 .select(Projections.constructor(EventResponse.EventMain.class,
                         event.eventId,
@@ -28,8 +28,6 @@ public class EventRepositoryImpl implements EventRepositoryCustom{
                 .join(linkEventImage).on(event.eventId.eq(linkEventImage.eventId)).fetchJoin()
                 .join(image).on(image.imageId.eq(linkEventImage.imageId)).fetchJoin()
                 .where(image.imageType.eq(1))
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
                 .fetch();
     }
 
