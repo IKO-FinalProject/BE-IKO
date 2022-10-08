@@ -34,6 +34,7 @@ public class AdminController {
         );
     }
 
+    
     @PostMapping("/insertEvent")
     public ResponseEntity<Response<String>> insertEvent(
             @RequestBody @Valid AddEventRequest addEventRequest
