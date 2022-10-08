@@ -11,6 +11,7 @@ import com.iko.iko.domain.repository.member.MemberRepository;
 import com.iko.iko.security.jwt.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Date;
@@ -23,6 +24,7 @@ public class MyCouponListService {
     private final LinkMemberCouponRepository linkMemberCouponRepository;
     private final MemberRepository memberRepository;
 
+    @Transactional
     public List<CouponInfoListResponse> myCoupon() {
         Member member = validateLoginStatus();
         Date date = new Date();
