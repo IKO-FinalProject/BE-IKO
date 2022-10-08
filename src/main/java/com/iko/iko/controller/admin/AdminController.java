@@ -9,10 +9,7 @@ import com.iko.iko.service.product.facade.ProductFacade;
 import com.iko.iko.controller.product.dto.request.ProductRequest.ProductSaveRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -58,4 +55,6 @@ public class AdminController {
                         "쿠폰 등록 완료")
         );
     }
+
+//    @GetMapping("/allOrderInfo")
 }

@@ -23,6 +23,21 @@ public class OrderResponseDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
+    public static class GetAllOrderResponse{
+        private GetOrderInfoResponse orderInfo;
+    }
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class GetProductNameForOrderResponse{
+        private String productName;
+    }
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
     public static class GetOrderInfoResponse{
         private Date orderCreatedAt;
         private Integer OrderId;
@@ -59,8 +74,9 @@ public class OrderResponseDto {
         private Integer period;
         private String imageUrl;
         private Integer discount;
-
     }
+
+
 
 
 }
