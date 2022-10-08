@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11 AS builder
+FROM azul/zulu-openjdk-alpine:11 AS builder
 
 COPY gradlew .
 COPY gradle gradle
