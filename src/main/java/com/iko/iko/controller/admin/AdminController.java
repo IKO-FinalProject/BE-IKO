@@ -1,7 +1,9 @@
 package com.iko.iko.controller.admin;
 
 import com.iko.iko.common.response.Response;
+import com.iko.iko.controller.coupon.dto.request.CouponRequestDto.InsertCouponRequest;
 import com.iko.iko.controller.event.dto.EventRequest.AddEventRequest;
+import com.iko.iko.service.coupon.facade.CouponFacade;
 import com.iko.iko.service.event.facade.EventFacade;
 import com.iko.iko.service.product.facade.ProductFacade;
 import com.iko.iko.controller.product.dto.request.ProductRequest.ProductSaveRequest;
@@ -21,6 +23,7 @@ public class AdminController {
 
     private final ProductFacade productFacade;
     private final EventFacade eventFacade;
+    private final CouponFacade couponFacade;
 
     @PostMapping("/insertProduct")
     public ResponseEntity<Response<String>> insertProduct(
@@ -43,6 +46,16 @@ public class AdminController {
                         eventFacade.addEvent(addEventRequest),
                         "이벤트 등록 완료"
                 )
+        );
+    }
+
+    @PostMapping("/insertCoupon")
+    public ResponseEntity<Response<String>> insertCoupon(
+            @RequestBody @Valid InsertCouponRequest insertCouponRequest
+    ){
+        return ResponseEntity.ok(
+                Response.of(couponFacade.insertCoupon(insertCouponRequest),
+                        "쿠폰 등록 완료")
         );
     }
 }
