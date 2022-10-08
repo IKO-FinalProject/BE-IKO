@@ -25,15 +25,9 @@ public class OrderResponseDto {
     @Builder
     public static class GetAllOrderResponse{
         private GetOrderInfoResponse orderInfo;
+        private List<String> productName;
     }
 
-    @Getter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
-    public static class GetProductNameForOrderResponse{
-        private String productName;
-    }
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor

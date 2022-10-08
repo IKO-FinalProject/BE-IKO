@@ -1,7 +1,7 @@
 package com.iko.iko.domain.repository.order;
 
-import com.iko.iko.controller.order.dto.response.OrderResponseDto.GetProductForOrderResponse;
-import com.iko.iko.controller.order.dto.response.OrderResponseDto.GetOrderInfoResponse;
+import com.iko.iko.controller.order.dto.response.OrderResponseDto.*;
+
 
 import java.util.List;
 
@@ -13,6 +13,8 @@ public interface OrderRepositoryCustom {
     List<GetProductForOrderResponse> GetProductForOrder(Integer orderId);
     Long minusStockForOrder(Integer productDetailsId, Integer pcs);
     Long plusStockForOrder(Integer productDetailsId, Integer pcs);
+    List<GetOrderInfoResponse> getAllOrderInfo();
+    List<String> getProductName(Integer orderId);
 
 
 }
