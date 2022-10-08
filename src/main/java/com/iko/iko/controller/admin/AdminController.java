@@ -68,4 +68,16 @@ public class AdminController {
                 )
         );
     }
+
+    @PostMapping("/updateProduct")
+    public ResponseEntity<Response<String>> updateProduct(
+            @RequestBody @Valid AdminRequest.ProductUpdateRequest productUpdateRequest
+    ){
+        return ResponseEntity.ok(
+                Response.of(
+                        productFacade.updateProduct(productUpdateRequest),
+                        "OK"
+                )
+        );
+    }
 }

@@ -21,6 +21,7 @@ public class ProductFacade {
     private final FindProductIdAndNameService findProductIdAndNameService;
     private final UpdateProductDetailsService updateProductDetailsService;
     private final FindAllProductInfoService findAllProductInfoService;
+    private final UpdateProductService updateProductService;
 
     @Transactional(readOnly = true)
     public List<ProductDetailsResponse.MainProductForResponse>
@@ -54,5 +55,10 @@ public class ProductFacade {
     @Transactional(readOnly = true)
     public List<AdminResponse.AllProductInfoResponse> findAllProductInfo(Pageable pageable) {
         return findAllProductInfoService.findAllProductInfo(pageable);
+    }
+
+    @Transactional
+    public String updateProduct(AdminRequest.ProductUpdateRequest productUpdateRequest) {
+        return updateProductService.updateProduct(productUpdateRequest);
     }
 }

@@ -119,4 +119,17 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .fetch();
     }
 
+    @Override
+    public Long updateProduct(AdminRequest.ProductUpdateRequest productUpdateRequest) {
+        return jpaQueryFactory
+                .update(product)
+                .set(product.name, productUpdateRequest.getProductName())
+                .set(product.price, productUpdateRequest.getPrice())
+                .set(product.discount, productUpdateRequest.getDiscount())
+                .set(product.diameter, productUpdateRequest.getDiameter())
+                .set(product.manufacturer, productUpdateRequest.getManufacturer())
+                .where(product.productId.eq(productUpdateRequest.getProductId()))
+                .execute();
+    }
+
 }

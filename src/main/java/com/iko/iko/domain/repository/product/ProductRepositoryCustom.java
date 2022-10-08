@@ -27,4 +27,6 @@ public interface ProductRepositoryCustom{
 
     List<AdminResponse.AllProductInfoResponse> findAllProductInfo(Pageable pageable);
 
+    Long updateProduct(AdminRequest.ProductUpdateRequest productUpdateRequest);
+
 }
