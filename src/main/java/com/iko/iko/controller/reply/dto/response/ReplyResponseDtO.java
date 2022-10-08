@@ -83,4 +83,16 @@ public class ReplyResponseDtO {
         private Integer totalCount;
         private List<ReplyDataResponse> replyDataResponse;
     }
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class ReplyInfoForMain{
+        private String imageUrl;
+        private String productName;
+        private String email;
+        private Float rating;
+    }
+
 }

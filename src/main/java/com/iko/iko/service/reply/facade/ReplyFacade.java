@@ -19,6 +19,7 @@ public class ReplyFacade {
     private final UpdateReplyService updateReplyService;
     private final MyReplyListService myReplyListService;
     private final GetReplyDataService getReplayDataService;
+    private final GetReplyMainService getReplyMainService;
     @Transactional
     public String addReply(AddReplyRequest addReplyRequest){
         return addReplyService.addReply(addReplyRequest);
@@ -42,6 +43,11 @@ public class ReplyFacade {
     @Transactional(readOnly = true)
     public ReplyResponseDtO.ReplyInfoForResponse getReplyInfoByProductId(Integer productId){
         return getReplayDataService.getReplyData(productId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ReplyResponseDtO.ReplyInfoForMain> getReplyMain(){
+        return getReplyMainService.getReplyMain();
     }
 
 }

@@ -125,4 +125,19 @@ public class ReplyRepositoryImpl implements ReplyRepositoryCustom {
                 .fetch();
     }
 
+    @Override
+    public List<ReplyResponseDtO.ReplyInfoForMain> getReplyMain(){
+        return jpaQueryFactory
+                .select(Projections.constructor(ReplyResponseDtO.class,
+                        reply.imageUrl,
+                        product.name,
+                        member.email,
+                        reply.rating
+                        ))
+                .from(reply)
+                .join(member).on(member.memberId.eq(reply.memberId)).fetchJoin()
+                .join(product).on(product.productId.eq(productDetails.productIdFk)).fetchJoin()
+                .where(reply.productDetailsId.eq())
+    }
+
 }

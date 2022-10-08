@@ -54,4 +54,7 @@ public class ReplyController {
                         "나의 리뷰 정보 조회 완료")
         );
     }
+
+    @GetMapping("/main")
+    public
 }
