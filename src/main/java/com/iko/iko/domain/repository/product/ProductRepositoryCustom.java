@@ -30,4 +30,6 @@ public interface ProductRepositoryCustom{
 
     String getProductFeature(Integer productId);
 
+    List<ProductResponse.recommendedProduct> getRecommendedProduct();
+
 }

@@ -26,6 +26,8 @@ import static com.iko.iko.domain.entity.QProduct.product;
 import static com.iko.iko.domain.entity.QProductDetails.productDetails;
 import static com.iko.iko.domain.entity.QMember.member;
 import static com.iko.iko.domain.entity.QFavor.favor;
+import static com.iko.iko.domain.entity.QImage.image;
+import static com.iko.iko.domain.entity.QLinkProductDetailsImage.linkProductDetailsImage;
 
 @Repository
 @RequiredArgsConstructor
@@ -154,6 +156,24 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .fetchOne();
     }
 
-
+    @Override
+    public List<ProductResponse.recommendedProduct> getRecommendedProduct(){
+        return jpaQueryFactory
+                .select(Projections.constructor(
+                        ProductResponse.recommendedProduct.class,
+                        product.name,
+                        product.price,
+                        product.discount,
+                        image.imageUrl
+                ))
+                .from(product)
+                .join(productDetails).on(productDetails.productIdFk.eq(product.productId)).fetchJoin()
+                .join(linkProductDetailsImage).on(productDetails.productDetailsId.eq(linkProductDetailsImage.productDetailsId)).fetchJoin()
+                .join(image).on(image.imageId.eq(linkProductDetailsImage.imageId)).fetchJoin()
+                .where(product.productId.eq(productDetails.productIdFk))
+                .where(image.imageType.eq(1))
+                .where(product.recommend.eq(1))
+                .fetch();
+    }
 
 }
