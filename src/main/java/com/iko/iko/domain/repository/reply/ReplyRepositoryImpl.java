@@ -9,6 +9,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 import static com.iko.iko.domain.entity.QMember.member;
@@ -126,18 +127,21 @@ public class ReplyRepositoryImpl implements ReplyRepositoryCustom {
     }
 
     @Override
-    public List<ReplyResponseDtO.ReplyInfoForMain> getReplyMain(){
+    public List<ReplyResponseDtO.ReplyInfoForMain> getReplyForProductDetails(Integer productId){
         return jpaQueryFactory
-                .select(Projections.constructor(ReplyResponseDtO.class,
+                .select(Projections.constructor(ReplyResponseDtO.ReplyInfoForMain.class,
                         reply.imageUrl,
                         product.name,
-                        member.email,
-                        reply.rating
+                        reply.memberId,
+                        reply.rating,
+                        reply.content,
+                        reply.createdAt
                         ))
                 .from(reply)
-                .join(member).on(member.memberId.eq(reply.memberId)).fetchJoin()
+                .join(productDetails).on(productDetails.productDetailsId.eq(reply.productDetailsId)).fetchJoin()
                 .join(product).on(product.productId.eq(productDetails.productIdFk)).fetchJoin()
-                .where(reply.productDetailsId.eq())
+                .where(productDetails.productIdFk.eq(productId))
+                .fetch();
     }
 
 }

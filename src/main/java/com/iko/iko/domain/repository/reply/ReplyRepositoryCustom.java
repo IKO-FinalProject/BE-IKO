@@ -22,5 +22,5 @@ public interface ReplyRepositoryCustom {
 
     List<ReplyResponseDtO.ReplyData> getReplyData(Integer productId);
 
-    List<ReplyResponseDtO.ReplyInfoForMain> getReplyMain();
+    List<ReplyResponseDtO.ReplyInfoForMain> getReplyForProductDetails(Integer productId);
 }
