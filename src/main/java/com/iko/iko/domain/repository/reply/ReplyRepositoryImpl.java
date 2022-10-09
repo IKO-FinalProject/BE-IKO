@@ -4,9 +4,13 @@ import com.iko.iko.controller.reply.dto.response.ReplyResponseDtO;
 import com.iko.iko.controller.reply.dto.response.ReplyResponseDtO.*;
 import com.iko.iko.controller.reply.dto.request.ReplyRequestDto.UpdateReplyRequest;
 import com.iko.iko.domain.entity.Reply;
+import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -127,8 +131,9 @@ public class ReplyRepositoryImpl implements ReplyRepositoryCustom {
     }
 
     @Override
-    public List<ReplyResponseDtO.ReplyInfoForMain> getReplyForProductDetails(Integer productId){
-        return jpaQueryFactory
+    public Page<ReplyResponseDtO.ReplyInfoForMain> getReplyForProductDetails(Pageable pageable,Integer productId){
+        QueryResults<ReplyInfoForMain> queryResults=
+                jpaQueryFactory
                 .select(Projections.constructor(ReplyResponseDtO.ReplyInfoForMain.class,
                         reply.imageUrl,
                         product.name,
@@ -141,7 +146,11 @@ public class ReplyRepositoryImpl implements ReplyRepositoryCustom {
                 .join(productDetails).on(productDetails.productDetailsId.eq(reply.productDetailsId)).fetchJoin()
                 .join(product).on(product.productId.eq(productDetails.productIdFk)).fetchJoin()
                 .where(productDetails.productIdFk.eq(productId))
-                .fetch();
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetchResults();
+        return new PageImpl<>(queryResults.getResults(),pageable, queryResults.getTotal());
+
     }
 
 }

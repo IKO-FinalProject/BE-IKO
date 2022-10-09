@@ -4,6 +4,8 @@ import com.iko.iko.controller.reply.dto.response.ReplyResponseDtO;
 import com.iko.iko.domain.repository.member.MemberRepository;
 import com.iko.iko.domain.repository.reply.ReplyRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,12 +17,12 @@ public class GetReplyForProductDetailsService {
     private  final ReplyRepository replyRepository;
     private final MemberRepository memberRepository;
 
-    public List<ReplyResponseDtO.ReplyInfoForProductDetails> getReplyForProductDetails(Integer productId){
+    public List<ReplyResponseDtO.ReplyInfoForProductDetails> getReplyForProductDetails(Pageable pageable,Integer productId){
         List<ReplyResponseDtO.ReplyInfoForProductDetails> result =
                 new ArrayList<>();
 
-        List<ReplyResponseDtO.ReplyInfoForMain> subResult
-                =replyRepository.getReplyForProductDetails(productId);
+        Page<ReplyResponseDtO.ReplyInfoForMain> subResult
+                =replyRepository.getReplyForProductDetails(pageable,productId);
 
         for(ReplyResponseDtO.ReplyInfoForMain rs : subResult){
             String email=memberRepository.getEmailByMemberId(rs.getMemberId());
