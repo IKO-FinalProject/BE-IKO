@@ -19,5 +19,6 @@ public class CouponResponseDto {
         private Integer discount;
         private Integer minPrice;
         private Integer couponType;
+        private String couponTitle;
     }
 }

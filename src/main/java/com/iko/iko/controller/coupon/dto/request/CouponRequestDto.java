@@ -34,6 +34,7 @@ public class CouponRequestDto {
         private Integer discount;
         private Integer minPrice;
         private Integer couponType;
+        private String couponTitle;
 
         @Builder
         public Coupon toEntity(){
@@ -43,6 +44,7 @@ public class CouponRequestDto {
                     .discount(discount)
                     .minPrice(minPrice)
                     .couponType(couponType)
+                    .couponTitle(couponTitle)
                     .build();
         }
     }

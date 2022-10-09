@@ -30,7 +30,8 @@ public class CouponRepositoryImpl implements CouponRepositoryCustom {
                 coupon.discountRate,
                 coupon.discount,
                 coupon.minPrice,
-                coupon.couponType
+                coupon.couponType,
+                coupon.couponTitle
                 ))
                 .from(linkMemberCoupon)
                 .join(coupon).on(linkMemberCoupon.couponId.eq(coupon.couponId)).fetchJoin()
