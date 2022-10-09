@@ -14,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductDetailsFacade {
     private final GetMainProductDetailsService getMainProductDetailsService;
-    private final GetMainProductService getMainProductService;
     private final GetProductForRandomService getProductForRandomService;
     private final GetProductByOptionService getProductByOptionService;
     private final GetProductExplainImageService getProductExplainImageService;
@@ -22,7 +21,7 @@ public class ProductDetailsFacade {
 
     private final GetByColorCodeService getByColorCodeService;
     private final GetGraphicOptionService getGraphicOptionService;
-
+    private final GetProductDetailsByOptionService getProductDetailsByOptionService;
 
 
     @Transactional(readOnly = true)
@@ -64,6 +63,13 @@ public class ProductDetailsFacade {
     @Transactional(readOnly = true)
     public List<ProductDetailsResponse.DegreeAndStock> getGraphicOption(Integer period, String colorCode, Float graphic){
         return getGraphicOptionService.GetGraphicOption(period,colorCode,graphic);
+    }
+
+    @Transactional(readOnly = true)
+    public ProductDetailsResponse.ProductDetailsByOptionResponse getProductDetailsByOption(
+            ProductDetailsRequest.ProductDetailsForRequest request, Integer memberId
+    ){
+        return getProductDetailsByOptionService.GetProductDetailsByOption(request,memberId);
     }
 
 }

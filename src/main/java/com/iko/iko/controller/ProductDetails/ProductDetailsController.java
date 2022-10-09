@@ -5,6 +5,7 @@ import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsRequest;
 
 import com.iko.iko.controller.reply.dto.response.ReplyResponseDtO;
+import com.iko.iko.domain.entity.Product;
 import com.iko.iko.service.reply.facade.ReplyFacade;
 import io.swagger.annotations.ApiOperation;
 import lombok.Getter;
@@ -130,6 +131,19 @@ public class ProductDetailsController {
                 Response.of(
                         productDetailsFacade.getGraphicOption(period,colorCode,graphic),
                         "기간 및 컬러코드 선택 후 그래픽직경 불러오기 완료"
+                )
+        );
+    }
+    @PostMapping("/byDetailsOption")
+    public ResponseEntity<Response<ProductDetailsResponse.ProductDetailsByOptionResponse>>
+    getProductDetailsByOption(
+            @RequestBody ProductDetailsRequest.ProductDetailsForRequest request,
+            @RequestParam (value="memberId") Integer memberId
+    ){
+        return ResponseEntity.ok(
+                Response.of(
+                        productDetailsFacade.getProductDetailsByOption(request,memberId),
+                        "상품 상세 불러오기 완료!"
                 )
         );
     }

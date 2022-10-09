@@ -267,4 +267,36 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .distinct().
                 fetch();
     }
+    @Override
+    public Integer getProductDetailsIdByOption(
+            ProductDetailsRequest.ProductDetailsForRequest request
+    ){
+        return jpaQueryFactory
+                .select(productDetails.productDetailsId)
+                .from(productDetails)
+                .where(productDetails.productIdFk.eq(request.getProductId()))
+                .where(productDetails.graphicDiameter.eq(request.getGraphicDiameter()))
+                .where(productDetails.degree.eq(request.getDegree()))
+                .where(productDetails.colorCode.eq(request.getColorCode()))
+                .where(productDetails.period.eq(request.getPeriod()))
+                .fetchOne();
+    }
+
+    @Override
+    public ProductDetailsResponse.ProductDetailsByOption getProductDetailsByProductDetailsId(
+            Integer productDetailsId
+    ){
+        return jpaQueryFactory
+                .select(Projections.constructor(
+                        ProductDetailsResponse.ProductDetailsByOption.class,
+                        product.name,
+                        productDetails.color,
+                        product.price,
+                        productDetails.detailsPrice
+                ))
+                .from(productDetails)
+                .join(product).on(product.productId.eq(productDetails.productIdFk)).fetchJoin()
+                .where(productDetails.productDetailsId.eq(productDetailsId))
+                .fetchOne();
+    }
 }

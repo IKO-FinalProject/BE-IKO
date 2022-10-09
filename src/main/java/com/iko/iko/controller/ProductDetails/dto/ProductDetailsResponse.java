@@ -182,10 +182,22 @@ public class ProductDetailsResponse {
     @Getter
     @AllArgsConstructor
     @Builder
-    public static class ProductDetailsByOption{
+    public static class ProductDetailsByOptionResponse{
         private Integer isFavorite;
         private Integer productDetailsId;
-        private String name;
-
+        private String productName;
+        private String color;
+        private Integer discount;
+        private Integer detailsPrice;
+        private List<typeAndImage> imageUrlList;
+    }
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class ProductDetailsByOption{
+        private String productName;
+        private String color;
+        private Integer discount;
+        private Integer detailsPrice;
     }
 }

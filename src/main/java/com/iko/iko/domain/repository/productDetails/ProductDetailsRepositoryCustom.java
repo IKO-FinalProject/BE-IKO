@@ -35,4 +35,10 @@ public interface ProductDetailsRepositoryCustom {
 
     List<ProductDetailsResponse.DegreeAndStock> getGraphicOption(Integer period, String colorCode, Float graphic);
     //List<ProductDetailsResponse.DegreeAndStock> getProductDetailsByOption(ProductDetailsRequest.ProductDetailsForRequest option);
+    Integer getProductDetailsIdByOption(ProductDetailsRequest.ProductDetailsForRequest request);
+
+    ProductDetailsResponse.ProductDetailsByOption getProductDetailsByProductDetailsId(
+            Integer productDetailsId
+    );
+
 }
