@@ -20,7 +20,6 @@ public class ProductDetailsRequest {
         private List<String> series;
 
         private List<String> feature;
-        //
 
     }
     @Setter
