@@ -1,5 +1,6 @@
 package com.iko.iko.domain.repository.order;
 
+import com.iko.iko.controller.order.dto.request.OrderRequestDto.UpdateOrderStatusRequest;
 import com.iko.iko.controller.order.dto.response.OrderResponseDto.*;
 
 
@@ -17,5 +18,6 @@ public interface OrderRepositoryCustom {
     List<String> getProductName(Integer orderId);
     List<GetProductInfoForAdminResponse> getProductInfoForAdmin(Integer orderId);
     List<GetProductDetailsInfoForAdminResponse> getProductDetailsInfoForAdmin(Integer productId, Integer orderId);
+    Long updateOrderStatus(UpdateOrderStatusRequest updateOrderStatusRequest);
 
 }

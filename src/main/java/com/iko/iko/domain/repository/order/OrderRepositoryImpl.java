@@ -1,5 +1,6 @@
 package com.iko.iko.domain.repository.order;
 
+import com.iko.iko.controller.order.dto.request.OrderRequestDto.UpdateOrderStatusRequest;
 import com.iko.iko.controller.order.dto.response.OrderResponseDto.*;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -215,9 +216,9 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
     }
 
     @Override
-    public  List<GetProductDetailsInfoForAdminResponse> getProductDetailsInfoForAdmin(
+    public List<GetProductDetailsInfoForAdminResponse> getProductDetailsInfoForAdmin(
             Integer productId, Integer orderId
-    ){
+    ) {
         return jpaQueryFactory
                 .select(Projections.constructor(GetProductDetailsInfoForAdminResponse.class,
                         productDetails.color,
@@ -231,7 +232,7 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                         productDetails.detailsPrice,
                         productDetails.material,
                         productDetails.basecurve
-                        ))
+                ))
                 .from(productDetails)
                 .join(linkOrderDetails).on(productDetails.productDetailsId.eq(linkOrderDetails.productDetailsId).
                         and(linkOrderDetails.orderId.eq(orderId))).fetchJoin()
@@ -239,5 +240,15 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                 .fetch();
     }
 
+    @Override
+    public Long updateOrderStatus(
+            UpdateOrderStatusRequest updateOrderStatusRequest
+    ) {
+        return jpaQueryFactory
+                .update(order)
+                .set(order.status, updateOrderStatusRequest.getStatus())
+                .where(order.orderId.eq(updateOrderStatusRequest.getOrderId()))
+                .execute();
+    }
 
 }
