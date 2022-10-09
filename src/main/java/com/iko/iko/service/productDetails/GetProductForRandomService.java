@@ -48,9 +48,9 @@ public class GetProductForRandomService {
             Integer productId= productIdList.get(index);
             productIdList.remove(index);
 
-            if(!memberId.equals(0)){
+            if(memberId!=0){
                 Member member =validateLoginStatus();
-                isFavorite = (int)(long)productRepository.getMemberIsFavorite(memberId,productId);
+                isFavorite = (int)(long)productRepository.getMemberIsFavorite(member.getMemberId(),productId);
             }
 
             Product mainProduct
