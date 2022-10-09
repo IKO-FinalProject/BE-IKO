@@ -18,6 +18,7 @@ public class ProductDetailsFacade {
     private final GetProductForRandomService getProductForRandomService;
     private final GetProductByOptionService getProductByOptionService;
     private final GetProductExplainImageService getProductExplainImageService;
+    private final GetByPeriodOption getByPeriodOption;
 
 
 
@@ -45,6 +46,11 @@ public class ProductDetailsFacade {
             Integer selectedProductId, Integer memberId
     ){
         return getProductForRandomService.getProductForRandom(selectedProductId,memberId);
+    }
+
+    @Transactional(readOnly = true)
+    public ProductDetailsResponse.ByPeriodOptionList getByPeriodOption(Integer period){
+        return getByPeriodOption.getByPeriodOption(period);
     }
 
 }

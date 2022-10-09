@@ -94,5 +94,17 @@ public class ProductDetailsController {
         );
     }
 
+    @GetMapping("/byPeriodOption")
+    public ResponseEntity<Response<ProductDetailsResponse.ByPeriodOptionList>> getByPeriodOption(
+            @RequestParam(value="period") Integer period
+    ){
+        return ResponseEntity.ok(
+                Response.of(
+                        productDetailsFacade.getByPeriodOption(period),
+                        "기간 선택 후 옵션 불러오기 완료"
+                )
+        );
+    }
+
 }
 

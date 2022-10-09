@@ -150,4 +150,19 @@ public class ProductDetailsResponse {
 
     }
 
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class ByPeriodOptionList{
+        private List<String> colorCodeList;
+        private List<Float> graphicDiameterList;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class ByPeriodOption{
+        private String colorCode;
+        private Float graphicDiameter;
+    }
 }

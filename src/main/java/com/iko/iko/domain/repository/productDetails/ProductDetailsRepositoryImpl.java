@@ -227,4 +227,19 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .distinct()
                 .fetch();
     }
+
+    @Override
+    public List<ProductDetailsResponse.ByPeriodOption> getPeriodOption(Integer period){
+        return jpaQueryFactory
+                .select(Projections.constructor(
+                        ProductDetailsResponse.ByPeriodOption.class,
+                        productDetails.colorCode,
+                        productDetails.graphicDiameter
+                ))
+                .from(productDetails)
+                .where(productDetails.period.eq(period))
+                .distinct()
+                .fetch();
+    }
+
 }
