@@ -20,6 +20,9 @@ public class ProductDetailsFacade {
     private final GetProductExplainImageService getProductExplainImageService;
     private final GetByPeriodOption getByPeriodOption;
 
+    private final GetByColorCodeService getByColorCodeService;
+    private final GetGraphicOptionService getGraphicOptionService;
+
 
 
     @Transactional(readOnly = true)
@@ -51,6 +54,16 @@ public class ProductDetailsFacade {
     @Transactional(readOnly = true)
     public ProductDetailsResponse.ByPeriodOptionList getByPeriodOption(Integer period){
         return getByPeriodOption.getByPeriodOption(period);
+    }
+
+    @Transactional(readOnly = true)
+    public ProductDetailsResponse.ByColorCodeOption getByColorCodeOption(Integer period,String colorCode){
+        return getByColorCodeService.getByColorCodeOption(period, colorCode);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ProductDetailsResponse.DegreeAndStock> getGraphicOption(Integer period, String colorCode, Float graphic){
+        return getGraphicOptionService.GetGraphicOption(period,colorCode,graphic);
     }
 
 }

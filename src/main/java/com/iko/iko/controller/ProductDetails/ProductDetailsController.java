@@ -7,6 +7,7 @@ import com.iko.iko.controller.ProductDetails.dto.ProductDetailsRequest;
 import com.iko.iko.controller.reply.dto.response.ReplyResponseDtO;
 import com.iko.iko.service.reply.facade.ReplyFacade;
 import io.swagger.annotations.ApiOperation;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -102,6 +103,33 @@ public class ProductDetailsController {
                 Response.of(
                         productDetailsFacade.getByPeriodOption(period),
                         "기간 선택 후 옵션 불러오기 완료"
+                )
+        );
+    }
+
+    @GetMapping("/byColorCodeOption")
+    public ResponseEntity<Response<ProductDetailsResponse.ByColorCodeOption>> getByColorCodeOption(
+            @RequestParam(value="period") Integer period,
+            @RequestParam(value="colorCode") String colorCode
+    ){
+        return ResponseEntity.ok(
+                Response.of(
+                        productDetailsFacade.getByColorCodeOption(period,colorCode),
+                        "기간 및 컬러코드 선택 후 그래픽직경 불러오기 완료"
+                )
+        );
+    }
+
+    @GetMapping("/byGraphicOption")
+    public ResponseEntity<Response<List<ProductDetailsResponse.DegreeAndStock>>> getGraphicOption(
+            @RequestParam(value="period") Integer period,
+            @RequestParam(value="colorCode") String colorCode,
+            @RequestParam(value="graphicDiameter") Float graphic
+    ){
+        return ResponseEntity.ok(
+                Response.of(
+                        productDetailsFacade.getGraphicOption(period,colorCode,graphic),
+                        "기간 및 컬러코드 선택 후 그래픽직경 불러오기 완료"
                 )
         );
     }

@@ -242,4 +242,29 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .fetch();
     }
 
+    @Override
+    public List<Float> getColorCodeOption(Integer period,String colorCode){
+        return jpaQueryFactory
+                .select(productDetails.graphicDiameter)
+                .from(productDetails)
+                .where(productDetails.period.eq(period))
+                .where(productDetails.colorCode.eq(colorCode))
+                .distinct()
+                .fetch();
+    }
+
+    @Override
+    public List<ProductDetailsResponse.DegreeAndStock> getGraphicOption(Integer period, String colorCode, Float graphic){
+        return jpaQueryFactory
+                .select(Projections.constructor(
+                        ProductDetailsResponse.DegreeAndStock.class,
+                        productDetails.degree,
+                        productDetails.productDetailsStock))
+                .from(productDetails)
+                .where(productDetails.period.eq(period))
+                .where(productDetails.colorCode.eq(colorCode))
+                .where(productDetails.graphicDiameter.eq(graphic))
+                .distinct().
+                fetch();
+    }
 }

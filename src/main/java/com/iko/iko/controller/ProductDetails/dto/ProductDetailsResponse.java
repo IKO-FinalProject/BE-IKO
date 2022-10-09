@@ -165,4 +165,27 @@ public class ProductDetailsResponse {
         private String colorCode;
         private Float graphicDiameter;
     }
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class ByColorCodeOption{
+        private List<Float> graphicDiameterList;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class DegreeAndStock{
+        private Float degree;
+        private Integer stock;
+    }
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class ProductDetailsByOption{
+        private Integer isFavorite;
+        private Integer productDetailsId;
+        private String name;
+
+    }
 }
