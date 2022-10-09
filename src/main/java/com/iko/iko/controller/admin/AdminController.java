@@ -3,7 +3,8 @@ package com.iko.iko.controller.admin;
 import com.iko.iko.common.response.Response;
 import com.iko.iko.controller.coupon.dto.request.CouponRequestDto.InsertCouponRequest;
 import com.iko.iko.controller.event.dto.EventRequest.AddEventRequest;
-import com.iko.iko.controller.order.dto.response.OrderResponseDto.GetAllOrderResponse;
+import com.iko.iko.controller.order.dto.response.OrderResponseDto;
+import com.iko.iko.controller.order.dto.response.OrderResponseDto.*;
 import com.iko.iko.service.coupon.facade.CouponFacade;
 import com.iko.iko.service.event.facade.EventFacade;
 import com.iko.iko.service.order.facade.OrderFacade;
@@ -51,7 +52,7 @@ public class AdminController {
     }
 
     @PostMapping("/insertCoupon")
-    public ResponseEntity<Response<String>> insertCoupon(
+    public ResponseEntity<Response<Integer>> insertCoupon(
             @RequestBody @Valid InsertCouponRequest insertCouponRequest
     ){
         return ResponseEntity.ok(
@@ -65,6 +66,16 @@ public class AdminController {
         return ResponseEntity.ok(
                 Response.of(orderFacade.getAllOrderInfo(),
                         "모든 주문 조회 완료")
+        );
+    }
+
+    @GetMapping("/searchOrderById")
+    public ResponseEntity<Response<List<GetProductAndDetailsInfoForAdminResponse>>> searchOrderById(
+            @RequestParam(value = "orderId") Integer orderId
+    ){
+        return ResponseEntity.ok(
+                Response.of(orderFacade.searchOrderById(orderId),
+                        "해당 주문의 상품 정보 조회 완료")
         );
     }
 

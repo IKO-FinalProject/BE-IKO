@@ -15,6 +15,7 @@ public interface OrderRepositoryCustom {
     Long plusStockForOrder(Integer productDetailsId, Integer pcs);
     List<GetOrderInfoResponse> getAllOrderInfo();
     List<String> getProductName(Integer orderId);
-
+    List<GetProductInfoForAdminResponse> getProductInfoForAdmin(Integer orderId);
+    List<GetProductDetailsInfoForAdminResponse> getProductDetailsInfoForAdmin(Integer productId, Integer orderId);
 
 }

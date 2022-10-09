@@ -4,10 +4,7 @@ import com.iko.iko.controller.order.dto.request.OrderRequestDto.CancelOrderReque
 import com.iko.iko.controller.order.dto.request.OrderRequestDto.AddOrderRequest;
 import com.iko.iko.controller.order.dto.response.OrderResponseDto.*;
 import com.iko.iko.controller.order.dto.request.OrderRequestDto.GetOrderRequest;
-import com.iko.iko.service.order.AddOrderService;
-import com.iko.iko.service.order.CancelOrderService;
-import com.iko.iko.service.order.GetAllOrderInfoService;
-import com.iko.iko.service.order.GetOrderService;
+import com.iko.iko.service.order.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +19,7 @@ public class OrderFacade {
     private final CancelOrderService cancelOrderService;
     private final GetOrderService getOrderService;
     private final GetAllOrderInfoService getAllOrderInfoService;
+    private final SearchOrderByIdService searchOrderByIdService;
 
     @Transactional
     public Integer addOrder(AddOrderRequest addOrderRequest){
@@ -41,6 +39,11 @@ public class OrderFacade {
     @Transactional(readOnly = true)
     public List<GetAllOrderResponse> getAllOrderInfo(){
         return getAllOrderInfoService.getAllOrderInfo();
+    }
+
+    @Transactional(readOnly = true)
+    public List<GetProductAndDetailsInfoForAdminResponse> searchOrderById(Integer orderId){
+        return searchOrderByIdService.searchOrderById(orderId);
     }
 
 

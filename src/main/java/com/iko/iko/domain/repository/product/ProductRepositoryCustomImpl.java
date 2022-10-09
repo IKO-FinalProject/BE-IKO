@@ -143,5 +143,17 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .fetch();
     }
 
+    @Override
+    public String getProductFeature(
+            Integer productId
+    ){
+        return jpaQueryFactory
+                .select(product.feature)
+                .from(product)
+                .where(product.productId.eq(productId))
+                .fetchOne();
+    }
+
+
 
 }
