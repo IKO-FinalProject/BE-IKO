@@ -32,4 +32,6 @@ public interface ProductRepositoryCustom{
 
     List<ProductResponse.recommendedProduct> getRecommendedProduct();
 
+    Page<ProductResponse.GetAllProductDistinct> getAllProductByFilter
+            (Pageable pageable, Integer productId);
 }

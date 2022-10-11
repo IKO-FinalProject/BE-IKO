@@ -7,6 +7,7 @@ import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
 import com.iko.iko.controller.product.dto.ProductResponse;
 import com.iko.iko.domain.entity.Product;
 import com.iko.iko.service.product.facade.ProductFacade;
+import com.iko.iko.service.productDetails.facade.ProductDetailsFacade;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -22,6 +23,7 @@ import com.iko.iko.common.response.Response;
 public class ProductController {
 
     private final ProductFacade productFacade;
+    private final ProductDetailsFacade productDetailsFacade;
 
     @GetMapping("/main")
     public ResponseEntity<Response<List<ProductDetailsResponse.MainProductForResponse>>>
@@ -37,20 +39,17 @@ public class ProductController {
                 )
         );
     }
-   
+
     @PostMapping("/byOption")
-    public ResponseEntity<Response<List<ProductDetailsResponse.MainProductForResponse>>>
-    getMainProductByOption(
-            @RequestParam Integer page, @RequestParam Integer size,
+    public ResponseEntity<Response<ProductDetailsResponse.MainFilterProductData>>
+    getProductByOption(
             @RequestParam Integer memberId,
             @RequestBody ProductDetailsRequest.ProductOptionForRequest productOption
-
-    ){
-        Pageable pr =PageRequest.of(page-1,size);
+    ) {
         return ResponseEntity.ok(
                 Response.of(
-                        productFacade.getMainProductByOption(productOption,pr,memberId),
-                        "모든상품 불러오기 완료"
+                        productDetailsFacade.getProductByOption(productOption,memberId),
+                        "상품 불러오기 완료"
                 )
         );
     }

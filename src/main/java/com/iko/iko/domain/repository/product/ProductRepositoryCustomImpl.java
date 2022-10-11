@@ -83,7 +83,26 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .where(productDetails.productIdFk.eq(productId))
                 .fetch();
     }
-
+    @Override
+    public Page<ProductResponse.GetAllProductDistinct> getAllProductByFilter(Pageable pageable, Integer productId){
+        QueryResults<ProductResponse.GetAllProductDistinct> queryResults
+                =jpaQueryFactory
+                .select(Projections.constructor(
+                        ProductResponse.GetAllProductDistinct.class,
+                        product.productId,
+                        product.series,
+                        product.price,
+                        product.discount,
+                        product.name
+                ))
+                .distinct()
+                .from(product)
+                .where(product.productId.eq(productId))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetchResults();
+        return new PageImpl<>(queryResults.getResults(),pageable, queryResults.getTotal());
+    }
     @Override
     public Page<ProductResponse.GetAllProductDistinct> getAllProduct(Pageable pageable){
         QueryResults<ProductResponse.GetAllProductDistinct> queryResults
