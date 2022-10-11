@@ -37,7 +37,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 
 
     @Override
-    public List<ProductResponse.productFilterList> getFilterInfo(){
+    public List<ProductResponse.productFilterList> getFilterInfo() {
         return jpaQueryFactory
                 .select(Projections.constructor(
                         ProductResponse.productFilterList.class,
@@ -50,15 +50,16 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     @Override
-    public Product getProductDistinctByProductId(Integer productId){
+    public Product getProductDistinctByProductId(Integer productId) {
         return jpaQueryFactory
                 .select(product)
                 .from(product)
                 .where(product.productId.eq(productId))
                 .fetchOne();
     }
+
     @Override
-    public List<ProductResponse.GetAllProductDistinct> getAllProductByProductId(Integer productId){
+    public List<ProductResponse.GetAllProductDistinct> getAllProductByProductId(Integer productId) {
         return jpaQueryFactory
                 .select(Projections.constructor(
                         ProductResponse.GetAllProductDistinct.class,
@@ -75,7 +76,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     @Override
-    public List<Integer> getAllProductDetailsIdByProductId(Integer productId){
+    public List<Integer> getAllProductDetailsIdByProductId(Integer productId) {
         return jpaQueryFactory
                 .select(productDetails.productDetailsId)
                 .from(productDetails)
@@ -85,9 +86,9 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     @Override
-    public Page<ProductResponse.GetAllProductDistinct> getAllProduct(Pageable pageable){
+    public Page<ProductResponse.GetAllProductDistinct> getAllProduct(Pageable pageable) {
         QueryResults<ProductResponse.GetAllProductDistinct> queryResults
-                =jpaQueryFactory
+                = jpaQueryFactory
                 .select(Projections.constructor(
                         ProductResponse.GetAllProductDistinct.class,
                         product.productId,
@@ -101,7 +102,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
-        return new PageImpl<>(queryResults.getResults(),pageable, queryResults.getTotal());
+        return new PageImpl<>(queryResults.getResults(), pageable, queryResults.getTotal());
     }
     /*
     @Override
@@ -128,7 +129,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 
     //유저의 찜정보를 가져옵니다
     @Override
-    public Long getMemberIsFavorite(Integer memberId, Integer selectedProductId){
+    public Long getMemberIsFavorite(Integer memberId, Integer selectedProductId) {
         return jpaQueryFactory
                 .select(favor.favorId.count())
                 .from(favor)
@@ -138,8 +139,8 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     @Override
-    public List<Integer> getAllProductId(){
-        return  jpaQueryFactory
+    public List<Integer> getAllProductId() {
+        return jpaQueryFactory
                 .select(product.productId)
                 .from(product)
                 .fetch();
@@ -148,7 +149,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     @Override
     public String getProductFeature(
             Integer productId
-    ){
+    ) {
         return jpaQueryFactory
                 .select(product.feature)
                 .from(product)
@@ -157,7 +158,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     @Override
-    public List<ProductResponse.recommendedProduct> getRecommendedProduct(){
+    public List<ProductResponse.recommendedProduct> getRecommendedProduct() {
         return jpaQueryFactory
                 .select(Projections.constructor(
                         ProductResponse.recommendedProduct.class,
@@ -173,6 +174,25 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .where(product.productId.eq(productDetails.productIdFk))
                 .where(image.imageType.eq(1))
                 .where(product.recommend.eq(1))
+                .fetch();
+    }
+
+    @Override
+    public List<ProductResponse.ProductInfo> getProductInfoForAdmin() {
+        return jpaQueryFactory
+                .select(Projections.constructor(ProductResponse.ProductInfo.class,
+                        product.productId,
+                        product.name,
+                        product.price,
+                        product.series,
+                        product.discount,
+                        product.manufacturer,
+                        product.diameter,
+                        product.recommend,
+                        product.exposure
+                ))
+                .from(product)
+                .distinct()
                 .fetch();
     }
 

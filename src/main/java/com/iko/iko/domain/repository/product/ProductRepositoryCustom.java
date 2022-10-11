@@ -32,4 +32,7 @@ public interface ProductRepositoryCustom{
 
     List<ProductResponse.recommendedProduct> getRecommendedProduct();
 
+    List<ProductResponse.ProductInfo> getProductInfoForAdmin();
+
+
 }
