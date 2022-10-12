@@ -61,7 +61,7 @@ public class ProductDetailsFacade {
     }
 
     @Transactional(readOnly = true)
-    public List<ProductDetailsResponse.DegreeAndStock> getGraphicOption(Integer productId,Integer period, String colorCode, Float graphic){
+    public ProductDetailsResponse.DegreeAndStockResponse getGraphicOption(Integer productId,Integer period, String colorCode, Float graphic){
         return getGraphicOptionService.GetGraphicOption(productId,period,colorCode,graphic);
     }
 

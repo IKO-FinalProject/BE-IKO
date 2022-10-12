@@ -20,6 +20,7 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.domain.Pageable;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
@@ -225,4 +226,13 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .fetch();
     }
 
+    @Override
+    public List<Integer> getProductIdByNewest(){
+        return jpaQueryFactory
+                .select(product.productId)
+                .from(product)
+                .where(product.createdAt.after(Date.valueOf(String.valueOf(LocalDateTime.now().minusMonths(1)))))
+                .orderBy(product.createdAt.desc())
+                .fetch();
+    }
 }
