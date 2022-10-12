@@ -63,6 +63,15 @@ public class ImageRepositoryImpl implements ImageRepositoryCustom{
                         .and(productDetails.color.eq(color))
                         .and(productDetails.period.eq(period)))
                 .where(image.imageType.eq(3))
+                .fecth();
+    }
+    
+    @Override
+    public List<String> getBannerImage(){
+        return jpaQueryFactory
+                .select(image.imageUrl)
+                .from(image)
+                .where(image.imageType.eq(4))
                 .fetch();
     }
 }

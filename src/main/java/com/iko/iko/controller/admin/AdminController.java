@@ -8,6 +8,7 @@ import com.iko.iko.controller.order.dto.response.OrderResponseDto.*;
 import com.iko.iko.controller.product.dto.ProductResponse;
 import com.iko.iko.service.coupon.facade.CouponFacade;
 import com.iko.iko.service.event.facade.EventFacade;
+import com.iko.iko.service.image.facade.ImageFacade;
 import com.iko.iko.service.order.facade.OrderFacade;
 import com.iko.iko.service.product.facade.ProductFacade;
 import com.iko.iko.controller.product.dto.request.ProductRequest.ProductSaveRequest;
@@ -28,7 +29,11 @@ public class AdminController {
     private final EventFacade eventFacade;
     private final CouponFacade couponFacade;
     private final OrderFacade orderFacade;
+
     private final ProductDetailsFacade productDetailsFacade;
+
+    private final ImageFacade imageFacade;
+
 
     @PostMapping("/insertProduct")
     public ResponseEntity<Response<String>> insertProduct(
@@ -100,6 +105,7 @@ public class AdminController {
         );
     }
 
+
     @GetMapping("/searchDetailsById")
     public ResponseEntity<Response<ProductResponse.ProductDetailsInfoResponse>> searchDetailsById(
             @RequestParam(value = "productId") Integer productId
@@ -107,6 +113,17 @@ public class AdminController {
         return ResponseEntity.ok(
                 Response.of(productDetailsFacade.searchDetailsById(productId),
                         "상품 상세 정보 조회 완료")
+         );
+    }
+
+    @GetMapping("/insertBannerImage")
+    public ResponseEntity<Response<String>> insertBannerImage(
+            @RequestParam (value="imageUrl") String imageUrl
+    ){
+        return ResponseEntity.ok(
+                Response.of(
+                        imageFacade.addBannerImage(imageUrl),
+                        "배너이미지 등록완료")
         );
     }
 
