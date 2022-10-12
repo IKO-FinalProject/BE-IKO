@@ -11,6 +11,7 @@ import com.iko.iko.service.event.facade.EventFacade;
 import com.iko.iko.service.order.facade.OrderFacade;
 import com.iko.iko.service.product.facade.ProductFacade;
 import com.iko.iko.controller.product.dto.request.ProductRequest.ProductSaveRequest;
+import com.iko.iko.service.productDetails.facade.ProductDetailsFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,7 @@ public class AdminController {
     private final EventFacade eventFacade;
     private final CouponFacade couponFacade;
     private final OrderFacade orderFacade;
+    private final ProductDetailsFacade productDetailsFacade;
 
     @PostMapping("/insertProduct")
     public ResponseEntity<Response<String>> insertProduct(
@@ -95,6 +97,16 @@ public class AdminController {
         return ResponseEntity.ok(
                 Response.of(productFacade.allProductInfo(),
                         "모든 상품 정보 조회 완료")
+        );
+    }
+
+    @GetMapping("/searchDetailsById")
+    public ResponseEntity<Response<ProductResponse.ProductDetailsInfoResponse>> searchDetailsById(
+            @RequestParam(value = "productId") Integer productId
+    ){
+        return ResponseEntity.ok(
+                Response.of(productDetailsFacade.searchDetailsById(productId),
+                        "상품 상세 정보 조회 완료")
         );
     }
 
