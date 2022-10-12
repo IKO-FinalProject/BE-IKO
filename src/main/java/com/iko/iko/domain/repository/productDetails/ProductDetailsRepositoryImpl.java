@@ -283,7 +283,7 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .from(productDetails)
                 .where(productDetails.period.eq(period))
                 .where(productDetails.colorCode.eq(colorCode))
-                .where(productDetails.graphicDiameter.eq(graphic))
+                .where(productDetails.graphicDiameter.like(graphic.toString()))
                 .where(productDetails.productIdFk.eq(productId))
                 .distinct().
                 fetch();
@@ -297,7 +297,7 @@ public class ProductDetailsRepositoryImpl implements ProductDetailsRepositoryCus
                 .select(productDetails.productDetailsId)
                 .from(productDetails)
                 .where(productDetails.productIdFk.eq(request.getProductId()))
-                .where(productDetails.graphicDiameter.eq(request.getGraphicDiameter()))
+                .where(productDetails.graphicDiameter.like(request.getGraphicDiameter().toString()))
                 .where(productDetails.degree.eq(request.getDegree()))
                 .where(productDetails.colorCode.eq(request.getColorCode()))
                 .where(productDetails.period.eq(request.getPeriod()))
