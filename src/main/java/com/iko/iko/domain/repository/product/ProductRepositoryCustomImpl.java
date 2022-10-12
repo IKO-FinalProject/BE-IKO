@@ -14,6 +14,8 @@ import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.domain.Pageable;
@@ -192,6 +194,14 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .where(product.productId.eq(productDetails.productIdFk))
                 .where(image.imageType.eq(1))
                 .where(product.recommend.eq(1))
+                .fetch();
+    }
+    @Override
+    public List<Integer> getProductIdBySearchName(String searchName){
+        return jpaQueryFactory
+                .select(product.productId)
+                .from(product)
+                .where(product.name.upper().contains(searchName))
                 .fetch();
     }
 

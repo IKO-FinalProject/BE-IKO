@@ -31,8 +31,8 @@ public class ProductDetailsFacade {
 
     @Transactional(readOnly = true)
     public ProductDetailsResponse.MainFilterProductData getProductByOption(
-            ProductDetailsRequest.ProductOptionForRequest productByOption,Integer memberId){
-        return getProductByOptionService.GetProductByOption(productByOption,memberId);
+            ProductDetailsRequest.ProductOptionForRequest productByOption,Integer memberId,Pageable pageable){
+        return getProductByOptionService.GetProductByOption(productByOption,memberId,pageable);
     }
 
 

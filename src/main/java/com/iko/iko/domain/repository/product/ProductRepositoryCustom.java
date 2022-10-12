@@ -9,6 +9,7 @@ import com.iko.iko.domain.entity.Member;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.repository.query.Param;
 
 import java.util.HashSet;
 import java.util.List;
@@ -34,4 +35,5 @@ public interface ProductRepositoryCustom{
 
     Page<ProductResponse.GetAllProductDistinct> getAllProductByFilter
             (Pageable pageable, Integer productId);
+    List<Integer> getProductIdBySearchName(String searchName);
 }

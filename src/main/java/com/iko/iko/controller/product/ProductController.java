@@ -43,12 +43,14 @@ public class ProductController {
     @PostMapping("/byOption")
     public ResponseEntity<Response<ProductDetailsResponse.MainFilterProductData>>
     getProductByOption(
+            @RequestParam Integer page, @RequestParam Integer size,
             @RequestParam Integer memberId,
             @RequestBody ProductDetailsRequest.ProductOptionForRequest productOption
     ) {
+        Pageable pr=PageRequest.of(page-1,size);
         return ResponseEntity.ok(
                 Response.of(
-                        productDetailsFacade.getProductByOption(productOption,memberId),
+                        productDetailsFacade.getProductByOption(productOption,memberId,pr),
                         "상품 불러오기 완료"
                 )
         );
@@ -75,5 +77,20 @@ public class ProductController {
                 )
         );
     }
+
+    @GetMapping("/searchName")
+    public ResponseEntity<Response<ProductDetailsResponse.MainFilterProductData>>
+    getProductBySearching(
+            @RequestParam (value = "keyWord") String searchName,
+            @RequestParam (value = "memberId") Integer memberId
+    ){
+        return ResponseEntity.ok(
+                Response.of(
+                        productFacade.getProductBySearchName(searchName,memberId),
+                        "검색 상품 불러오기 완료"
+                )
+        );
+    }
+
 
 }
