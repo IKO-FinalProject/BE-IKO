@@ -25,7 +25,11 @@ public class ProductFacade {
     private final AllProductInfoService allProductInfoService;
 
     private final GetProductBySearchNameService getProductBySearchNameService;
+
     private final UpdateProductService updateProductService;
+
+    private final GetNewProductService getNewProductService;
+
 
     @Transactional(readOnly = true)
     public List<ProductDetailsResponse.MainProductForResponse>
@@ -39,20 +43,20 @@ public class ProductFacade {
         return saveProductService.saveProduct(productSaveRequest);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<ProductDetailsResponse.MainProductForResponse>
     getMainProductByOption(ProductDetailsRequest.ProductOptionForRequest productOption,
                            Pageable pageable, Integer memberId){
         return getAllProductByOptionService.GetMainProductByOption(productOption,pageable,memberId);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public ProductResponse.productFilter
     getFilterInfo(){
         return getFilterListService.GetFilterList();
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<ProductResponse.recommendedProduct>
     getRecommendProduct(){
         return getRecommendProductService.getRecommendedProduct();
@@ -64,14 +68,21 @@ public class ProductFacade {
         return allProductInfoService.allProductInfo();
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public ProductDetailsResponse.MainFilterProductData
     getProductBySearchName(String searchName, Integer memberId){
         return getProductBySearchNameService.getProductBySearchName(searchName,memberId);
     }
 
+
     @Transactional
     public String updateProduct(ProductRequest.ProductUpdateRequest productUpdateRequest){
         return updateProductService.updateProduct(productUpdateRequest);
+    }
+    
+    @Transactional(readOnly = true)
+    public ProductDetailsResponse.MainFilterProductData
+    getNewProduct(Integer memberId){
+        return getNewProductService.getNewProduct(memberId);
     }
 }

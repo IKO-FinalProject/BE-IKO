@@ -33,8 +33,8 @@ public interface ProductRepositoryCustom{
     Page<ProductResponse.GetAllProductDistinct> getAllProductByFilter
             (Pageable pageable, Integer productId);
     List<Integer> getProductIdBySearchName(String searchName);
-
     Long updateProduct(ProductRequest.ProductUpdateRequest productUpdateRequest);
     Integer searchProductIdByNameForAdmin(String productName);
+    List<ProductResponse.ProductIdAndCreatedAt> getProductIdByNewest();
 
 }
