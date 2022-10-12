@@ -2,6 +2,7 @@ package com.iko.iko.domain.repository.product;
 
 import com.iko.iko.common.util.dto.DateTimeDto;
 import com.iko.iko.controller.product.dto.ProductResponse;
+import com.iko.iko.controller.product.dto.request.ProductRequest;
 import com.iko.iko.domain.entity.Member;
 import com.iko.iko.domain.entity.Product;
 import com.querydsl.core.QueryResults;
@@ -30,6 +31,8 @@ import static com.iko.iko.domain.entity.QMember.member;
 import static com.iko.iko.domain.entity.QFavor.favor;
 import static com.iko.iko.domain.entity.QImage.image;
 import static com.iko.iko.domain.entity.QLinkProductDetailsImage.linkProductDetailsImage;
+import static com.iko.iko.common.util.EntityListUtil.convertStringListToString;
+
 
 @Repository
 @RequiredArgsConstructor
@@ -223,6 +226,36 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
                 .from(product)
                 .distinct()
                 .fetch();
+    }
+
+    @Override
+    public Long updateProduct(
+            ProductRequest.ProductUpdateRequest productUpdateRequest
+    ){
+        return jpaQueryFactory
+                .update(product)
+                .set(product.name, productUpdateRequest.getProductName())
+                .set(product.price, productUpdateRequest.getPrice())
+                .set(product.discount, productUpdateRequest.getDiscount())
+                .set(product.diameter, productUpdateRequest.getDiameter())
+                .set(product.manufacturer, productUpdateRequest.getManufacturer())
+                .set(product.series , productUpdateRequest.getSeries())
+                .set(product.feature, convertStringListToString(productUpdateRequest.getFeature()))
+                .set(product.recommend, productUpdateRequest.getRecommend())
+                .set(product.exposure, productUpdateRequest.getExposure())
+                .where(product.name.eq(productUpdateRequest.getProductName()))
+                .execute();
+    }
+
+    @Override
+    public Integer searchProductIdByNameForAdmin(
+            String productName
+    ){
+        return jpaQueryFactory
+                .select(product.productId)
+                .from(product)
+                .where(product.name.eq(productName))
+                .fetchOne();
     }
 
 }

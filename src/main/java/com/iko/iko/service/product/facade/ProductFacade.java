@@ -3,6 +3,7 @@ package com.iko.iko.service.product.facade;
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsRequest;
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
 import com.iko.iko.controller.product.dto.ProductResponse;
+import com.iko.iko.controller.product.dto.request.ProductRequest;
 import com.iko.iko.controller.product.dto.request.ProductRequest.ProductSaveRequest;
 import com.iko.iko.service.product.*;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class ProductFacade {
     private final AllProductInfoService allProductInfoService;
 
     private final GetProductBySearchNameService getProductBySearchNameService;
+    private final UpdateProductService updateProductService;
 
     @Transactional(readOnly = true)
     public List<ProductDetailsResponse.MainProductForResponse>
@@ -66,5 +68,10 @@ public class ProductFacade {
     public ProductDetailsResponse.MainFilterProductData
     getProductBySearchName(String searchName, Integer memberId){
         return getProductBySearchNameService.getProductBySearchName(searchName,memberId);
+    }
+
+    @Transactional
+    public String updateProduct(ProductRequest.ProductUpdateRequest productUpdateRequest){
+        return updateProductService.updateProduct(productUpdateRequest);
     }
 }
