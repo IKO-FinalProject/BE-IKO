@@ -30,7 +30,7 @@ public class GetProductByOptionService {
     private final MemberRepository memberRepository;
 
     public ProductDetailsResponse.MainFilterProductData
-    GetProductByOption (ProductDetailsRequest.ProductOptionForRequest productByOption, Integer memberId, Pageable pageable) {
+    GetProductByOption (ProductDetailsRequest.ProductOptionForRequest productByOption, Integer memberId) {
         Integer isFavorite=0;
 
         List<ProductDetailsResponse.MainProductForResponseNotTotalCount> result = new ArrayList<>();

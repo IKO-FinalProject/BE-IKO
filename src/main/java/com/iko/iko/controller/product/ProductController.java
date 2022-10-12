@@ -43,14 +43,12 @@ public class ProductController {
     @PostMapping("/byOption")
     public ResponseEntity<Response<ProductDetailsResponse.MainFilterProductData>>
     getProductByOption(
-            @RequestParam Integer page, @RequestParam Integer size,
             @RequestParam Integer memberId,
             @RequestBody ProductDetailsRequest.ProductOptionForRequest productOption
     ) {
-        Pageable pr=PageRequest.of(page-1,size);
         return ResponseEntity.ok(
                 Response.of(
-                        productDetailsFacade.getProductByOption(productOption,memberId,pr),
+                        productDetailsFacade.getProductByOption(productOption,memberId),
                         "상품 불러오기 완료"
                 )
         );
