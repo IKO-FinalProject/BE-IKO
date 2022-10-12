@@ -24,6 +24,7 @@ public class ProductFacade {
     private final AllProductInfoService allProductInfoService;
 
     private final GetProductBySearchNameService getProductBySearchNameService;
+    private final GetNewProductService getNewProductService;
 
     @Transactional(readOnly = true)
     public List<ProductDetailsResponse.MainProductForResponse>
@@ -66,5 +67,11 @@ public class ProductFacade {
     public ProductDetailsResponse.MainFilterProductData
     getProductBySearchName(String searchName, Integer memberId){
         return getProductBySearchNameService.getProductBySearchName(searchName,memberId);
+    }
+
+    @Transactional
+    public ProductDetailsResponse.MainFilterProductData
+    getNewProduct(Integer memberId){
+        return getNewProductService.getNewProduct(memberId);
     }
 }
