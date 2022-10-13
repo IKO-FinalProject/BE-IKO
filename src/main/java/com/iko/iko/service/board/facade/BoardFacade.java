@@ -25,4 +25,5 @@ public class BoardFacade {
     getBoardDetails(Integer selectedBoardId){
         return getBoardDetailsService.GetDetails(selectedBoardId);
     }
+
 }

@@ -8,4 +8,6 @@ public interface BoardRepositoryCustom {
     List<BoardResponse.BoardMain> getMain(Integer bType);
 
     List<BoardResponse.BoardDetails> getDetails(Integer selectedBoardId);
+
+
 }
