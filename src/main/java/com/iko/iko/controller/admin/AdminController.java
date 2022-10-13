@@ -1,6 +1,7 @@
 package com.iko.iko.controller.admin;
 
 import com.iko.iko.common.response.Response;
+import com.iko.iko.controller.ProductDetails.dto.ProductDetailsRequest;
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
 import com.iko.iko.controller.board.dto.BoardRequest;
 import com.iko.iko.controller.board.dto.BoardResponse;
@@ -182,6 +183,16 @@ public class AdminController {
         return ResponseEntity.ok(
                 Response.of(productFacade.deleteProduct(productId),
                         "상품 삭제 완료")
+        );
+    }
+
+    @PutMapping("/updateStock")
+    public ResponseEntity<Response<String>> updateStock(
+            @RequestBody @Valid ProductDetailsRequest.UpdateStockRequest updateStockRequest
+    ) {
+        return ResponseEntity.ok(
+                Response.of(productDetailsFacade.updateStock(updateStockRequest),
+                        "재고 수정 완료")
         );
     }
 
