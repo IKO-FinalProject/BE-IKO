@@ -36,4 +36,23 @@ public class BoardResponse {
 
     }
 
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class BoardMainForAdmin{
+        private Integer boardType;
+        private String boardTitle;
+        private Integer boardId;
+        private Date createdAt;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    @Setter
+    public static class BoardMainForAdminResponse{
+        private Integer totalCount;
+        private List<BoardMainForAdmin> boardDataList;
+    }
+
 }

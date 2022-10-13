@@ -40,4 +40,17 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom{
                 .fetch();
     }
 
+    @Override
+    public List<BoardResponse.BoardMainForAdmin> getMainForAdmin(){
+        return jpaQueryFactory
+                .select(Projections.constructor(BoardResponse.BoardMainForAdmin.class,
+                        board.boardType,
+                        board.boardTitle,
+                        board.boardId,
+                        board.createdAt))
+                .from(board)
+                .distinct()
+                .fetch();
+    }
+
 }

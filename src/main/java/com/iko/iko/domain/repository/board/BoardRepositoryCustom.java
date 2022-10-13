@@ -9,5 +9,6 @@ public interface BoardRepositoryCustom {
 
     List<BoardResponse.BoardDetails> getDetails(Integer selectedBoardId);
 
+    List<BoardResponse.BoardMainForAdmin> getMainForAdmin();
 
 }
