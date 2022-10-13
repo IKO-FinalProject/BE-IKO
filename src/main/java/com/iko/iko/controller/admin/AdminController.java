@@ -155,22 +155,33 @@ public class AdminController {
                         "재고 정보 조회 완료")
         );
     }
+
     @PostMapping("/insertBoard")
     public ResponseEntity<Response<String>> addBoard(
             @RequestBody @Valid BoardRequest.AddBoardRequest request
-            ){
+    ) {
         return ResponseEntity.ok(
                 Response.of(boardFacade.addBoard(request),
-                "공지사항 등록 완료"
-        ));
+                        "공지사항 등록 완료"
+                ));
     }
 
     @GetMapping("/boardMain")
     public ResponseEntity<Response<BoardResponse.BoardMainForAdminResponse>>
-            getBoardMainForAdmin(){
+    getBoardMainForAdmin() {
         return ResponseEntity.ok(
                 Response.of(boardFacade.getBoardMainForAdmin(),
                         "공지사항 목록 불러오기 완료")
+        );
+    }
+
+    @DeleteMapping("/deleteProduct")
+    public ResponseEntity<Response<String>> deleteProduct(
+            @RequestParam(value = "productId") Integer productId
+    ) {
+        return ResponseEntity.ok(
+                Response.of(productFacade.deleteProduct(productId),
+                        "상품 삭제 완료")
         );
     }
 
