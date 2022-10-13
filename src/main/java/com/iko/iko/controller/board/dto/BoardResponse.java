@@ -10,6 +10,7 @@ public class BoardResponse {
     @AllArgsConstructor
     @Builder
     public static class BoardMain{
+        private Date createdAt;
         private Integer boardId;
         private String boardTitle;
         private Integer boardType;

@@ -18,6 +18,7 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom{
     public List<BoardResponse.BoardMain> getMain(Integer bType){
         return jpaQueryFactory
                 .select(Projections.constructor(BoardResponse.BoardMain.class,
+                        board.createdAt,
                         board.boardId,
                         board.boardTitle,
                         board.boardType))
