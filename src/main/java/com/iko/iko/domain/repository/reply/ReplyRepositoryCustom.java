@@ -14,6 +14,9 @@ public interface ReplyRepositoryCustom {
 
     Long deleteReply(Integer replyId);
 
+    Long deleteReplyForOrder(Integer orderId);
+    Long deleteReplyForAdmin(Integer productDetailsId);
+
     Long updateReply(UpdateReplyRequest updateReplyRequest);
 
     List<MyReplyAndIdsResponse> getMyReplyAndIdsInfo(Integer memberId);
@@ -25,4 +28,10 @@ public interface ReplyRepositoryCustom {
     List<ReplyResponseDtO.ReplyData> getReplyData(Integer productId);
 
     Page<ReplyInfoForMain> getReplyForProductDetails(Pageable pageable,Integer productId);
+
+    List<ReplyResponseDtO.ReplyForProduct> getProductIdForReply();
+
+    Page<ReplyInfoByName> ReplyInfoByName(Pageable pageable, Integer productId);
+
+    Page<ReplyInfoByName> AllReplyInfo(Pageable pageable);
 }

@@ -15,16 +15,15 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom{
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public List<BoardResponse.BoardMain> getMain(Pageable pageable, Integer bType){
+    public List<BoardResponse.BoardMain> getMain(Integer bType){
         return jpaQueryFactory
                 .select(Projections.constructor(BoardResponse.BoardMain.class,
+                        board.createdAt,
                         board.boardId,
                         board.boardTitle,
                         board.boardType))
                 .from(board)
                 .where(board.boardType.eq(bType))
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
                 .fetch();
     }
 
@@ -33,11 +32,24 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom{
         return jpaQueryFactory
                 .select(Projections.constructor(BoardResponse.BoardDetails.class,
                         board.boardTitle,
-                        board.updatedAt,
-                        board.updatedBy,
+                        board.createdBy,
+                        board.createdAt,
                         board.boardDescription))
                 .from(board)
                 .where(board.boardId.eq(selectedBoardId))
+                .fetch();
+    }
+
+    @Override
+    public List<BoardResponse.BoardMainForAdmin> getMainForAdmin(){
+        return jpaQueryFactory
+                .select(Projections.constructor(BoardResponse.BoardMainForAdmin.class,
+                        board.boardType,
+                        board.boardTitle,
+                        board.boardId,
+                        board.createdAt))
+                .from(board)
+                .distinct()
                 .fetch();
     }
 

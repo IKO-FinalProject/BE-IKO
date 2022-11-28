@@ -30,20 +30,6 @@ public class ProductDetailsController {
     private final ReplyFacade replyFacade;
 
 
-    @PostMapping("/byOption")
-    public ResponseEntity<Response<List<ProductDetailsResponse.ProductMainByOptionResponse>>>
-    getProductByOption(
-            @RequestBody ProductDetailsRequest.ProductOptionForRequest productOption
-    ) {
-        return ResponseEntity.ok(
-                Response.of(
-                        productDetailsFacade.getProductByOption(productOption),
-                        "상품 불러오기 완료"
-                )
-        );
-    }
-
-
     @PostMapping("/main")
     public ResponseEntity<Response<ProductDetailsResponse.ProductDetailsForResponse>>
 
@@ -124,7 +110,7 @@ public class ProductDetailsController {
     }
 
     @GetMapping("/byGraphicOption")
-    public ResponseEntity<Response<List<ProductDetailsResponse.DegreeAndStock>>> getGraphicOption(
+    public ResponseEntity<Response<ProductDetailsResponse.DegreeAndStockResponse>> getGraphicOption(
             @RequestParam(value="productId") Integer productId,
             @RequestParam(value="period") Integer period,
             @RequestParam(value="colorCode") String colorCode,
@@ -133,7 +119,7 @@ public class ProductDetailsController {
         return ResponseEntity.ok(
                 Response.of(
                         productDetailsFacade.getGraphicOption(productId,period,colorCode,graphic),
-                        "기간 및 컬러코드 선택 후 그래픽직경 불러오기 완료"
+                        "최종 상세상품 불러오기 완료"
                 )
         );
     }

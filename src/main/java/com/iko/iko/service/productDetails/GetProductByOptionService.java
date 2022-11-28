@@ -1,127 +1,99 @@
 package com.iko.iko.service.productDetails;
 
+import com.iko.iko.common.exception.BaseException;
+import com.iko.iko.common.response.ErrorCode;
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
+import com.iko.iko.controller.product.dto.ProductResponse;
+import com.iko.iko.domain.entity.Member;
+import com.iko.iko.domain.entity.Product;
+import com.iko.iko.domain.repository.member.MemberRepository;
+import com.iko.iko.domain.repository.product.ProductRepository;
 import com.iko.iko.domain.repository.productDetails.ProductDetailsRepository;
+import com.iko.iko.security.jwt.SecurityUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsRequest;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.Comparator;
+
 @Service
 @RequiredArgsConstructor
 public class GetProductByOptionService {
 
     private final ProductDetailsRepository productDetailsRepository;
+    private final ProductRepository productRepository;
 
-    public List<ProductDetailsResponse.ProductMainByOptionResponse>
-    GetProductByOption (ProductDetailsRequest.ProductOptionForRequest productByOption) {
-        List<ProductDetailsResponse.ProductMainByOption> productMainByOptionList = productDetailsRepository.getProductByOption(productByOption);
-        List<String> imageUrlList = new ArrayList<>();
-        List<String> colorCodeList = new ArrayList<>();
-        List<ProductDetailsResponse.ProductMainByOptionResponse> result = new ArrayList<>();
-        /*
-        List<String> isBlank = new ArrayList<>();
-        if(productMainByOptionList.get(0).getColorCode().isEmpty())isBlank.add("colorCode");
-        if(productMainByOptionList.get(0).getSeries().isEmpty())isBlank.add("series");
-        if(productMainByOptionList.get(0).getPrice().toString().isEmpty())isBlank.;
-        if(productMainByOptionList.get(0).getDiscount().toString().isEmpty())isBlank=isBlank+1;
-        if(productMainByOptionList.get(0).getGraphicDiameter().toString().isEmpty())isBlank=isBlank+1;
-        */
-        HashMap<String, List<String>> resultMap = new HashMap<>();
-        HashMap<String, List<String>> subResultMap = new HashMap<>();
-        resultMap.put(
-                productMainByOptionList.get(0).getProductId().toString() + "-__-" +
-                productMainByOptionList.get(0).getSeries() + "-__-" +
-                productMainByOptionList.get(0).getPrice().toString() + "-__-" +
-                productMainByOptionList.get(0).getDiscount().toString() + "-__-" +
-                productMainByOptionList.get(0).getGraphicDiameter().toString(),
-                imageUrlList
-        );
-        subResultMap.put(
-                productMainByOptionList.get(0).getProductId().toString() + "-__-" +
-                        productMainByOptionList.get(0).getSeries() + "-__-" +
-                        productMainByOptionList.get(0).getPrice().toString() + "-__-" +
-                        productMainByOptionList.get(0).getDiscount().toString() + "-__-" +
-                        productMainByOptionList.get(0).getGraphicDiameter().toString(),
-                colorCodeList
-        );
+    private final MemberRepository memberRepository;
 
-        for(ProductDetailsResponse.ProductMainByOption productMainByOption : productMainByOptionList){
-           if(resultMap.get(
-                   productMainByOption.getProductId().toString() + "-__-" +
-                   productMainByOption.getSeries() + "-__-" +
-                   productMainByOption.getPrice().toString() + "-__-" +
-                   productMainByOption.getDiscount().toString() + "-__-" +
-                   productMainByOption.getGraphicDiameter().toString() ) != null
-           ) {
-               resultMap.get(
-                       productMainByOption.getProductId().toString() + "-__-" +
-                               productMainByOption.getSeries() + "-__-" +
-                               productMainByOption.getPrice().toString() + "-__-" +
-                               productMainByOption.getDiscount().toString() + "-__-" +
-                               productMainByOption.getGraphicDiameter().toString()
-               ).add(productMainByOption.getImageUrl());
-           } else {
-               List<String> imageUrlForMap = new ArrayList<>();
-               imageUrlForMap.add(productMainByOption.getImageUrl());
-               resultMap.put(
-                       productMainByOption.getProductId().toString() + "-__-" +
-                       productMainByOption.getSeries() + "-__-" +
-                       productMainByOption.getPrice().toString() + "-__-" +
-                       productMainByOption.getDiscount().toString() + "-__-" +
-                       productMainByOption.getGraphicDiameter().toString() ,
-                       imageUrlForMap
-               );
-           }
+    public ProductDetailsResponse.MainFilterProductData
+    GetProductByOption (ProductDetailsRequest.ProductOptionForRequest productByOption, Integer memberId) {
+        Integer isFavorite=0;
+
+        List<ProductDetailsResponse.MainProductForResponseNotTotalCount> result = new ArrayList<>();
+        List<Integer> productIdList = productDetailsRepository.getProductIdByMainOption(productByOption);
+        Map<Integer, Integer> productIdAndCount=new HashMap<Integer, Integer>();
+
+        //Get ProductId By Option List
+        for(Integer idList : productIdList){
+
+            List<Integer> productDetailsIdList =productDetailsRepository.getProductDetailsIdByProductIdForBest(idList);
+            productIdAndCount.put(idList,(int)(long)productDetailsIdList.stream().count());
+
         }
+        //Sort 인기순 Key : productId, Value : 주문량
+        List<Map.Entry<Integer, Integer>> entryList=new ArrayList<Entry<Integer,Integer>>(productIdAndCount.entrySet());
 
-        for(ProductDetailsResponse.ProductMainByOption productMainByOption : productMainByOptionList){
-            if(subResultMap.get(
-                    productMainByOption.getProductId().toString() + "-__-" +
-                            productMainByOption.getSeries() + "-__-" +
-                            productMainByOption.getPrice().toString() + "-__-" +
-                            productMainByOption.getDiscount().toString() + "-__-" +
-                            productMainByOption.getGraphicDiameter().toString()) != null
-            ) {
-                subResultMap.get(
-                        productMainByOption.getProductId().toString() + "-__-" +
-                                productMainByOption.getSeries() + "-__-" +
-                                productMainByOption.getPrice().toString() + "-__-" +
-                                productMainByOption.getDiscount().toString() + "-__-" +
-                                productMainByOption.getGraphicDiameter().toString()
-                ).add(productMainByOption.getColorCode());
-            } else {
-                List<String> colorCodeForMap = new ArrayList<>();
-                colorCodeForMap.add(productMainByOption.getColorCode());
-                subResultMap.put(
-                        productMainByOption.getProductId().toString() + "-__-" +
-                                productMainByOption.getSeries() + "-__-" +
-                                productMainByOption.getPrice().toString() + "-__-" +
-                                productMainByOption.getDiscount().toString() + "-__-" +
-                                productMainByOption.getGraphicDiameter().toString(),
-                        colorCodeForMap
-                );
+        Collections.sort(entryList, new Comparator<Entry<Integer, Integer>>() {
+            public int compare(Entry<Integer, Integer> obj1, Entry<Integer, Integer> obj2){
+                return obj2.getValue().compareTo(obj1.getValue());
             }
-        }
+        });
+        Integer totalCount=entryList.size();
 
+        for(Map.Entry<Integer,Integer> eList : entryList){
+            Product mainProduct
+                    =productRepository.getProductDistinctByProductId(eList.getKey());
+            Integer productId=eList.getKey();
+            List<ProductDetailsResponse.GetGraphicDiameter> graphicList = productDetailsRepository.getGraphic(productId);
+            List<Float> gList = new ArrayList<>();
+            List<ProductDetailsResponse.GetColorCodeAndImageUrl> iList = new ArrayList<>();
 
-        for(String keyS : resultMap.keySet()) {
-            String[] dataList = keyS.split("-__-");
-            ProductDetailsResponse.ProductMainByOptionResponse checkData = new ProductDetailsResponse.ProductMainByOptionResponse(
-                    Integer.parseInt(dataList[0]),
-                    dataList[1],
-                    Integer.parseInt(dataList[2]),
-                    Integer.parseInt(dataList[3]),
-                    Float.parseFloat(dataList[4]),
-                    subResultMap.get(keyS),
-                    resultMap.get(keyS)
-            );
+            List<ProductDetailsResponse.GetColorCodeAndImageUrl> k
+                    = productDetailsRepository.getColorAndImage(productId);
+            for(ProductDetailsResponse.GetColorCodeAndImageUrl ttpp: k){
+                iList.add(ttpp);
+            }
+
+            //
+            for(ProductDetailsResponse.GetGraphicDiameter tp : graphicList){
+                gList.add(tp.getGraphicDiameter());
+            }
+            ProductDetailsResponse.MainProductForResponseNotTotalCount checkData
+                    =new ProductDetailsResponse.MainProductForResponseNotTotalCount(
+                    isFavorite,
+                    productId,
+                    mainProduct.getSeries(),
+                    gList,
+                    mainProduct.getPrice(),
+                    mainProduct.getDiscount(),
+                    iList);
 
             result.add(checkData);
         }
+        ProductDetailsResponse.MainFilterProductData finalResult =new ProductDetailsResponse.MainFilterProductData(
+                totalCount,
+                result
+        );
 
-        return result;
+        return finalResult;
     }
+    public Member validateLoginStatus() {
+        return memberRepository.findByEmail(SecurityUtil.getLoginUserEmail())
+                .orElseThrow(() -> new BaseException(ErrorCode.NEED_LOGIN));
+    }
+
 }

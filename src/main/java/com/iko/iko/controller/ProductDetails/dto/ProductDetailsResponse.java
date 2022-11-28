@@ -43,6 +43,28 @@ public class ProductDetailsResponse {
         private List<GetColorCodeAndImageUrl> colorAndImage;
     }
 
+    @Setter
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static  class MainProductForResponseNotTotalCount{
+        private Integer isFavorite;
+        private Integer productId;
+        private String series;
+        private List<Float> graphicDiameter;
+        private Integer price;
+        private Integer discount;
+        private List<GetColorCodeAndImageUrl> colorAndImage;
+    }
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    @Setter
+    public static class MainFilterProductData{
+        private Integer totalCount;
+        private List<MainProductForResponseNotTotalCount> productData;
+    }
+
     @Getter
     @AllArgsConstructor
     @Builder
@@ -170,6 +192,13 @@ public class ProductDetailsResponse {
     @Builder
     public static class ByColorCodeOption{
         private List<Float> graphicDiameterList;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class DegreeAndStockResponse{
+        List<DegreeAndStock> degreeAndStockList;
     }
 
     @Getter

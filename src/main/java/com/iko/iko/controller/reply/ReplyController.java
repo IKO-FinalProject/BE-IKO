@@ -21,6 +21,7 @@ import java.util.List;
 public class ReplyController {
 
     private final ReplyFacade replyFacade;
+
     @PostMapping("/add")
     public ResponseEntity<Response<String>> addReply(
             @RequestBody @Valid AddReplyRequest addReplyRequest
@@ -34,7 +35,7 @@ public class ReplyController {
     @PostMapping("/delete")
     public ResponseEntity<Response<String>> deleteReply(
             @RequestBody @Valid DeleteReplyRequest deleteReplyRequest
-    ){
+    ) {
         return ResponseEntity.ok(
                 Response.of(replyFacade.deleteReply(deleteReplyRequest),
                         "리뷰 삭제 완료")
@@ -44,7 +45,7 @@ public class ReplyController {
     @PutMapping("/update")
     public ResponseEntity<Response<String>> updateReply(
             @RequestBody @Valid UpdateReplyRequest updateReplyRequest
-    ){
+    ) {
         return ResponseEntity.ok(
                 Response.of(replyFacade.updateReply(updateReplyRequest),
                         "리뷰 수정 완료")
@@ -52,7 +53,7 @@ public class ReplyController {
     }
 
     @GetMapping("/myReply")
-    public ResponseEntity<Response<List<MyReplyInfoResponse>>> myReplyList(){
+    public ResponseEntity<Response<List<MyReplyInfoResponse>>> myReplyList() {
         return ResponseEntity.ok(
                 Response.of(replyFacade.myReplyList(),
                         "나의 리뷰 정보 조회 완료")
@@ -64,13 +65,47 @@ public class ReplyController {
     getReplyForProductDetails(
             @RequestParam Integer page, @RequestParam Integer size,
             @RequestParam Integer productId
-    ){
-        Pageable pr = PageRequest.of(page-1,size);
+    ) {
+        Pageable pr = PageRequest.of(page - 1, size);
         return ResponseEntity.ok(
                 Response.of(
-                        replyFacade.getReplyForProductDetails(pr,productId),
-                "리뷰 데이터 불러오기 완료."
-        ));
+                        replyFacade.getReplyForProductDetails(pr, productId),
+                        "리뷰 데이터 불러오기 완료."
+                ));
+    }
+
+    @GetMapping("/forProductId")
+    public ResponseEntity<Response<List<ReplyResponseDtO.ReplyForProduct>>>
+    getProductIdForReply() {
+        return ResponseEntity.ok(
+                Response.of(
+                        replyFacade.getProductIdForReply(),
+                        "product Id와 name 불러오기 완료! "
+                )
+        );
+    }
+
+    @GetMapping("/replyListByName")
+    public ResponseEntity<Response<List<ReplyInfoByNameResponse>>> ReplyInfoByName(
+            @RequestParam Integer page, @RequestParam Integer size,
+            @RequestParam String productName)
+    {
+        Pageable pageable = PageRequest.of(page-1,size);
+        return ResponseEntity.ok(
+                Response.of(replyFacade.ReplyInfoByName(pageable, productName),
+                        "상품 이름별 리뷰 전체 조회 완료")
+        );
+    }
+
+    @GetMapping("/allReply")
+    public ResponseEntity<Response<List<ReplyInfoByNameResponse>>> AllReply(
+            @RequestParam Integer page, @RequestParam Integer size
+    ){
+        Pageable pageable = PageRequest.of(page-1,size);
+        return ResponseEntity.ok(
+                Response.of(replyFacade.AllReply(pageable),
+                        "모든 리뷰 조회 완료")
+        );
     }
 
 }

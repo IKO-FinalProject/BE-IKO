@@ -16,7 +16,6 @@ public class OrderRequestDto {
         private Integer memberId;
         private String orderer;
         private String phone;
-        @Email(message = "올바른 이메일 주소를 입력해주세요.")
         private String email;
         private String receiver;
         private Integer postCode;
@@ -28,7 +27,7 @@ public class OrderRequestDto {
         private Integer couponId;
         private Integer method;
         private Integer totalPrice;
-        private Integer point;
+        private Float point;
 
         @Getter
         @Setter

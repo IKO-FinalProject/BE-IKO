@@ -2,6 +2,7 @@ package com.iko.iko.service.productDetails.facade;
 
 
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsRequest;
+import com.iko.iko.controller.product.dto.ProductResponse;
 import com.iko.iko.service.productDetails.*;
 import com.iko.iko.controller.ProductDetails.dto.ProductDetailsResponse;
 
@@ -22,7 +23,8 @@ public class ProductDetailsFacade {
     private final GetByColorCodeService getByColorCodeService;
     private final GetGraphicOptionService getGraphicOptionService;
     private final GetProductDetailsByOptionService getProductDetailsByOptionService;
-
+    private final ProductDetailsInfoService productDetailsInfoService;
+    private final UpdateStockService updateStockService;
 
     @Transactional(readOnly = true)
     public List<String> getProductExplainImage(Integer productId){
@@ -30,9 +32,9 @@ public class ProductDetailsFacade {
     }
 
     @Transactional(readOnly = true)
-    public List<ProductDetailsResponse.ProductMainByOptionResponse>getProductByOption(
-            ProductDetailsRequest.ProductOptionForRequest productByOption){
-        return getProductByOptionService.GetProductByOption(productByOption);
+    public ProductDetailsResponse.MainFilterProductData getProductByOption(
+            ProductDetailsRequest.ProductOptionForRequest productByOption,Integer memberId){
+        return getProductByOptionService.GetProductByOption(productByOption,memberId);
     }
 
 
@@ -61,7 +63,7 @@ public class ProductDetailsFacade {
     }
 
     @Transactional(readOnly = true)
-    public List<ProductDetailsResponse.DegreeAndStock> getGraphicOption(Integer productId,Integer period, String colorCode, Float graphic){
+    public ProductDetailsResponse.DegreeAndStockResponse getGraphicOption(Integer productId,Integer period, String colorCode, Float graphic){
         return getGraphicOptionService.GetGraphicOption(productId,period,colorCode,graphic);
     }
 
@@ -70,6 +72,16 @@ public class ProductDetailsFacade {
             ProductDetailsRequest.ProductDetailsForRequest request, Integer memberId
     ){
         return getProductDetailsByOptionService.GetProductDetailsByOption(request,memberId);
+    }
+
+    @Transactional(readOnly = true)
+    public ProductResponse.ProductDetailsInfoResponse searchDetailsById(Integer productId){
+        return productDetailsInfoService.searchDetailsById(productId);
+    }
+
+    @Transactional
+    public String updateStock(ProductDetailsRequest.UpdateStockRequest updateStockRequest){
+        return updateStockService.updateStock(updateStockRequest);
     }
 
 }

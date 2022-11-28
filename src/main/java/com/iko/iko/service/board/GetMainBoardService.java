@@ -11,9 +11,17 @@ import  java.util.List;
 public class GetMainBoardService {
     private final BoardRepository boardRepository;
 
-    public List<BoardResponse.BoardMain> GetMain(
-            Pageable pageable, Integer bType){
-        return boardRepository.getMain(pageable,bType);
+    public BoardResponse.BoardMainResponse GetMain(
+            Integer bType){
+        List<BoardResponse.BoardMain> boardMain=boardRepository.getMain(bType);
+
+
+        BoardResponse.BoardMainResponse result = new BoardResponse.BoardMainResponse(
+                boardMain.size(),
+                boardMain
+        );
+
+        return result;
     }
 
 }
